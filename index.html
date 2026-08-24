@@ -151,37 +151,38 @@ var CORES=['#c9a84c','#e8c97a','#a0a0b0','#8b7355','#3ecf72','#60c9e8','#e07060'
 // Atualize estes dois blocos a cada semana
 // ============================================================
 var dSem=[
-  {cod:'00032',vlr:127689.3,qtde:1027,pedidos:11,cliNov:2,ticket:124.33},
+  {cod:'00032',vlr:176145.2,qtde:1428,pedidos:14,cliNov:2,ticket:122.74},
+  {cod:'07607',vlr:141855,qtde:1090,pedidos:4,cliNov:1,ticket:130.14},
   {cod:'00035',vlr:113431.9,qtde:881,pedidos:8,cliNov:1,ticket:128.75},
-  {cod:'00018',vlr:100182.1,qtde:800,pedidos:4,cliNov:1,ticket:125.23},
+  {cod:'00018',vlr:103193.885,qtde:827,pedidos:5,cliNov:1,ticket:124.78},
   {cod:'00052',vlr:83382.9,qtde:661,pedidos:2,cliNov:0,ticket:126.15},
   {cod:'00020',vlr:57724.06,qtde:488,pedidos:2,cliNov:1,ticket:118.29},
   {cod:'06672',vlr:55140.2,qtde:428,pedidos:4,cliNov:0,ticket:128.83},
-  {cod:'07607',vlr:45665.2,qtde:338,pedidos:1,cliNov:0,ticket:135.10},
-  {cod:'07332',vlr:40319.2,qtde:378,pedidos:4,cliNov:3,ticket:106.66},
+  {cod:'07332',vlr:40319.2,qtde:378,pedidos:4,cliNov:2,ticket:106.66},
   {cod:'00037',vlr:39326.6,qtde:314,pedidos:3,cliNov:1,ticket:125.24},
   {cod:'00045',vlr:29262.7,qtde:203,pedidos:3,cliNov:1,ticket:144.15},
   {cod:'07892',vlr:26778,qtde:210,pedidos:1,cliNov:1,ticket:127.51},
-  {cod:'07608',vlr:17042.4,qtde:136,pedidos:2,cliNov:0,ticket:125.31},
+  {cod:'07608',vlr:24257.4,qtde:196,pedidos:3,cliNov:0,ticket:123.76},
   {cod:'08092',vlr:16817.5,qtde:145,pedidos:1,cliNov:1,ticket:115.98},
+  {cod:'07889',vlr:16358.7,qtde:123,pedidos:2,cliNov:1,ticket:133.00},
   {cod:'06693',vlr:13645.4,qtde:116,pedidos:2,cliNov:0,ticket:117.63},
   {cod:'06008',vlr:11237.6,qtde:94,pedidos:2,cliNov:0,ticket:119.55},
-  {cod:'07889',vlr:8284.6,qtde:64,pedidos:1,cliNov:1,ticket:129.45}
+  {cod:'07606',vlr:10833.2,qtde:88,pedidos:1,cliNov:0,ticket:123.10}
 ];
 var dAcum=[
-  {cod:'00032',vlr:2270084.883,qtde:18321,pedidos:130,cliNov:18,ticket:123.91},
-  {cod:'00045',vlr:1842105.01,qtde:14493,pedidos:86,cliNov:9,ticket:127.10},
+  {cod:'00032',vlr:2317675.149,qtde:18722,pedidos:131,cliNov:18,ticket:123.79},
+  {cod:'00045',vlr:1841669.85,qtde:14492,pedidos:86,cliNov:9,ticket:127.08},
   {cod:'00037',vlr:1580508.6,qtde:12444,pedidos:76,cliNov:11,ticket:127.01},
-  {cod:'00018',vlr:1482553.323,qtde:11862,pedidos:69,cliNov:13,ticket:124.98},
+  {cod:'00018',vlr:1485781.108,qtde:11889,pedidos:69,cliNov:13,ticket:124.97},
   {cod:'06672',vlr:1157206.67,qtde:9079,pedidos:50,cliNov:9,ticket:127.46},
   {cod:'00052',vlr:1028810.3,qtde:8087,pedidos:44,cliNov:10,ticket:127.22},
-  {cod:'07606',vlr:756269.375,qtde:6050,pedidos:43,cliNov:13,ticket:128.81},
-  {cod:'06693',vlr:703064.03,qtde:5656,pedidos:35,cliNov:6,ticket:124.30},
-  {cod:'07607',vlr:702664.413,qtde:5627,pedidos:33,cliNov:12,ticket:124.87},
+  {cod:'07607',vlr:798854.213,qtde:6379,pedidos:36,cliNov:13,ticket:125.23},
+  {cod:'07606',vlr:767102.575,qtde:6050,pedidos:43,cliNov:13,ticket:128.73},
+  {cod:'06693',vlr:702938.13,qtde:5655,pedidos:35,cliNov:6,ticket:124.30},
   {cod:'06008',vlr:574615.465,qtde:4666,pedidos:30,cliNov:1,ticket:123.15},
   {cod:'07891',vlr:506965.85,qtde:4156,pedidos:30,cliNov:16,ticket:121.98},
+  {cod:'07608',vlr:472481.645,qtde:3673,pedidos:29,cliNov:7,ticket:128.64},
   {cod:'00020',vlr:469641.35,qtde:3824,pedidos:26,cliNov:2,ticket:122.81},
-  {cod:'07608',vlr:465266.645,qtde:3613,pedidos:28,cliNov:7,ticket:128.78},
   {cod:'00035',vlr:395547.02,qtde:3107,pedidos:24,cliNov:1,ticket:127.31},
   {cod:'07332',vlr:319269.205,qtde:2523,pedidos:18,cliNov:4,ticket:126.54},
   {cod:'07520',vlr:303166.09,qtde:2424,pedidos:28,cliNov:12,ticket:125.07},
@@ -191,7 +192,7 @@ var dAcum=[
   {cod:'07741',vlr:115239.8,qtde:932,pedidos:9,cliNov:7,ticket:123.65},
   {cod:'07892',vlr:97989.1,qtde:759,pedidos:4,cliNov:4,ticket:129.10},
   {cod:'08092',vlr:91012,qtde:730,pedidos:5,cliNov:5,ticket:124.67},
-  {cod:'07889',vlr:24351.8,qtde:182,pedidos:3,cliNov:1,ticket:133.80}
+  {cod:'07889',vlr:32425.9,qtde:241,pedidos:4,cliNov:1,ticket:134.55}
 ];
 
 // ============================================================

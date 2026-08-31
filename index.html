@@ -126,13 +126,13 @@ var REPS={
   '07606':{n:'WELLS',uf:'ES',r:'Espirito Santo',c:6000,reg:'Sudeste'},
   '07892':{n:'BRUNO FERNANDES',uf:'GO',r:'Goias/DF/TO',c:3000,reg:'Centro-Oeste'},
   '06008':{n:'GILIARDE',uf:'MA',r:'Maranhao/Piaui',c:9000,reg:'Nordeste'},
-  '07607':{n:'LEANDRO',uf:'MT',r:'Mato Grosso',c:8500,reg:'Centro-Oeste'},
+  '07607':{n:'LEANDRO',uf:'MT',r:'Mato Grosso',c:7500,reg:'Centro-Oeste'},
   '07608':{n:'ROMILDO',uf:'MG',r:'Minas Gerais',c:5000,reg:'Sudeste'},
   '06672':{n:'DANILO',uf:'MG',r:'Minas Gerais',c:9500,reg:'Sudeste'},
   '00020':{n:'LAURO',uf:'PA',r:'Para',c:9000,reg:'Norte'},
   '07891':{n:'ALLAN',uf:'PA',r:'Para/Amapa',c:4500,reg:'Norte'},
   '07320':{n:'MARCOS CANDIDO',uf:'PB',r:'Paraiba/RN',c:3000,reg:'Nordeste'},
-  '00018':{n:'RAFAEL',uf:'PR',r:'Parana',c:13500,reg:'Sul'},
+  '00018':{n:'RAFAEL',uf:'PR',r:'Parana',c:13000,reg:'Sul'},
   '07520':{n:'LUCIANO',uf:'PR',r:'Parana',c:3500,reg:'Sul'},
   '07332':{n:'ISAIAS E GIZELE',uf:'PE',r:'Pernambuco',c:3500,reg:'Nordeste'},
   '00032':{n:'EMANUEL E CONRADO',uf:'RS',r:'Rio Grande do Sul',c:18000,reg:'Sul'},
@@ -151,45 +151,51 @@ var CORES=['#c9a84c','#e8c97a','#a0a0b0','#8b7355','#3ecf72','#60c9e8','#e07060'
 // Atualize estes dois blocos a cada semana
 // ============================================================
 var dSem=[
-  {cod:'00020',vlr:89696.7,qtde:735,pedidos:2,cliNov:0,ticket:122.04},
-  {cod:'06672',vlr:63586.3,qtde:477,pedidos:2,cliNov:0,ticket:133.30},
-  {cod:'07607',vlr:55023.5,qtde:455,pedidos:3,cliNov:1,ticket:120.93},
-  {cod:'07891',vlr:54620.1,qtde:429,pedidos:3,cliNov:0,ticket:127.32},
-  {cod:'00045',vlr:36160.5,qtde:295,pedidos:3,cliNov:2,ticket:122.58},
-  {cod:'07606',vlr:34494.6,qtde:274,pedidos:3,cliNov:1,ticket:125.89},
+  {cod:'00052',vlr:150108.6,qtde:1144,pedidos:6,cliNov:3,ticket:131.21},
+  {cod:'00020',vlr:114630.4,qtde:930,pedidos:4,cliNov:0,ticket:123.26},
+  {cod:'07607',vlr:89317.4,qtde:736,pedidos:7,cliNov:2,ticket:121.36},
+  {cod:'07891',vlr:85415.4,qtde:685,pedidos:5,cliNov:0,ticket:124.69},
+  {cod:'06672',vlr:72454.9,qtde:541,pedidos:3,cliNov:0,ticket:133.93},
+  {cod:'07606',vlr:65576.7,qtde:503,pedidos:4,cliNov:1,ticket:130.37},
+  {cod:'06008',vlr:58722.0,qtde:500,pedidos:2,cliNov:0,ticket:117.44},
+  {cod:'00040',vlr:54454.6,qtde:474,pedidos:2,cliNov:0,ticket:114.88},
+  {cod:'00032',vlr:49514.7,qtde:413,pedidos:6,cliNov:1,ticket:119.89},
+  {cod:'07332',vlr:40701.9,qtde:311,pedidos:2,cliNov:0,ticket:130.87},
+  {cod:'00045',vlr:40167.5,qtde:325,pedidos:4,cliNov:2,ticket:123.59},
   {cod:'07892',vlr:29147.8,qtde:222,pedidos:1,cliNov:1,ticket:131.30},
-  {cod:'00040',vlr:22920.7,qtde:193,pedidos:1,cliNov:0,ticket:118.76},
+  {cod:'07889',vlr:27929.1,qtde:229,pedidos:3,cliNov:1,ticket:121.96},
+  {cod:'00037',vlr:27430.6,qtde:214,pedidos:1,cliNov:0,ticket:128.18},
+  {cod:'00035',vlr:24369.2,qtde:198,pedidos:1,cliNov:0,ticket:123.08},
+  {cod:'07890',vlr:22543.92,qtde:192,pedidos:1,cliNov:1,ticket:117.42},
   {cod:'07320',vlr:21943.1,qtde:179,pedidos:1,cliNov:0,ticket:122.59},
-  {cod:'00032',vlr:20533.5,qtde:165,pedidos:2,cliNov:1,ticket:124.45},
-  {cod:'06693',vlr:16199.4,qtde:149,pedidos:3,cliNov:1,ticket:108.72},
-  {cod:'07520',vlr:15041.7,qtde:123,pedidos:1,cliNov:0,ticket:122.29},
-  {cod:'07332',vlr:11578,qtde:90,pedidos:1,cliNov:0,ticket:128.64},
-  {cod:'00018',vlr:5683.7,qtde:43,pedidos:1,cliNov:0,ticket:132.18}
+  {cod:'07520',vlr:20923.15,qtde:173,pedidos:2,cliNov:0,ticket:120.94},
+  {cod:'06693',vlr:17323.5,qtde:158,pedidos:4,cliNov:1,ticket:109.64},
+  {cod:'00018',vlr:13684.7,qtde:133,pedidos:3,cliNov:2,ticket:102.89}
 ];
 var dAcum=[
-  {cod:'00032',vlr:2339696.549,qtde:18898,pedidos:133,cliNov:19,ticket:123.81},
-  {cod:'00045',vlr:1879266.25,qtde:14798,pedidos:88,cliNov:11,ticket:126.99},
-  {cod:'00037',vlr:1580359.7,qtde:12443,pedidos:76,cliNov:11,ticket:127.01},
-  {cod:'00018',vlr:1455042.808,qtde:11632,pedidos:69,cliNov:13,ticket:125.09},
-  {cod:'06672',vlr:1220792.97,qtde:9556,pedidos:52,cliNov:9,ticket:127.75},
-  {cod:'00052',vlr:1028810.3,qtde:8087,pedidos:44,cliNov:10,ticket:127.22},
-  {cod:'07607',vlr:853877.713,qtde:6834,pedidos:39,cliNov:14,ticket:124.95},
-  {cod:'07606',vlr:780036.775,qtde:6057,pedidos:45,cliNov:14,ticket:128.78},
-  {cod:'06693',vlr:718243.13,qtde:5798,pedidos:37,cliNov:7,ticket:123.88},
-  {cod:'06008',vlr:574615.465,qtde:4666,pedidos:30,cliNov:1,ticket:123.15},
-  {cod:'07891',vlr:561585.95,qtde:4585,pedidos:33,cliNov:16,ticket:122.48},
-  {cod:'00020',vlr:559338.05,qtde:4559,pedidos:28,cliNov:2,ticket:122.69},
-  {cod:'07608',vlr:472481.645,qtde:3673,pedidos:29,cliNov:7,ticket:128.64},
-  {cod:'00035',vlr:395547.02,qtde:3107,pedidos:24,cliNov:1,ticket:127.31},
-  {cod:'07332',vlr:330847.205,qtde:2613,pedidos:19,cliNov:4,ticket:126.62},
-  {cod:'07520',vlr:318207.79,qtde:2547,pedidos:30,cliNov:12,ticket:124.93},
-  {cod:'00040',vlr:255421.4,qtde:2096,pedidos:18,cliNov:3,ticket:121.86},
-  {cod:'07890',vlr:221066.2,qtde:1718,pedidos:14,cliNov:4,ticket:128.68},
+  {cod:'00032',vlr:2369415.514,qtde:19152,pedidos:136,cliNov:19,ticket:123.72},
+  {cod:'00045',vlr:1882795.25,qtde:14828,pedidos:89,cliNov:12,ticket:126.98},
+  {cod:'00037',vlr:1550915.8,qtde:12232,pedidos:76,cliNov:11,ticket:126.79},
+  {cod:'00018',vlr:1463043.808,qtde:11722,pedidos:71,cliNov:15,ticket:124.81},
+  {cod:'06672',vlr:1229899.37,qtde:9622,pedidos:53,cliNov:9,ticket:127.82},
+  {cod:'00052',vlr:1178918.9,qtde:9231,pedidos:48,cliNov:13,ticket:127.71},
+  {cod:'07607',vlr:888171.613,qtde:7115,pedidos:43,cliNov:15,ticket:124.83},
+  {cod:'07606',vlr:811118.875,qtde:6286,pedidos:46,cliNov:14,ticket:129.04},
+  {cod:'06693',vlr:719367.23,qtde:5807,pedidos:37,cliNov:7,ticket:123.88},
+  {cod:'06008',vlr:633337.465,qtde:5166,pedidos:32,cliNov:1,ticket:122.60},
+  {cod:'07891',vlr:592381.25,qtde:4841,pedidos:35,cliNov:16,ticket:122.37},
+  {cod:'00020',vlr:584271.75,qtde:4754,pedidos:30,cliNov:2,ticket:122.90},
+  {cod:'07608',vlr:441536.045,qtde:3419,pedidos:28,cliNov:6,ticket:129.14},
+  {cod:'00035',vlr:419916.22,qtde:3305,pedidos:25,cliNov:1,ticket:127.05},
+  {cod:'07332',vlr:359971.105,qtde:2834,pedidos:20,cliNov:4,ticket:127.02},
+  {cod:'07520',vlr:324089.24,qtde:2597,pedidos:30,cliNov:12,ticket:124.79},
+  {cod:'00040',vlr:286955.3,qtde:2377,pedidos:18,cliNov:3,ticket:120.72},
+  {cod:'07890',vlr:243610.12,qtde:1910,pedidos:15,cliNov:5,ticket:127.54},
   {cod:'07320',vlr:155554.4,qtde:1236,pedidos:11,cliNov:1,ticket:125.85},
   {cod:'07892',vlr:127136.9,qtde:981,pedidos:5,cliNov:5,ticket:129.60},
   {cod:'07741',vlr:115239.8,qtde:932,pedidos:9,cliNov:7,ticket:123.65},
   {cod:'08092',vlr:91012,qtde:730,pedidos:5,cliNov:5,ticket:124.67},
-  {cod:'07889',vlr:32425.9,qtde:241,pedidos:4,cliNov:1,ticket:134.55}
+  {cod:'07889',vlr:60355,qtde:470,pedidos:7,cliNov:2,ticket:128.41}
 ];
 
 // ============================================================
@@ -251,11 +257,11 @@ function renderTop5(listaAcum){
 }
 
 // Ranking da atualização anterior para setas ▲▼
-var RANK_ANT_REP={'00052':1,'00045':2,'00032':3,'07606':4,'00037':5,'06672':6,'07891':7,'00018':8,'06693':9,'07607':10,'07608':11,'07332':12,'07520':13,'00035':14,'06008':15,'00040':16,'07890':17,'00020':18,'07320':19,'07741':20,'08092':21,'07892':22,'07889':23};
+var RANK_ANT_REP={'00052':1,'00045':2,'00032':3,'07891':4,'07606':5,'06672':6,'00037':7,'06693':8,'00018':9,'07607':10,'07332':11,'07608':12,'07520':13,'00035':14,'00040':15,'06008':16,'00020':17,'07890':18,'07320':19,'07892':20,'07741':21,'08092':22,'07889':23};
 
 var SUPER_COTA={'07320':5000,'07520':5000,'07332':5000,'00032':20000,'06008':11000,'00035':6500,'07890':5500,'06672':11000,'06693':8000,'00020':11000,'00040':5500,'00052':8500,'00037':14000,'07607':10000,'07608':6500,'00018':15000,'00045':14500,'07741':5000,'07606':7500,'07889':5500,'07891':6000,'07892':4500};
 function renderGrupo(){
-  var sn=20,sp='24/08 a 30/08',msg='Reta final da coleção Verão 2027! Faltam poucas semanas — cada visita agora vale ainda mais. Vamos fechar com força!',falt=Math.max(0,24-sn);
+  var sn=21,sp='31/08 a 06/09',msg='Reta final da coleção Verão 2027! Faltam poucas semanas — cada visita agora vale ainda mais. Todo esforço extra conta na hora de fechar o resultado!',falt=Math.max(0,24-sn);
   setText('g-semn',sn);setText('g-per',sp);setText('g-falt',falt);
   var listaAcum=buildLista(dAcum),listaSem=buildLista(dSem);
   var dest=calcDestaques(listaSem);

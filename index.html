@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RDG Jeans - Ranking Semanal</title>
+<title>RDG Jeans - Ranking Semanal Inverno 2027</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--bg:#111;--bg2:#1a1a1a;--bg3:#222;--border:#2e2e2e;--gold:#c9a84c;--gold2:#e8c97a;--white:#f0ede8;--muted:#888;--green:#3ecf72;}
+:root{--bg:#111;--bg2:#1a1a1a;--bg3:#222;--border:#2e2e2e;--gold:#a9dcf5;--gold2:#d3eefb;--white:#f0ede8;--muted:#888;--green:#3ecf72;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);font-size:16px;}
-.hdr{background:linear-gradient(135deg,#141414,#1e1c18);border-bottom:1px solid #c9a84c33;padding:16px 26px;display:flex;align-items:center;justify-content:space-between;}
+.hdr{background:linear-gradient(135deg,#141414,#181c20);border-bottom:1px solid #a9dcf533;padding:16px 26px;display:flex;align-items:center;justify-content:space-between;}
 .hdr h1{font-size:1.4rem;font-weight:700;letter-spacing:3px;}
 .hdr h1 span{color:var(--gold);}
 .hdr p{font-size:.75rem;color:var(--muted);letter-spacing:2px;margin-top:2px;}
 .badge{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#111;font-size:.72rem;font-weight:800;padding:6px 14px;border-radius:20px;letter-spacing:2px;}
 .wrap{padding:22px 26px;}
-.g-wrap{background:var(--bg2);border:1px solid #c9a84c33;border-radius:14px;overflow:hidden;}
-.g-hdr{background:linear-gradient(135deg,#141414,#1e1c18);border-bottom:1px solid #c9a84c33;padding:20px 26px;display:flex;align-items:center;justify-content:space-between;position:relative;}
+.g-wrap{background:var(--bg2);border:1px solid #a9dcf533;border-radius:14px;overflow:hidden;}
+.g-hdr{background:linear-gradient(135deg,#141414,#181c20);border-bottom:1px solid #a9dcf533;padding:20px 26px;display:flex;align-items:center;justify-content:space-between;position:relative;}
 .g-hdr h2{font-size:1.5rem;font-weight:800;letter-spacing:4px;}
 .g-hdr h2 span{color:var(--gold);}
 .g-hdr-r{text-align:right;}
@@ -27,7 +27,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);f
 .dest-wrap{margin-bottom:16px;}
 .dest-title{font-size:.95rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;font-weight:700;}
 .dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-.dest-card{background:linear-gradient(135deg,#c9a84c0a,#c9a84c14);border:1px solid #c9a84c33;border-radius:9px;padding:14px 16px;display:flex;align-items:flex-start;gap:10px;}
+.dest-card{background:linear-gradient(135deg,#a9dcf50a,#a9dcf514);border:1px solid #a9dcf533;border-radius:9px;padding:14px 16px;display:flex;align-items:flex-start;gap:10px;}
 .dest-icon{font-size:1.6rem;margin-top:1px;}
 .dest-info .dn{font-size:1.05rem;font-weight:700;color:var(--gold);}
 .dest-info .ds{font-size:.85rem;color:var(--muted);margin-top:4px;line-height:1.4;}
@@ -37,7 +37,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);f
 .g-col-hdrs span:nth-child(n+3){text-align:right;}
 .g-list{display:flex;flex-direction:column;gap:1px;}
 .gi{display:grid;grid-template-columns:44px 1fr 50px 88px 100px 90px;align-items:center;gap:6px;background:var(--bg3);border-radius:6px;padding:5px 12px;border:1px solid transparent;}
-.gi.t1{background:#c9a84c12;border-color:#c9a84c55;}
+.gi.t1{background:#a9dcf512;border-color:#a9dcf555;}
 .gi.t2{background:#a0a0b00a;border-color:#a0a0b033;}
 .gi.t3{background:#8b5e3c0a;border-color:#8b5e3c33;}
 .gi.gns{opacity:.4;}
@@ -59,7 +59,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);f
 .g-top-name{font-size:.82rem;font-weight:600;flex:1;}
 .g-top-val{font-size:.82rem;color:var(--gold);font-weight:700;white-space:nowrap;}
 .g-footer{margin-top:16px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;}
-.g-msg{background:linear-gradient(135deg,#c9a84c08,#c9a84c14);border:1px solid #c9a84c22;border-radius:9px;padding:14px 18px;}
+.g-msg{background:linear-gradient(135deg,#a9dcf508,#a9dcf514);border:1px solid #a9dcf522;border-radius:9px;padding:14px 18px;}
 .g-msg p{font-size:1.05rem;color:var(--white);line-height:1.7;font-style:italic;}
 .g-msg small{font-size:.8rem;color:var(--gold);display:block;margin-top:5px;letter-spacing:1px;}
 .g-leg{font-size:.8rem;color:var(--muted);text-align:right;line-height:1.8;white-space:nowrap;}
@@ -71,13 +71,13 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);f
 </head>
 <body>
 <div class="hdr">
-  <div><h1>RDG <span>JEANS</span></h1><p>RANKING SEMANAL - COLECAO VERAO 2027</p></div>
-  <span class="badge">VERAO 2027</span>
+  <div><h1>RDG <span>JEANS</span></h1><p>RANKING SEMANAL - COLECAO INVERNO 2027</p></div>
+  <span class="badge">INVERNO 2027</span>
 </div>
 <div class="wrap">
   <div class="g-wrap">
     <div class="g-hdr">
-      <div class="g-hdr-l"><h2>RDG <span>JEANS</span></h2><p>ACOMPANHAMENTO SEMANAL - VERAO 2027</p></div>
+      <div class="g-hdr-l"><h2>RDG <span>JEANS</span></h2><p>ACOMPANHAMENTO SEMANAL - INVERNO 2027</p></div>
       <div class="g-hdr-r">
         <div class="gsem">Semana <span id="g-semn">--</span> de 24</div>
         <div class="gper" id="g-per">--</div>
@@ -89,7 +89,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);f
         <div class="dest-title">Destaques da Semana</div>
         <div class="dest-grid" id="g-dest"></div>
       </div>
-      <div class="g-rank-title">Ranking % Cota - Colecao Verao 2027</div>
+      <div class="g-rank-title">Ranking % Cota - Colecao Inverno 2027</div>
       <div class="g-col-hdrs">
         <span>#</span><span>Representante</span><span>UF</span><span>% Cota</span><span>Ticket Medio</span><span>Aberturas</span>
       </div>
@@ -107,7 +107,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);f
         <div class="g-top-card"><h4>🔴 Norte</h4><div id="top5-norte"></div></div>
       </div>
       <div class="g-footer">
-        <div class="g-msg"><p id="g-msgt">--</p><small>RDG JEANS - VERAO 2027</small></div>
+        <div class="g-msg"><p id="g-msgt">--</p><small>RDG JEANS - INVERNO 2027</small></div>
         <div class="g-leg">Ativo | Aguardando inicio<br><span style="color:var(--gold);font-size:.65rem">* Destaque da semana</span></div>
       </div>
 
@@ -120,75 +120,48 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);f
 // DADOS
 // ============================================================
 var REPS={
-  '07889':{n:'JUSCELINO',uf:'BA',r:'Bahia',c:4000,reg:'Nordeste'},
-  '07890':{n:'MADSON E JAU',uf:'BA',r:'Bahia',c:4000,reg:'Nordeste'},
-  '00035':{n:'GEOVANE',uf:'CE',r:'Ceara',c:5000,reg:'Nordeste'},
-  '07606':{n:'WELLS',uf:'ES',r:'Espirito Santo',c:6000,reg:'Sudeste'},
-  '07892':{n:'BRUNO FERNANDES',uf:'GO',r:'Goias/DF/TO',c:3000,reg:'Centro-Oeste'},
-  '06008':{n:'GILIARDE',uf:'MA',r:'Maranhao/Piaui',c:9000,reg:'Nordeste'},
-  '07607':{n:'LEANDRO',uf:'MT',r:'Mato Grosso',c:7500,reg:'Centro-Oeste'},
-  '07608':{n:'ROMILDO',uf:'MG',r:'Minas Gerais',c:5000,reg:'Sudeste'},
-  '06672':{n:'DANILO',uf:'MG',r:'Minas Gerais',c:9500,reg:'Sudeste'},
-  '00020':{n:'LAURO',uf:'PA',r:'Para',c:9000,reg:'Norte'},
-  '07891':{n:'ALLAN',uf:'PA',r:'Para/Amapa',c:4500,reg:'Norte'},
-  '07320':{n:'MARCOS CANDIDO',uf:'PB',r:'Paraiba/RN',c:3000,reg:'Nordeste'},
-  '00018':{n:'RAFAEL',uf:'PR',r:'Parana',c:13000,reg:'Sul'},
+  '07320':{n:'MARCOS CANDIDO',uf:'PB',r:'Paraiba/Rio Grande do Norte',c:2500,reg:'Nordeste'},
   '07520':{n:'LUCIANO',uf:'PR',r:'Parana',c:3500,reg:'Sul'},
-  '07332':{n:'ISAIAS E GIZELE',uf:'PE',r:'Pernambuco',c:3500,reg:'Nordeste'},
-  '00032':{n:'EMANUEL E CONRADO',uf:'RS',r:'Rio Grande do Sul',c:18000,reg:'Sul'},
-  '00037':{n:'MARCIO',uf:'RS',r:'Rio Grande do Sul',c:12500,reg:'Sul'},
-  '00052':{n:'MANO',uf:'RO',r:'Rondonia/Acre',c:7000,reg:'Norte'},
-  '00045':{n:'SILVIO E VANESSA',uf:'SC',r:'Santa Catarina',c:13000,reg:'Sul'},
-  '06693':{n:'JOSE PEDRO',uf:'SC',r:'Santa Catarina',c:6500,reg:'Sul'},
-  '00040':{n:'LUIZ',uf:'SC',r:'Santa Catarina',c:4000,reg:'Sul'},
-  '07741':{n:'WEMERSON',uf:'SE',r:'Sergipe/Alagoas',c:3000,reg:'Nordeste'},
-  '08092':{n:'VELOSO',uf:'MG',r:'Minas Gerais',c:2500,reg:'Sudeste'}
+  '07332':{n:'ISAIAS E GIZELE',uf:'PE',r:'Pernambuco',c:3000,reg:'Nordeste'},
+  '00032':{n:'EMANUEL E CONRADO',uf:'RS',r:'Rio Grande do Sul',c:15500,reg:'Sul'},
+  '06008':{n:'GILIARDE',uf:'MA',r:'Maranhao/Piaui',c:6500,reg:'Nordeste'},
+  '00035':{n:'GEOVANE',uf:'CE',r:'Ceara',c:4000,reg:'Nordeste'},
+  '07890':{n:'JAU E MADSON',uf:'BA',r:'Bahia',c:3000,reg:'Nordeste'},
+  '06672':{n:'DANILO',uf:'MG',r:'Minas Gerais',c:7500,reg:'Sudeste'},
+  '06693':{n:'JOSE PEDRO',uf:'SC',r:'Santa Catarina',c:6000,reg:'Sul'},
+  '00020':{n:'LAURO',uf:'PA',r:'Para',c:6000,reg:'Norte'},
+  '00040':{n:'LUIZ',uf:'SC',r:'Santa Catarina',c:3500,reg:'Sul'},
+  '00052':{n:'MANO',uf:'RO',r:'Rondonia/Acre',c:6500,reg:'Norte'},
+  '00037':{n:'MARCIO',uf:'RS',r:'Rio Grande do Sul',c:10000,reg:'Sul'},
+  '07607':{n:'LEANDRO',uf:'MT',r:'Mato Grosso',c:7500,reg:'Centro-Oeste'},
+  '07608':{n:'ROMILDO',uf:'MG',r:'Minas Gerais',c:4000,reg:'Sudeste'},
+  '00018':{n:'RAFAEL',uf:'PR',r:'Parana',c:8000,reg:'Sul'},
+  '00045':{n:'SILVIO E VANESSA',uf:'SC',r:'Santa Catarina',c:11500,reg:'Sul'},
+  '07741':{n:'WEMERSON',uf:'SE',r:'Sergipe/Alagoas',c:2500,reg:'Nordeste'},
+  '07606':{n:'WELLS',uf:'ES',r:'Espirito Santo',c:5500,reg:'Sudeste'},
+  '07889':{n:'JUSCELINO',uf:'BA',r:'Bahia',c:3000,reg:'Nordeste'},
+  '07891':{n:'ALLAN',uf:'PA',r:'Amazonas/Para/Goias/Tocantins',c:6500,reg:'Norte'},
+  '08093':{n:'PABLLO',uf:'SP',r:'Sao Paulo',c:2500,reg:'Sudeste'},
+  '08092':{n:'VELOSO',uf:'MG',r:'Minas Gerais',c:2500,reg:'Sudeste'},
+  '08281':{n:'HERMINIO',uf:'SP',r:'Sao Paulo',c:2500,reg:'Sudeste'},
 };
-var CORES=['#c9a84c','#e8c97a','#a0a0b0','#8b7355','#3ecf72','#60c9e8','#e07060','#9b7fd4','#5ec4a8','#e8a860','#7090d0','#d07090','#90d070','#d0a040','#70c0d0','#c070c0','#a0c060','#c09050','#6080c0','#b06060','#60b080','#a06082','#80a060'];
+var CORES=['#a9dcf5','#d3eefb','#a0a0b0','#8b7355','#3ecf72','#60c9e8','#e07060','#9b7fd4','#5ec4a8','#e8a860','#7090d0','#d07090','#90d070','#d0a040','#70c0d0','#c070c0','#a0c060','#c09050','#6080c0','#b06060','#60b080','#a06082','#80a060'];
 
 // ============================================================
 // DADOS SEMANA ATUAL E ACUMULADO
 // Atualize estes dois blocos a cada semana
 // ============================================================
 var dSem=[
-    {cod:'00018',vlr:130106.396,qtde:1155,pedidos:8,cliNov:0,ticket:112.65},
-    {cod:'07608',vlr:28256.98,qtde:210,pedidos:3,cliNov:1,ticket:134.56},
-    {cod:'08092',vlr:26992.8,qtde:222,pedidos:2,cliNov:2,ticket:121.59},
-    {cod:'07607',vlr:22234.8,qtde:202,pedidos:3,cliNov:1,ticket:110.07},
-    {cod:'07891',vlr:20907.2,qtde:158,pedidos:3,cliNov:1,ticket:132.32},
-    {cod:'00052',vlr:17920.09,qtde:134,pedidos:3,cliNov:1,ticket:133.73},
-    {cod:'07606',vlr:13738.3,qtde:117,pedidos:1,cliNov:0,ticket:117.42},
-    {cod:'00040',vlr:11183.7,qtde:83,pedidos:2,cliNov:0,ticket:134.74},
-    {cod:'06693',vlr:10926.7,qtde:113,pedidos:4,cliNov:0,ticket:96.70},
-    {cod:'06008',vlr:7892.7,qtde:63,pedidos:1,cliNov:0,ticket:125.28},
-    {cod:'07889',vlr:5883.4,qtde:46,pedidos:1,cliNov:0,ticket:127.90},
-    {cod:'07520',vlr:2398.2,qtde:18,pedidos:1,cliNov:0,ticket:133.23},
-    {cod:'00032',vlr:1028.3,qtde:7,pedidos:1,cliNov:0,ticket:146.90}
+  {cod:'06693',vlr:102662.88,qtde:702,pedidos:9,cliNov:0,cliCompra:4,ticket:146.24},
+  {cod:'00032',vlr:68409.8,qtde:512,pedidos:4,cliNov:0,cliCompra:3,ticket:133.61},
+  {cod:'07607',vlr:18095.7,qtde:133,pedidos:1,cliNov:0,cliCompra:1,ticket:136.06},
+  {cod:'00045',vlr:8697.6,qtde:64,pedidos:1,cliNov:0,cliCompra:1,ticket:135.9}
 ];
 var dAcum=[
-  {cod:'00032',vlr:2482321.619,qtde:20064,pedidos:142,cliNov:18,ticket:123.72},
-  {cod:'00045',vlr:1897320.155,qtde:14938,pedidos:92,cliNov:15,ticket:127.01},
-  {cod:'00018',vlr:1754277.314,qtde:14158,pedidos:83,cliNov:21,ticket:123.91},
-  {cod:'00037',vlr:1607675.7,qtde:12683,pedidos:77,cliNov:11,ticket:126.76},
-  {cod:'00052',vlr:1464740.49,qtde:11420,pedidos:59,cliNov:16,ticket:128.26},
-  {cod:'06672',vlr:1268892.37,qtde:9912,pedidos:55,cliNov:9,ticket:128.02},
-  {cod:'07607',vlr:1104820.913,qtde:8832,pedidos:60,cliNov:19,ticket:125.09},
-  {cod:'00020',vlr:829324.86,qtde:6821,pedidos:34,cliNov:2,ticket:121.58},
-  {cod:'07606',vlr:824069.4,qtde:6403,pedidos:48,cliNov:15,ticket:128.70},
-  {cod:'06008',vlr:804340.365,qtde:6587,pedidos:45,cliNov:1,ticket:122.11},
-  {cod:'06693',vlr:800379.595,qtde:6518,pedidos:41,cliNov:7,ticket:122.80},
-  {cod:'07891',vlr:743317.975,qtde:6040,pedidos:41,cliNov:18,ticket:123.07},
-  {cod:'07608',vlr:542187.025,qtde:4209,pedidos:35,cliNov:8,ticket:128.82},
-  {cod:'07332',vlr:464613.297,qtde:3670,pedidos:25,cliNov:5,ticket:126.60},
-  {cod:'00035',vlr:377382.42,qtde:2973,pedidos:24,cliNov:1,ticket:126.94},
-  {cod:'07520',vlr:340697.54,qtde:2724,pedidos:32,cliNov:14,ticket:125.07},
-  {cod:'00040',vlr:339978.55,qtde:2808,pedidos:23,cliNov:2,ticket:121.07},
-  {cod:'07890',vlr:283767.67,qtde:2255,pedidos:17,cliNov:5,ticket:125.84},
-  {cod:'07320',vlr:170409.7,qtde:1363,pedidos:13,cliNov:2,ticket:125.03},
-  {cod:'08092',vlr:117585.1,qtde:949,pedidos:7,cliNov:7,ticket:123.90},
-  {cod:'07892',vlr:117311.9,qtde:881,pedidos:7,cliNov:6,ticket:133.16},
-  {cod:'07889',vlr:116813.1,qtde:959,pedidos:10,cliNov:3,ticket:121.81},
-  {cod:'07741',vlr:115239.8,qtde:932,pedidos:9,cliNov:7,ticket:123.65}
+  {cod:'06693',vlr:102662.88,qtde:702,pedidos:9,cliNov:0,cliCompra:4,ticket:146.24},
+  {cod:'00032',vlr:68409.8,qtde:512,pedidos:4,cliNov:0,cliCompra:3,ticket:133.61},
+  {cod:'07607',vlr:18095.7,qtde:133,pedidos:1,cliNov:0,cliCompra:1,ticket:136.06},
+  {cod:'00045',vlr:8697.6,qtde:64,pedidos:1,cliNov:0,cliCompra:1,ticket:135.9}
 ];
 
 // ============================================================
@@ -198,8 +171,8 @@ var chartGPizza=null;
 function fmtBR(n){return n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtInt(n){return n.toLocaleString('pt-BR',{maximumFractionDigits:0});}
 function setText(id,v){var el=document.getElementById(id);if(el)el.textContent=v;}
-function corBarra(p){return p>=100?'#3ecf72':p>=75?'#7ed957':p>=50?'#e8c97a':p>0?'#e8c97a':'#444';}
-function calcSem(){var ini=new Date('2026-04-15'),h=new Date();return Math.max(1,Math.ceil(Math.max((h-ini)/864e5,0)/7));}
+function corBarra(p){return p>=100?'#3ecf72':p>=75?'#7ed957':p>=50?'#d3eefb':p>0?'#d3eefb':'#444';}
+function calcSem(){var ini=new Date('2026-10-12'),h=new Date();return Math.max(1,Math.ceil(Math.max((h-ini)/864e5,0)/7));}
 
 function buildLista(dados){
   var m={};for(var i=0;i<dados.length;i++)m[dados[i].cod]=dados[i];
@@ -250,11 +223,11 @@ function renderTop5(listaAcum){
 }
 
 // Ranking da atualização anterior para setas ▲▼
-var RANK_ANT_REP={'00052':1,'07891':2,'07607':3,'00045':4,'00032':5,'07332':6,'07606':7,'06672':8,'00037':9,'06693':10,'00018':11,'07608':12,'07520':13,'00020':14,'06008':15,'00040':16,'00035':17,'07890':18,'07320':19,'07892':20,'07741':21,'08092':22,'07889':23};
+var RANK_ANT_REP=null; // primeira atualização: sem ranking anterior
 
-var SUPER_COTA={'07320':5000,'07520':5000,'07332':5000,'00032':20000,'06008':11000,'00035':6500,'07890':5500,'06672':11000,'06693':8000,'00020':11000,'00040':5500,'00052':8500,'00037':14000,'07607':10000,'07608':6500,'00018':15000,'00045':14500,'07741':5000,'07606':7500,'07889':5500,'07891':6000,'07892':4500};
+var SUPER_COTA={}; // Inverno 2027: sem super cota
 function renderGrupo(){
-  var sn=26,sp='28/09 a 04/10',msg='Reta final da coleção Verão 2027! Faltam poucas semanas — cada visita agora vale ainda mais. Todo esforço extra conta na hora de fechar o resultado!',falt=Math.max(0,24-sn);
+  var sn=1,sp='12/10 a 18/10',msg='A coleção Inverno 2027 está aberta! Cada visita, cada pedido conta. Vamos juntos para o melhor resultado!',falt=Math.max(0,24-sn);
   setText('g-semn',sn);setText('g-per',sp);setText('g-falt',falt);
   var listaAcum=buildLista(dAcum),listaSem=buildLista(dSem);
   var dest=calcDestaques(listaSem);
@@ -275,10 +248,10 @@ function renderGrupo(){
       else if(diff<0) setaHtml='<span style="font-size:.6rem;color:#e05c5c;font-weight:700;margin-left:2px;vertical-align:middle">▼'+Math.abs(diff)+'</span>';
       else setaHtml='<span style="font-size:.6rem;color:#555;margin-left:2px;vertical-align:middle">—</span>';
     } else if(r.ativo){
-      setaHtml='<span style="font-size:.6rem;color:var(--gold);font-weight:700;margin-left:2px;vertical-align:middle">▲ NOVO</span>';
+      setaHtml='';
     }
     var superAtingida = SUPER_COTA[r.cod] && r.qtde >= SUPER_COTA[r.cod];
-    var superHtml = superAtingida ? ' <span title="Super cota atingida!" style="color:#ffd447">⭐</span>' : '';
+    var superHtml = superAtingida ? ' <span title="Super cota atingida!" style="color:#d3eefb">⭐</span>' : '';
     gh+='<div class="gi'+cls+(!r.ativo?' gns':'')+'"><span style="text-align:center">'+numHtml+setaHtml+'</span><span class="gnm">'+r.nome+(isd?' <span style="color:var(--gold)">*</span>':'')+superHtml+'<small>'+r.regiao+'</small></span><span class="guf" style="color:'+cor+'">'+r.uf+'</span><span class="gpct" style="color:'+cor+'">'+r.pct.toFixed(1)+'%</span><span class="gtk">'+(r.ticket>0?'R$'+r.ticket.toFixed(0):'0')+'</span><span class="gop">'+r.cliNov+'</span></div>';
   }
   document.getElementById('g-list').innerHTML=gh;

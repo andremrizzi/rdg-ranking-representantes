@@ -3,24 +3,104 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RDG Jeans - Ranking Semanal Inverno 2027</title>
+<title>RDG Jeans - Inverno 2027</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 :root{--bg:#111;--bg2:#1a1a1a;--bg3:#222;--border:#2e2e2e;--gold:#a9dcf5;--gold2:#d3eefb;--white:#f0ede8;--muted:#888;--green:#3ecf72;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);font-size:16px;}
-.hdr{background:linear-gradient(135deg,#141414,#181c20);border-bottom:1px solid #a9dcf533;padding:16px 26px;display:flex;align-items:center;justify-content:space-between;}
+.hdr{background:linear-gradient(135deg,#141414,#161c22);border-bottom:1px solid #a9dcf533;padding:16px 26px;display:flex;align-items:center;justify-content:space-between;}
 .hdr h1{font-size:1.4rem;font-weight:700;letter-spacing:3px;}
 .hdr h1 span{color:var(--gold);}
 .hdr p{font-size:.75rem;color:var(--muted);letter-spacing:2px;margin-top:2px;}
 .badge{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#111;font-size:.72rem;font-weight:800;padding:6px 14px;border-radius:20px;letter-spacing:2px;}
-.wrap{padding:22px 26px;}
+.nav{display:flex;background:var(--bg2);border-bottom:1px solid var(--border);}
+.nt{padding:14px 24px;cursor:pointer;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;letter-spacing:1px;transition:.2s;text-transform:uppercase;}
+.nt.active{color:var(--gold);border-bottom-color:var(--gold);}
+.nt:hover{color:var(--white);}
+.view{display:none;padding:22px 26px;}
+.view.active{display:block;}
+.periodo{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;gap:14px;}
+.p-info{flex:1;}
+.p-lbl{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.p-track{background:var(--border);border-radius:20px;height:6px;overflow:hidden;}
+.p-fill{height:6px;border-radius:20px;background:linear-gradient(90deg,var(--gold),var(--gold2));}
+.p-dates{display:flex;justify-content:space-between;margin-top:5px;}
+.p-dates span{font-size:.72rem;color:var(--muted);}
+.p-right{text-align:right;min-width:120px;}
+.p-right strong{font-size:1.15rem;color:var(--gold);font-weight:700;display:block;}
+.p-right small{font-size:.72rem;color:var(--muted);}
+.mets{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:18px;}
+.mc{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.mc .lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.mc .val{font-size:1.4rem;font-weight:700;}
+.mc .sub{font-size:.7rem;color:var(--muted);margin-top:3px;}
+.mc.gold{border-color:#a9dcf544;}
+.mc.green{border-color:#3ecf7244;}
+.ftrs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
+.ftrs-lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-right:4px;}
+.fb{background:var(--bg3);border:1px solid var(--border);color:var(--muted);padding:8px 18px;border-radius:7px;font-size:.8rem;font-weight:600;cursor:pointer;transition:.2s;}
+.fb.active{background:#a9dcf518;border-color:var(--gold);color:var(--gold);}
+.fb:hover{color:var(--white);}
+.tw{overflow-x:auto;border-radius:10px;border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;font-size:.85rem;}
+thead th{background:var(--bg3);color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:1px;padding:11px 14px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;}
+tbody td{padding:10px 14px;border-bottom:1px solid #1a1a1a;vertical-align:middle;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:#1a1a1a88;}
+tbody tr.ns{opacity:.35;}
+.pos{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.8rem;}
+.pos.g{background:linear-gradient(135deg,#a9dcf5,#d3eefb);color:#000;}
+.pos.s{background:linear-gradient(135deg,#8a8a9a,#b0b0c0);color:#000;}
+.pos.b{background:linear-gradient(135deg,#7a4f30,#a07050);color:#fff;}
+.pos.nn{background:var(--border);color:var(--muted);}
+.pw{background:var(--border);border-radius:20px;height:6px;min-width:70px;overflow:hidden;}
+.pb{height:6px;border-radius:20px;}
+.tag{font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:8px;}
+.tag.ta{background:#3ecf7218;color:#3ecf72;border:1px solid #3ecf7233;}
+.tag.tw2{background:#a9dcf518;color:var(--gold);border:1px solid #a9dcf533;}
+.semaforo{display:inline-flex;align-items:center;gap:4px;font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:8px;}
+.semaforo.verde{background:#3ecf7218;color:#3ecf72;border:1px solid #3ecf7233;}
+.semaforo.amarelo{background:#f0b93c18;color:#f0b93c;border:1px solid #f0b93c33;}
+.semaforo.vermelho{background:#e05c5c18;color:#e05c5c;border:1px solid #e05c5c33;}
+.sec{font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin:22px 0 12px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;}
+.cg .full{grid-column:1 / -1;}
+.cc{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;}
+.cc h3{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.region-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;}
+.region-card{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:12px 14px;}
+.region-card .rn{font-size:.75rem;font-weight:700;color:var(--gold);margin-bottom:6px;}
+.region-card .rv{font-size:1.1rem;font-weight:700;}
+.region-card .rs{font-size:.68rem;color:var(--muted);margin-top:2px;}
+.ger-dest-wrap{margin-bottom:18px;}
+.ger-dest-title{font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;}
+.ger-dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.ger-dest-card{background:linear-gradient(135deg,#a9dcf508,#a9dcf514);border:1px solid #a9dcf533;border-radius:9px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.ger-dest-card .dicon{font-size:1.4rem;}
+.ger-dest-card .dinfo .dlabel{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+.ger-dest-card .dinfo .dname{font-size:.95rem;font-weight:700;color:var(--gold);margin-top:2px;}
+.ger-dest-card .dinfo .ddesc{font-size:.72rem;color:var(--white);margin-top:3px;line-height:1.4;}
+.rsem-wrap{background:var(--bg2);border:1px solid #a9dcf533;border-radius:10px;padding:14px 18px;margin-bottom:18px;}
+.rsem-title{font-size:.7rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;}
+.rsem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;}
+.rsem-item{display:flex;flex-direction:column;gap:3px;}
+.rsem-lbl{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+.rsem-val{font-size:1.1rem;font-weight:700;color:var(--white);}
+.rsem-sub{font-size:.65rem;color:var(--muted);}
+.evolucao-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:20px;}
+.evolucao-wrap h3{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.simple-chart-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;}
+.simple-chart-wrap h3{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+#view-grupo{padding:22px 26px;}
 .g-wrap{background:var(--bg2);border:1px solid #a9dcf533;border-radius:14px;overflow:hidden;}
-.g-hdr{background:linear-gradient(135deg,#141414,#181c20);border-bottom:1px solid #a9dcf533;padding:20px 26px;display:flex;align-items:center;justify-content:space-between;position:relative;}
-.g-hdr h2{font-size:1.5rem;font-weight:800;letter-spacing:4px;}
-.g-hdr h2 span{color:var(--gold);}
+.g-hdr{background:linear-gradient(135deg,#141414,#161c22);border-bottom:1px solid #a9dcf533;padding:20px 26px;display:flex;align-items:center;justify-content:space-between;position:relative;}
+.g-hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.g-hdr-l h2{font-size:1.8rem;font-weight:800;letter-spacing:4px;}
+.g-hdr-l h2 span{color:var(--gold);}
+.g-hdr-l p{font-size:.95rem;color:var(--muted);letter-spacing:1px;margin-top:2px;}
 .g-hdr-r{text-align:right;}
-.gsem{font-size:1.1rem;font-weight:700;color:var(--gold);}
+.gsem{font-size:1.2rem;font-weight:700;color:var(--gold);}
 .gper{font-size:.9rem;color:var(--muted);margin-top:2px;}
 .greg{font-size:.95rem;color:var(--white);margin-top:3px;}
 .g-body{padding:20px 24px;}
@@ -65,16 +145,250 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);f
 .g-leg{font-size:.8rem;color:var(--muted);text-align:right;line-height:1.8;white-space:nowrap;}
 .btn{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#111;border:none;padding:10px 22px;border-radius:7px;font-weight:700;font-size:.82rem;cursor:pointer;}
 .btn:hover{opacity:.9;}
-@media(max-width:900px){.dest-grid{grid-template-columns:1fr;}.g-tops{grid-template-columns:1fr;}.g-footer{grid-template-columns:1fr;}.g-col-hdrs,.gi{grid-template-columns:36px 1fr 40px 76px 88px 70px;}}
-@media(max-width:600px){.wrap{padding:12px;}.g-col-hdrs,.gi{grid-template-columns:30px 1fr 36px 70px;}.g-col-hdrs span:nth-child(5),.g-col-hdrs span:nth-child(6),.gi .gtk,.gi .gop{display:none;}}
+
+/* ===== REFERÊNCIAS ===== */
+.ref-filtro-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:16px;}
+.ref-filtro-wrap label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+.ref-select{background:var(--bg3);border:1px solid var(--border);color:var(--white);padding:8px 14px;border-radius:7px;font-size:.85rem;font-family:'Segoe UI',sans-serif;cursor:pointer;flex:1;max-width:420px;}
+.ref-select:focus{outline:none;border-color:var(--gold);}
+.ref-select option{background:var(--bg3);}
+.ref-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:18px;}
+.ref-kpi{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.ref-kpi.gold{border-color:#a9dcf544;}
+.ref-kpi .lbl{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.ref-kpi .val{font-size:1.4rem;font-weight:700;color:var(--white);}
+.ref-kpi .sub{font-size:.68rem;color:var(--muted);margin-top:3px;}
+.ref-kpi.gold .val{color:var(--gold);}
+.ref-tipo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:18px;}
+.ref-tipo-card{background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:12px 14px;}
+.ref-tipo-card .tn{font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.ref-tipo-card .tv{font-size:1.2rem;font-weight:700;color:var(--white);}
+.ref-tipo-card .tp{font-size:.72rem;color:var(--gold);margin-top:2px;}
+.ref-tipo-card .tbar-bg{background:var(--border);border-radius:20px;height:4px;overflow:hidden;margin-top:8px;}
+.ref-tipo-card .tbar-fill{height:4px;border-radius:20px;background:linear-gradient(90deg,var(--gold),var(--gold2));}
+.ref-charts-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:14px;margin-bottom:18px;}
+.ref-chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;}
+.ref-chart-box h3{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.ref-tipo-btns{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.ref-tipo-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);padding:6px 12px;border-radius:6px;font-size:.73rem;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap;}
+.ref-tipo-btn.active{background:#a9dcf518;border-color:var(--gold);color:var(--gold);}
+.ref-tipo-btn:hover{color:var(--white);}
+.ref-table-wrap{border-radius:10px;border:1px solid var(--border);overflow-x:auto;}
+.ref-badge{font-size:.6rem;font-weight:800;padding:2px 7px;border-radius:6px;white-space:nowrap;}
+.ref-badge.cf{background:#e0608a18;color:#e0608a;border:1px solid #e0608a33;}
+.ref-badge.cm{background:#4a8fd418;color:#4a8fd4;border:1px solid #4a8fd433;}
+.ref-badge.sh{background:#e05c5c18;color:#e05c5c;border:1px solid #e05c5c33;}
+.ref-badge.sa{background:#9b59b618;color:#9b59b6;border:1px solid #9b59b633;}
+.ref-badge.bf{background:#e8724a18;color:#e8724a;border:1px solid #e8724a33;}
+.ref-badge.bm{background:#2e86c118;color:#2e86c1;border:1px solid #2e86c133;}
+.ref-badge.bl{background:#1abc9c18;color:#1abc9c;border:1px solid #1abc9c33;}
+.ref-badge.tp{background:#f0a50018;color:#f0a500;border:1px solid #f0a50033;}
+.ref-badge.ss{background:#c0392b18;color:#c0392b;border:1px solid #c0392b33;}
+.ref-badge.jq{background:#5ec4a818;color:#5ec4a8;border:1px solid #5ec4a833;}
+.ref-badge.ca{background:#d0709018;color:#d07090;border:1px solid #d0709033;}
+.ref-badge.co{background:#9b7fd418;color:#9b7fd4;border:1px solid #9b7fd433;}
+.ref-badge.cs{background:#a9dcf518;color:#a9dcf5;border:1px solid #a9dcf533;}
+.ref-badge.vt{background:#8e44ad18;color:#8e44ad;border:1px solid #8e44ad33;}
+.ref-badge.sa2{background:#9b59b618;color:#9b59b6;border:1px solid #9b59b633;}
+.ref-cod{font-size:.78rem;color:var(--gold);font-weight:700;font-family:monospace;}
+.ref-mod{font-size:.72rem;color:var(--muted);}
+.ref-bar-cell{min-width:80px;}
+@media(max-width:900px){.ref-charts-grid{grid-template-columns:1fr;}.ger-dest-grid{grid-template-columns:1fr 1fr;}.cg{grid-template-columns:1fr;}.g-tops{grid-template-columns:1fr;}.dest-grid{grid-template-columns:1fr;}.g-footer{grid-template-columns:1fr;}}
+
+/* ===== OPERACIONAL ===== */
+.op-section{margin-bottom:28px;}
+.op-section-title{font-size:.72rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.op-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:18px;}
+.op-kpi{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+.op-kpi .lbl{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
+.op-kpi .val{font-size:1.3rem;font-weight:700;}
+.op-kpi .sub{font-size:.65rem;color:var(--muted);margin-top:2px;}
+.op-kpi.verde{border-color:#3ecf7244;}
+.op-kpi.amarelo{border-color:#f0b93c44;}
+.op-kpi.vermelho{border-color:#e05c5c44;}
+.op-kpi.verde .val{color:#3ecf72;}
+.op-kpi.amarelo .val{color:#f0b93c;}
+.op-kpi.vermelho .val{color:#e05c5c;}
+.op-weeks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;}
+.op-month-block{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.op-month-hdr{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.op-month-name{font-size:.8rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;}
+.op-month-total{display:flex;gap:16px;align-items:center;}
+.op-month-val{font-size:.85rem;font-weight:700;}
+.op-week-row{display:grid;grid-template-columns:140px 1fr 110px 110px 80px;align-items:center;gap:8px;padding:8px 16px;border-bottom:1px solid #1a1a1a;}
+.op-week-row:last-child{border-bottom:none;}
+.op-week-row.quinz-sep{border-top:1px solid #a9dcf522;}
+.op-week-lbl{font-size:.72rem;color:var(--muted);}
+.op-week-lbl strong{color:var(--white);display:block;font-size:.78rem;}
+.op-input{background:var(--bg3);border:1px solid var(--border);color:var(--white);padding:6px 10px;border-radius:6px;font-size:.85rem;font-family:'Segoe UI',sans-serif;width:100%;text-align:right;}
+.op-input:focus{outline:none;border-color:var(--gold);}
+.op-sem{font-size:.75rem;font-weight:700;padding:3px 8px;border-radius:6px;text-align:center;white-space:nowrap;}
+.op-sem.verde{background:#3ecf7218;color:#3ecf72;border:1px solid #3ecf7233;}
+.op-sem.amarelo{background:#f0b93c18;color:#f0b93c;border:1px solid #f0b93c33;}
+.op-sem.vermelho{background:#e05c5c18;color:#e05c5c;border:1px solid #e05c5c33;}
+.op-sem.neutro{background:var(--bg3);color:var(--muted);border:1px solid var(--border);}
+.op-col-hdrs{display:grid;grid-template-columns:140px 1fr 110px 110px 80px;gap:8px;padding:6px 16px;background:var(--bg3);}
+.op-col-hdrs span{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.op-col-hdrs span:nth-child(n+3){text-align:center;}
+.op-corte-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
+.op-corte-month{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.op-corte-month-hdr{padding:10px 16px;background:var(--bg3);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.op-corte-month-hdr span{font-size:.75rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;}
+.op-corte-week{padding:8px 16px;border-bottom:1px solid #1a1a1a;}
+.op-corte-week:last-child{border-bottom:none;}
+.op-corte-week-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.op-corte-week-lbl{font-size:.7rem;color:var(--muted);}
+.op-corte-week-total{font-size:.78rem;font-weight:700;}
+.op-corte-days{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;}
+.op-day-box{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:4px 6px;display:flex;flex-direction:column;gap:2px;}
+.op-day-lbl{font-size:.58rem;color:var(--muted);text-align:center;}
+.op-day-input{background:transparent;border:none;color:var(--white);font-size:.78rem;font-weight:700;text-align:center;width:100%;font-family:'Segoe UI',sans-serif;padding:0;}
+.op-day-input:focus{outline:none;color:var(--gold);}
+.op-comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;}
+.op-comp-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;}
+.op-comp-card .sem-lbl{font-size:.68rem;color:var(--muted);margin-bottom:8px;}
+.op-comp-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;}
+.op-comp-row span{font-size:.78rem;color:var(--muted);}
+.op-comp-row strong{font-size:.85rem;font-weight:700;}
+.op-comp-bar-wrap{background:var(--border);border-radius:20px;height:5px;margin-top:6px;overflow:hidden;position:relative;}
+.op-comp-bar{height:5px;border-radius:20px;position:absolute;top:0;left:0;}
+.op-save-btn{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#111;border:none;padding:8px 20px;border-radius:7px;font-weight:700;font-size:.78rem;cursor:pointer;margin-top:16px;}
+.op-save-btn:hover{opacity:.9;}
+
 </style>
 </head>
 <body>
 <div class="hdr">
-  <div><h1>RDG <span>JEANS</span></h1><p>RANKING SEMANAL - COLECAO INVERNO 2027</p></div>
+  <div><h1>RDG <span>JEANS</span></h1><p>DASHBOARD COMERCIAL - COLECAO INVERNO 2027</p></div>
   <span class="badge">INVERNO 2027</span>
 </div>
-<div class="wrap">
+<div class="nav">
+  <div class="nt active" onclick="mudarAba('gerencial')">Gerencial</div>
+  <div class="nt" onclick="mudarAba('grupo')">Grupo</div>
+  <div class="nt" onclick="mudarAba('referencias')">Referências</div>
+  <div class="nt" onclick="mudarAba('operacional')">Operacional</div>
+  <div class="nt" onclick="mudarAba('comparativo')">Comparativo</div>
+</div>
+
+<!-- ===== GERENCIAL ===== -->
+<div class="view active" id="view-gerencial">
+  <div style="display:flex;justify-content:flex-end;gap:14px;font-size:.72rem;color:var(--muted);margin-bottom:8px;flex-wrap:wrap;">
+    <span>🔄 Atualizado em: <strong id="dt-atualizado" style="color:var(--gold)">--</strong></span>
+    <span>📊 Dados até: <strong id="dt-dadosate" style="color:var(--gold)">--</strong></span>
+  </div>
+  <div class="periodo">
+    <div class="p-info">
+      <div class="p-lbl">Progresso da Colecao - Inverno 2027</div>
+      <div class="p-track"><div class="p-fill" id="pfill" style="width:0%"></div></div>
+      <div class="p-dates"><span>13/10/2026</span><span>26/03/2027</span></div>
+    </div>
+    <div class="p-right"><strong id="psem">--</strong><small id="ppct">de 24 semanas</small></div>
+  </div>
+  <div class="mets">
+    
+    <div class="mc"><div class="lbl">Qtde Pecas</div><div class="val" id="m-qtde">--</div><div class="sub" id="m-qtdesub">--</div></div>
+    <div class="mc"><div class="lbl">% Cota</div><div class="val" id="m-pct">--</div><div class="sub">acumulado colecao</div></div>
+    <div class="mc green"><div class="lbl">Ativos</div><div class="val" id="m-atv">-- / --</div><div class="sub">ja iniciaram</div></div>
+    <div class="mc"><div class="lbl">Ticket Medio</div><div class="val" id="m-tk">--</div><div class="sub" id="m-tksub">--</div></div>
+    <div class="mc"><div class="lbl">Cli. Novos</div><div class="val" id="m-cn">--</div><div class="sub" id="m-cnsub">--</div></div>
+  </div>
+  <div class="ftrs">
+    <span class="ftrs-lbl">Periodo:</span>
+    <button class="fb active" id="f-acumulado" onclick="mudarFiltro('acumulado')">Colecao</button>
+    <button class="fb" id="f-mes" onclick="mudarFiltro('mes')">Mes</button>
+    <button class="fb" id="f-semana" onclick="mudarFiltro('semana')">Semana</button>
+    <button class="fb" id="f-dia" onclick="mudarFiltro('dia')">Dia</button>
+  </div>
+  <div id="bloco-colecao">
+    <div id="ger-destaques-wrap" class="ger-dest-wrap">
+      <div class="ger-dest-title">Destaques da Colecao</div>
+      <div class="ger-dest-grid" id="ger-destaques-grid"></div>
+    </div>
+    <div id="rsem-wrap" class="rsem-wrap">
+      <div class="rsem-title">⚡ Resumo da Semana Atual</div>
+      <div class="rsem-grid" id="rsem-grid"></div>
+    </div>
+    <div class="tw"><table>
+      <thead><tr>
+        <th>#</th><th>Representante</th><th>Regiao</th><th>% Cota</th>
+        <th style="min-width:80px">Progresso</th><th>Qtde</th>
+        <th>Ticket Medio</th><th>Cli. Novos</th><th>Qt.Cli.Compra</th>
+        <th>Projecao Final</th><th>Ritmo</th><th>Status</th>
+      </tr></thead>
+      <tbody id="tbody-acum"></tbody>
+    </table></div>
+    <div class="sec">Evolucao Semanal - Quantidade de Pecas</div>
+    <div class="evolucao-wrap"><canvas id="c-evolucao" height="160"></canvas></div>
+    <div class="sec">Resumo por Regiao</div>
+    <div class="region-grid" id="region-grid"></div>
+    <div class="cg">
+      <div class="cc"><h3>% Cota Atingida</h3><canvas id="c-cota" height="230"></canvas></div>
+      <div class="cc"><h3>Representatividade Qtde - Colecao</h3><canvas id="c-pizza" height="230"></canvas></div>
+    </div>
+    <div class="cg" style="margin-top:14px;">
+      <div class="cc full"><h3>Comparativo Colecoes Anteriores (Qtde Pecas)</h3><canvas id="c-comp" height="200"></canvas></div>
+    </div>
+  </div>
+  <div id="bloco-mes" style="display:none;">
+    <div class="ftrs" style="margin-bottom:12px;">
+      <span class="ftrs-lbl">Mês:</span>
+<button class="fb active" id="fm-10" onclick="mudarMes(10)">Mês 10 (Outubro)</button>
+      <button class="fb" id="fm-11" onclick="mudarMes(11)">Mês 11 (Novembro)</button>
+      <button class="fb" id="fm-12" onclick="mudarMes(12)">Mês 12 (Dezembro)</button>
+      <button class="fb" id="fm-1" onclick="mudarMes(1)">Mês 01 (Janeiro)</button>
+      <button class="fb" id="fm-2" onclick="mudarMes(2)">Mês 02 (Fevereiro)</button>
+      <button class="fb" id="fm-3" onclick="mudarMes(3)">Mês 03 (Março)</button>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th>#</th><th>Representante</th><th>Regiao</th><th>Qtde</th><th>Ticket Medio</th><th>Cli. Novos</th><th>Qt.Cli.Compra</th><th>Status</th></tr></thead>
+      <tbody id="tbody-mes"></tbody>
+    </table></div>
+    <div class="simple-chart-wrap"><h3 id="titulo-mes">Quantidade de Pecas - Mes 10 (Outubro)</h3><canvas id="c-mes" height="180"></canvas></div>
+  </div>
+  <div id="bloco-semana" style="display:none;">
+    <div class="ftrs" style="margin-bottom:12px;">
+      <span class="ftrs-lbl">Semana:</span>
+<button class="fb active" id="fs-1" onclick="mudarSemana(1)">Semana 1</button>
+      <button class="fb" id="fs-2" onclick="mudarSemana(2)">Semana 2</button>
+      <button class="fb" id="fs-3" onclick="mudarSemana(3)">Semana 3</button>
+      <button class="fb" id="fs-4" onclick="mudarSemana(4)">Semana 4</button>
+      <button class="fb" id="fs-5" onclick="mudarSemana(5)">Semana 5</button>
+      <button class="fb" id="fs-6" onclick="mudarSemana(6)">Semana 6</button>
+      <button class="fb" id="fs-7" onclick="mudarSemana(7)">Semana 7</button>
+      <button class="fb" id="fs-8" onclick="mudarSemana(8)">Semana 8</button>
+      <button class="fb" id="fs-9" onclick="mudarSemana(9)">Semana 9</button>
+      <button class="fb" id="fs-10" onclick="mudarSemana(10)">Semana 10</button>
+      <button class="fb" id="fs-11" onclick="mudarSemana(11)">Semana 11</button>
+      <button class="fb" id="fs-12" onclick="mudarSemana(12)">Semana 12</button>
+      <button class="fb" id="fs-13" onclick="mudarSemana(13)">Semana 13</button>
+      <button class="fb" id="fs-14" onclick="mudarSemana(14)">Semana 14</button>
+      <button class="fb" id="fs-15" onclick="mudarSemana(15)">Semana 15</button>
+      <button class="fb" id="fs-16" onclick="mudarSemana(16)">Semana 16</button>
+      <button class="fb" id="fs-17" onclick="mudarSemana(17)">Semana 17</button>
+      <button class="fb" id="fs-18" onclick="mudarSemana(18)">Semana 18</button>
+      <button class="fb" id="fs-19" onclick="mudarSemana(19)">Semana 19</button>
+      <button class="fb" id="fs-20" onclick="mudarSemana(20)">Semana 20</button>
+      <button class="fb" id="fs-21" onclick="mudarSemana(21)">Semana 21</button>
+      <button class="fb" id="fs-22" onclick="mudarSemana(22)">Semana 22</button>
+      <button class="fb" id="fs-23" onclick="mudarSemana(23)">Semana 23</button>
+      <button class="fb" id="fs-24" onclick="mudarSemana(24)">Semana 24</button>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th>#</th><th>Representante</th><th>Regiao</th><th>Qtde</th><th>Ticket Medio</th><th>Cli. Novos</th><th>Qt.Cli.Compra</th><th>Status</th></tr></thead>
+      <tbody id="tbody-sem"></tbody>
+    </table></div>
+    <div class="simple-chart-wrap"><h3 id="titulo-sem">Quantidade de Pecas - Semana Atual</h3><canvas id="c-sem" height="180"></canvas></div>
+  </div>
+  <div id="bloco-dia" style="display:none;">
+    <div class="tw"><table>
+      <thead><tr><th>#</th><th>Representante</th><th>Regiao</th><th>Qtde Pecas</th><th>Clientes Comprando</th><th>Status</th></tr></thead>
+      <tbody id="tbody-dia"></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ===== GRUPO ===== -->
+<div class="view" id="view-grupo">
   <div class="g-wrap">
     <div class="g-hdr">
       <div class="g-hdr-l"><h2>RDG <span>JEANS</span></h2><p>ACOMPANHAMENTO SEMANAL - INVERNO 2027</p></div>
@@ -94,8 +408,11 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);f
         <span>#</span><span>Representante</span><span>UF</span><span>% Cota</span><span>Ticket Medio</span><span>Aberturas</span>
       </div>
       <div class="g-list" id="g-list"></div>
-
-      <div class="g-tops" id="g-tops-wrap" style="grid-template-columns:repeat(2,1fr)">
+      <div class="g-pizza-bottom">
+        <div class="g-pizza-title">Representatividade no Volume Total (Qtde de Pecas)</div>
+        <div style="max-width:600px;margin:0 auto;"><canvas id="c-gpizza" height="320"></canvas></div>
+      </div>
+      <div class="g-tops" id="g-tops-wrap" style="grid-template-columns:repeat(3,1fr)">
         <div class="g-top-card"><h4>🏆 Top 5 Quantidade</h4><div id="top5-qtde"></div></div>
         <div class="g-top-card"><h4>🌿 Top 5 Aberturas</h4><div id="top5-aberturas"></div></div>
       </div>
@@ -110,14 +427,148 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);f
         <div class="g-msg"><p id="g-msgt">--</p><small>RDG JEANS - INVERNO 2027</small></div>
         <div class="g-leg">Ativo | Aguardando inicio<br><span style="color:var(--gold);font-size:.65rem">* Destaque da semana</span></div>
       </div>
-
     </div>
+  </div>
+</div>
+
+<!-- ===== OPERACIONAL ===== -->
+<div class="view" id="view-operacional">
+  <!-- KPIs resumo -->
+  <div class="op-kpi-grid" id="op-kpis"></div>
+
+  <!-- Corte -->
+  <div class="op-section">
+    <div class="op-section-title">✂️ Corte por Dia</div>
+    <div id="op-corte-blocks"></div>
+  </div>
+
+  <!-- Comparativo -->
+  <div class="op-section">
+    <div class="op-section-title">📊 Comparativo Corte x Faturamento por Mês</div>
+    <div id="op-comp-blocks"></div>
+  </div>
+
+  <!-- Programação de Faturamento por Semana (semana de faturamento, diferente da semana de vendas) -->
+  <div class="op-section">
+    <div class="op-section-title">🗓️ Programação de Faturamento por Semana (Faturamento)</div>
+    <p style="font-size:.72rem;color:var(--muted);margin-bottom:10px;">Semanas de faturamento — período diferente das semanas de venda usadas no restante do dashboard.</p>
+    <div id="op-fat-semanal-blocks"></div>
+  </div>
+</div>
+
+<!-- ===== REFERÊNCIAS ===== -->
+<div class="view" id="view-referencias">
+  <div style="display:flex;justify-content:flex-end;gap:14px;font-size:.72rem;color:var(--muted);margin-bottom:8px;flex-wrap:wrap;">
+    <span>🔄 Atualizado em: <strong id="ref-dt-atualizado" style="color:var(--gold)">--</strong></span>
+    <span>📊 Venda até: <strong id="ref-dt-dadosate" style="color:var(--gold)">--</strong></span>
+  </div>
+  <div class="ref-filtro-wrap">
+    <label>Representante:</label>
+    <select class="ref-select" id="ref-rep-select" onchange="renderReferencias()">
+      <option value="TODOS">Todos os Representantes</option>
+    </select>
+  </div>
+  <div class="ref-filtro-wrap" style="flex-wrap:wrap;align-items:center;gap:10px;margin-top:8px;">
+    <label style="margin-right:4px;">Mix:</label>
+    <button class="ref-tipo-btn active" id="mix-btn-TODOS" onclick="filtrarRefMix('TODOS')">Toda a coleção</button>
+    <button class="ref-tipo-btn" id="mix-btn-NACIONAL" onclick="filtrarRefMix('NACIONAL')">🇧🇷 Nacional</button>
+    <button class="ref-tipo-btn" id="mix-btn-IMPORTADO" onclick="filtrarRefMix('IMPORTADO')" style="border-color:#a9dcf555;color:#a9dcf5;">🌎 Importados (Abed)</button>
+  </div>
+  <div class="ref-filtro-wrap" style="flex-wrap:wrap;align-items:center;gap:10px;margin-top:8px;">
+    <label style="margin-right:4px;">Região:</label>
+    <label style="display:flex;align-items:center;gap:4px;font-size:.78rem;cursor:pointer;background:var(--bg3);padding:4px 10px;border-radius:6px;border:1px solid var(--border);">
+      <input type="checkbox" class="reg-chk" value="Sul" checked onchange="toggleRegiao(this)"> Sul
+    </label>
+    <label style="display:flex;align-items:center;gap:4px;font-size:.78rem;cursor:pointer;background:var(--bg3);padding:4px 10px;border-radius:6px;border:1px solid var(--border);">
+      <input type="checkbox" class="reg-chk" value="Sudeste" checked onchange="toggleRegiao(this)"> Sudeste
+    </label>
+    <label style="display:flex;align-items:center;gap:4px;font-size:.78rem;cursor:pointer;background:var(--bg3);padding:4px 10px;border-radius:6px;border:1px solid var(--border);">
+      <input type="checkbox" class="reg-chk" value="Nordeste" checked onchange="toggleRegiao(this)"> Nordeste
+    </label>
+    <label style="display:flex;align-items:center;gap:4px;font-size:.78rem;cursor:pointer;background:var(--bg3);padding:4px 10px;border-radius:6px;border:1px solid var(--border);">
+      <input type="checkbox" class="reg-chk" value="Norte" checked onchange="toggleRegiao(this)"> Norte
+    </label>
+    <label style="display:flex;align-items:center;gap:4px;font-size:.78rem;cursor:pointer;background:var(--bg3);padding:4px 10px;border-radius:6px;border:1px solid var(--border);">
+      <input type="checkbox" class="reg-chk" value="Centro-Oeste" checked onchange="toggleRegiao(this)"> Centro-Oeste
+    </label>
+    <button onclick="marcarTodasRegioes(true)" style="font-size:.72rem;background:none;border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:6px;cursor:pointer;">Marcar todas</button>
+    <button onclick="marcarTodasRegioes(false)" style="font-size:.72rem;background:none;border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:6px;cursor:pointer;">Desmarcar todas</button>
+  </div>
+  <div class="ref-kpi-grid" id="ref-kpis"></div>
+  <div class="sec">Distribuição por Tipo de Produto</div>
+  <div id="ref-seg-kpis"></div>
+  <div class="ref-tipo-grid" id="ref-tipo-cards"></div>
+  <div class="ref-charts-grid" style="grid-template-columns:1.4fr 1fr;">
+    <div class="ref-chart-box"><h3>Top 20 Modelagens Feminino</h3><canvas id="c-ref-barras" height="320"></canvas></div>
+    <div class="ref-chart-box"><h3>Top 15 Modelagens Masculino</h3><canvas id="c-ref-barras-masc" height="320"></canvas></div>
+  </div>
+  <div id="comp-section">
+  <div class="sec">Composicao da Colecao por Modelagem</div>
+  <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;">
+    <button class="ref-tipo-btn active" id="comp-btn-fem" onclick="mudarCompSeg('fem')">👗 Feminino</button>
+    <button class="ref-tipo-btn" id="comp-btn-masc" onclick="mudarCompSeg('masc')">👕 Masculino</button>
+    <button class="ref-tipo-btn" id="comp-btn-country" onclick="mudarCompSeg('country')" style="border-color:#a9dcf555;color:#a9dcf5;">🤠 Country</button>
+    <button class="ref-tipo-btn" id="comp-btn-plus" onclick="mudarCompSeg('plus')" style="border-color:#3ecf7255;color:#3ecf72;">➕ Plus Size</button>
+    <button class="ref-tipo-btn" id="comp-btn-imp" onclick="mudarCompSeg('imp')" style="border-color:#ffb98f55;color:#ffb98f;">🌎 Importado</button>
+  </div>
+  <div id="comp-grid" style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:24px;"></div>
+  </div>
+
+  <div class="sec">Ranking de Referências</div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;align-items:center;">
+    <span style="font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-right:4px;">Segmento:</span>
+    <button class="ref-tipo-btn active" id="seg-btn-TODOS" onclick="filtrarRefSeg('TODOS')">Todos</button>
+    <button class="ref-tipo-btn" id="seg-btn-FEM" onclick="filtrarRefSeg('FEM')" style="border-color:#e0608a55;color:#e0608a;">♀ Feminino</button>
+    <button class="ref-tipo-btn" id="seg-btn-MASC" onclick="filtrarRefSeg('MASC')" style="border-color:#4a8fd455;color:#4a8fd4;">♂ Masculino</button>
+    <button class="ref-tipo-btn" id="seg-btn-COUNTRY" onclick="filtrarRefSeg('COUNTRY')" style="border-color:#a9dcf555;color:#a9dcf5;">🤠 Country</button>
+    <button class="ref-tipo-btn" id="seg-btn-PLUS" onclick="filtrarRefSeg('PLUS')" style="border-color:#3ecf7255;color:#3ecf72;">➕ Plus Size</button>
+    <button class="ref-tipo-btn" id="seg-btn-IMPORTADO" onclick="filtrarRefSeg('IMPORTADO')" style="border-color:#ffb98f55;color:#ffb98f;">🌎 Importado</button>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;align-items:center;">
+    <span style="font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-right:4px;">Tecnologia:</span>
+    <button class="ref-tipo-btn active" id="tec-btn-TODAS" onclick="filtrarRefTec('TODAS')">Todas</button>
+    <button class="ref-tipo-btn" id="tec-btn-Infinity Flex" onclick="filtrarRefTec('Infinity Flex')" style="border-color:#8fd0ff55;color:#8fd0ff;">Infinity Flex</button>
+    <button class="ref-tipo-btn" id="tec-btn-Efeito Lipo" onclick="filtrarRefTec('Efeito Lipo')" style="border-color:#8fd0ff55;color:#8fd0ff;">Efeito Lipo</button>
+    <button class="ref-tipo-btn" id="tec-btn-Não Desbota" onclick="filtrarRefTec('Não Desbota')" style="border-color:#8fd0ff55;color:#8fd0ff;">Não Desbota</button>
+    <button class="ref-tipo-btn" id="tec-btn-Triple Dry" onclick="filtrarRefTec('Triple Dry')" style="border-color:#8fd0ff55;color:#8fd0ff;">Triple Dry</button>
+    <button class="ref-tipo-btn" id="tec-btn-Térmica" onclick="filtrarRefTec('Térmica')" style="border-color:#8fd0ff55;color:#8fd0ff;">Térmica</button>
+    <button class="ref-tipo-btn" id="tec-btn-Resinado" onclick="filtrarRefTec('Resinado')" style="border-color:#8fd0ff55;color:#8fd0ff;">Resinado</button>
+    <button class="ref-tipo-btn" id="tec-btn-Moletom" onclick="filtrarRefTec('Moletom')" style="border-color:#8fd0ff55;color:#8fd0ff;">Moletom</button>
+    <button class="ref-tipo-btn" id="tec-btn-Pack" onclick="filtrarRefTec('Pack')" style="border-color:#8fd0ff55;color:#8fd0ff;">Pack</button>
+    <span style="font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin:0 4px 0 14px;">Composição:</span>
+    <button class="ref-tipo-btn active" id="comp-btn-TODAS" onclick="filtrarRefComp('TODAS')">Todas</button>
+    <button class="ref-tipo-btn" id="comp-btn-Com Elastano" onclick="filtrarRefComp('Com Elastano')" style="border-color:#ffb98f55;color:#ffb98f;">Com Elastano</button>
+    <button class="ref-tipo-btn" id="comp-btn-100% Algodão" onclick="filtrarRefComp('100% Algodão')" style="border-color:#ffb98f55;color:#ffb98f;">100% Algodão</button>
+    <button class="ref-tipo-btn" id="comp-btn-PU" onclick="filtrarRefComp('PU')" style="border-color:#ffb98f55;color:#ffb98f;">PU</button>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;align-items:center;">
+    <span style="font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-right:4px;">Modelagem:</span>
+    <select id="mod-select" class="ref-select" onchange="filtrarRefMod(this.value)" style="min-width:180px;">
+      <option value="TODAS">Todas</option>
+    </select>
+    <span style="font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin:0 4px 0 14px;">Tecido:</span>
+    <select id="tecido-select" class="ref-select" onchange="filtrarRefTecido(this.value)" style="min-width:180px;">
+      <option value="TODOS">Todos</option>
+    </select>
+    <button class="ref-tipo-btn" id="grade-ext-btn" onclick="toggleGradeExtendida()" style="margin-left:14px;border-color:#e0a45855;color:#e0a458;">Só Grade Estendida</button>
+  </div>
+  <div class="ref-tipo-btns" id="ref-tipo-btns"></div>
+  <div class="ref-table-wrap">
+    <table>
+      <thead><tr>
+        <th>#</th><th>Código</th><th>Descrição</th><th>Tipo</th><th>Modelagem</th>
+        <th>Tecido</th><th>Composição</th><th>Grade</th>
+        <th style="text-align:right">Qtde</th><th style="text-align:right">Preço</th>
+        <th style="text-align:right">% Total</th><th style="min-width:90px">Relativo</th>
+      </tr></thead>
+      <tbody id="ref-tbody"></tbody>
+    </table>
   </div>
 </div>
 
 <script>
 // ============================================================
-// DADOS
+// DADOS BASE
 // ============================================================
 var REPS={
   '07320':{n:'MARCOS CANDIDO',uf:'PB',r:'Paraiba/Rio Grande do Norte',c:2500,reg:'Nordeste'},
@@ -145,59 +596,1300 @@ var REPS={
   '08092':{n:'VELOSO',uf:'MG',r:'Minas Gerais',c:2500,reg:'Sudeste'},
   '08281':{n:'HERMINIO',uf:'SP',r:'Sao Paulo',c:2500,reg:'Sudeste'},
 };
+var HIST_INV26={"07320": 1259, "07520": 2188, "07332": 2311, "00032": 14425, "06008": 4166, "00035": 2360, "07890": 1881, "06672": 5556, "06693": 4910, "00020": 6145, "00040": 1235, "00052": 5961, "00037": 9114, "07607": 6675, "07608": 3757, "00018": 7527, "00045": 10678, "07741": 651, "07606": 4654, "07889": 2044};
+var HIST_V27={"00032": 20076, "00045": 14950, "00018": 14517, "00037": 12688, "00052": 11420, "06672": 9984, "07607": 8548, "07606": 6510, "00020": 6821, "06008": 6636, "06693": 6528, "07891": 6040, "07608": 4209, "07332": 3917, "00035": 2973, "07520": 2734, "00040": 2808, "07890": 2255, "07320": 1363, "08092": 949, "07889": 959, "07741": 932};
 var CORES=['#a9dcf5','#d3eefb','#a0a0b0','#8b7355','#3ecf72','#60c9e8','#e07060','#9b7fd4','#5ec4a8','#e8a860','#7090d0','#d07090','#90d070','#d0a040','#70c0d0','#c070c0','#a0c060','#c09050','#6080c0','#b06060','#60b080','#a06082','#80a060'];
 
-// ============================================================
-// DADOS SEMANA ATUAL E ACUMULADO
-// Atualize estes dois blocos a cada semana
-// ============================================================
-var dSem=[
-  {cod:'06693',vlr:102662.88,qtde:702,pedidos:9,cliNov:0,cliCompra:4,ticket:146.24},
-  {cod:'00032',vlr:68409.8,qtde:512,pedidos:4,cliNov:0,cliCompra:3,ticket:133.61},
-  {cod:'07607',vlr:18095.7,qtde:133,pedidos:1,cliNov:0,cliCompra:1,ticket:136.06},
-  {cod:'00045',vlr:8697.6,qtde:64,pedidos:1,cliNov:0,cliCompra:1,ticket:135.9}
-];
-var dAcum=[
-  {cod:'06693',vlr:102662.88,qtde:702,pedidos:9,cliNov:0,cliCompra:4,ticket:146.24},
-  {cod:'00032',vlr:68409.8,qtde:512,pedidos:4,cliNov:0,cliCompra:3,ticket:133.61},
-  {cod:'07607',vlr:18095.7,qtde:133,pedidos:1,cliNov:0,cliCompra:1,ticket:136.06},
-  {cod:'00045',vlr:8697.6,qtde:64,pedidos:1,cliNov:0,cliCompra:1,ticket:135.9}
-];
+var dDia=[];
+var filtroAtual='acumulado';
+var mesAtual=10, semanaAtual=2;
+var SEM_INI=new Date(2026,9,12), VENDA_INI=new Date(2026,9,13), VENDA_FIM=new Date(2027,2,26), N_SEMANAS=24;
+var DATA_ATUALIZACAO='23/10/2026';
+var DATA_DADOS_ATE='22/10/2026';
+var REF_DATA_ATUALIZACAO='23/10/2026';
+var REF_DATA_VENDA_ATE='22/10/2026';
+function renderDatasAtualizacao(){
+  var a=document.getElementById('dt-atualizado');
+  var b=document.getElementById('dt-dadosate');
+  if(a) a.textContent=DATA_ATUALIZACAO;
+  if(b) b.textContent=DATA_DADOS_ATE;
+  var c=document.getElementById('ref-dt-atualizado');
+  var d=document.getElementById('ref-dt-dadosate');
+  if(c) c.textContent=REF_DATA_ATUALIZACAO;
+  if(d) d.textContent=REF_DATA_VENDA_ATE;
+}
+var dMesDados={};
+var chartCota=null,chartPizza=null,chartGPizza=null,chartEvolucao=null,chartComp=null,chartMes=null,chartSem=null,chartDia=null;
+var chartRefBarras=null;
+var refFiltroTipo='TODOS';
+var refFiltroSeg='TODOS'; // TODOS | COUNTRY | PLUS
+var refFiltroTec='TODAS';
+var refFiltroComp='TODAS';
+var refFiltroMod='TODAS';
+var refFiltroTecido='TODOS';
+var refFiltroGradeExt=false;
+var compSegAtivo='fem';
+
+// Mapa de renomeação de modelagens
+var FORA_LINHA={};
+
+var MOD_RENAME={
+  'WIDELEG':'Wide Leg','WIDE LEG':'Wide Leg',
+  'WIDELEG CROPPED':'Wide Leg Cropped','WIDE LEG CROPPED':'Wide Leg Cropped',
+  'WIDELEG LIPO':'Wide Leg Lipo',
+  'WIDELEG ALFAIATARIA':'Wide Leg Alfaiataria',
+  'WIDELEG CINTURA INTERMEDIARIA':'Wide Leg Cintura Intermediária',
+  'WIDELEG CARGO':'Wide Leg Cargo','WIDE LEG CARGO':'Wide Leg Cargo',
+  'WIDELEG PLUS SIZE':'Wide Leg Plus Size',
+  'WIDECROPPED':'Wide Cropped','WIDE CROPPED':'Wide Cropped',
+  'WIDECROPPED LIPO':'Wide Cropped Lipo',
+  'WIDECROPPED PLUS SIZE':'Wide Cropped Plus Size',
+  'SUPERWIDE':'Super Wide','SUPER WIDE':'Super Wide',
+  'BOOTCUT':'Boot Cut','BOOT CUT':'Boot Cut',
+  'BOOTCUT COUNTRY':'Boot Cut Country',
+  'LITTLEBOOT':'Little Boot','LITLLEBOOT':'Little Boot',
+  'LITTLEBOOT COUNTRY':'Little Boot Country','LITLLEBOOT COUNTRY':'Little Boot Country',
+  'LITTLEBOOT PLUS SIZE':'Little Boot Plus Size',
+  'RETAALFAIATARIA':'Reta Alfaiataria',
+  'RETACROPPED':'Reta Cropped',
+  'RETACROPPED LIPO':'Reta Cropped Lipo',
+  'RETALIPO':'Reta Lipo',
+  'RETACARGO':'Reta Cargo',
+  'RETACOUNTRY':'Reta Country',
+  'RETABAGGY':'Reta Baggy',
+  'RETAPLUS SIZE':'Reta Plus Size',
+  'RETACROPPED PLUS SIZE':'Reta Cropped Plus Size',
+  'RETACARPINTEIRO COUNTRY':'Reta Carpinteiro Country',
+  'CIGARRETE LIPO':'Cigarrete Lipo',
+  'CIGARRETE SPORT FINO':'Cigarrete Sport Fino',
+  'CIGARRETE PLUS SIZE':'Cigarrete Plus Size',
+  'CALCAFEM.CIGARRETE':'Cigarrete','CALCAFEM. CIGARRETE':'Cigarrete',
+  'MEIACOXA':'Meia Coxa',
+  'MEIACOXA ALFAIATARIA':'Meia Coxa Alfaiataria',
+  'MEIACOXA MAIS CURTO':'Meia Coxa Mais Curto',
+  'MEIACOXA PLUS SIZE':'Meia Coxa Plus Size',
+  'SPORTFINO MEIA COXA':'Meia Coxa Sport Fino',
+  'SPORT FINO MEIA COXA':'Meia Coxa Sport Fino',
+  'MEIACOXA SPORT FINO':'Meia Coxa Sport Fino',
+  'MOMMEIA COXA':'Mom Meia Coxa',
+  'MOMMEIA COXA PLUS SIZE':'Mom Meia Coxa Plus Size',
+  'SKINNYPLUS SIZE':'Skinny Plus Size',
+  'SKINNYLIPO':'Skinny Lipo',
+  'PLUSSIZE CAPRI':'Capri Plus Size','CAPRIPLUS SIZE':'Capri Plus Size',
+  'CICLISTA PLUS SIZE':'Ciclista Plus Size',
+  'SLOUCHY':'Slouchy',
+  'MINICARGO':'Mini Cargo','MIDI CARGO':'Midi Cargo',
+  'MIDICURTA':'Midi Curta',
+  'MEDIAALFAIATARIA':'Média Alfaiataria',
+  'MEDIA':'Média',
+  'EVASE':'Évase',
+  'LAPIS':'Lápis',
+  'MIDI PLUSSIZE':'Midi Plus Size',
+  'SPORT FINO':'Sport Fino',
+  'SPORT FINO CROPPED':'Sport Fino Cropped',
+  'SPORT FINO MEDIA':'Sport Fino Média',
+};
+
+function renMod(s){
+  var u=s.toUpperCase().trim();
+  if(MOD_RENAME[u]) return MOD_RENAME[u];
+  return s.trim().toLowerCase().replace(/\b\w/g,function(c){return c.toUpperCase();});
+}
+
+function getCompSeg(seg){
+  // conta TODAS as referências do catálogo (tabela de preços), mesmo as sem venda
+  var tipoMap={'CF':'Calça Fem.','CM':'Calça Masc.','S2':'Shorts','SS':'Shorts','SA':'Saia','BF':'Bermuda Fem.','B2':'Bermuda Fem.','BM':'Bermuda Masc.','B3':'Bermuda Masc.','BL':'Outros','T2':'Outros','V2':'Outros','JQ':'Jaquetas','CA':'Camisas','CO':'Coletes','CS':'Casacos'};
+  var grupos={};
+  Object.keys(REF_CATALOGO).forEach(function(ref){
+    var desc=normDesc(REF_CATALOGO[ref][0]);
+    var u=desc.toUpperCase();
+    var s;
+    if(REF_IMPORTADO[ref]) s='imp';
+    else if(u.indexOf('PLUS SIZE')>=0) s='plus';
+    else if(u.indexOf('COUNTRY')>=0) s='country';
+    else if(/^(CM|BM|B3|JQ3)/.test(ref)) s='masc';
+    else s='fem';
+    if(s!==seg) return;
+    var tipo=tipoMap[ref.substring(0,2)]||'Outros';
+    var modRaw=getModelagem(desc);
+    if(!grupos[tipo]) grupos[tipo]={total:0,mods:{}};
+    if(!grupos[tipo].mods[modRaw]) grupos[tipo].mods[modRaw]={refs:{}};
+    grupos[tipo].mods[modRaw].refs[ref]=true;
+  });
+  var tipoOrder=['Calça Fem.','Calça Masc.','Shorts','Saia','Bermuda Fem.','Bermuda Masc.','Jaquetas','Camisas','Coletes','Casacos','Outros'];
+  var result=[];
+  tipoOrder.forEach(function(t){
+    if(!grupos[t]) return;
+    var items=[];
+    Object.keys(grupos[t].mods).forEach(function(k){
+      var nRefs=Object.keys(grupos[t].mods[k].refs).length;
+      items.push({mod:k,nRefs:nRefs});
+      grupos[t].total+=nRefs;
+    });
+    items.sort(function(a,b){return a.mod.localeCompare(b.mod);});
+    result.push({tipo:t,total:grupos[t].total,items:items});
+  });
+  return result;
+}
+
+function mudarCompSeg(seg){
+  compSegAtivo=seg;
+  ['fem','masc','country','plus','imp'].forEach(function(s){
+    var b=document.getElementById('comp-btn-'+s);
+    if(b) b.classList.toggle('active',s===seg);
+  });
+  renderCompGrid(seg);
+}
+
+function renderCompGrid(seg){
+  var grupos=getCompSeg(seg);
+  var cores={fem:'#e0608a',masc:'#4a8fd4',country:'#a9dcf5',plus:'#3ecf72',imp:'#ffb98f'};
+  var cor=cores[seg]||'#a9dcf5';
+  var totalGeral=0;
+  grupos.forEach(function(g){totalGeral+=g.total;});
+  var maxRefs=0;
+  grupos.forEach(function(g){g.items.forEach(function(d){if(d.nRefs>maxRefs)maxRefs=d.nRefs;});});
+
+  // feminino: 3 colunas (Calça, Shorts, Saia+Outros); outros: 2 colunas
+  var isFem=(seg==='fem');
+  var nCols=isFem?3:2;
+
+  function renderGrupo(g){
+    var pctTipo=totalGeral>0?(g.total/totalGeral*100):0;
+    var h='<div style="margin-bottom:12px;">'+
+      '<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid '+cor+'33;padding-bottom:3px;margin-bottom:5px;">'+
+        '<span style="font-size:.65rem;font-weight:800;color:'+cor+';text-transform:uppercase;letter-spacing:.8px;">'+g.tipo+'</span>'+
+        '<span style="font-size:.65rem;color:'+cor+';">'+g.total+' refs · '+pctTipo.toFixed(1)+'%</span>'+
+      '</div>';
+    g.items.forEach(function(d){
+      var pct=maxRefs>0?(d.nRefs/maxRefs*100):0;
+      var pctInd=g.total>0?(d.nRefs/g.total*100):0;
+      h+='<div style="display:flex;align-items:center;gap:5px;padding:2px 0;">'+
+        '<span style="font-size:.74rem;color:var(--white);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+d.mod+'</span>'+
+        '<span style="font-size:.72rem;color:var(--muted);min-width:32px;text-align:right;">'+pctInd.toFixed(1)+'%</span>'+
+        '<span style="font-size:.74rem;font-weight:700;color:'+cor+';min-width:14px;text-align:right;">'+d.nRefs+'</span>'+
+        '<div style="width:36px;background:var(--border);border-radius:20px;height:3px;flex-shrink:0;">'+
+          '<div style="height:3px;border-radius:20px;width:'+pct.toFixed(0)+'%;background:'+cor+';"></div>'+
+        '</div>'+
+      '</div>';
+    });
+    return h+'</div>';
+  }
+
+  var cols=[];
+  for(var i=0;i<nCols;i++) cols.push('');
+
+  if(isFem){
+    // col 0: Calça Fem. | col 1: Shorts | col 2: Saia + Bermuda Fem. + Outros
+    grupos.forEach(function(g){
+      if(g.tipo==='Calça Fem.') cols[0]+=renderGrupo(g);
+      else if(g.tipo==='Shorts') cols[1]+=renderGrupo(g);
+      else cols[2]+=renderGrupo(g);
+    });
+  } else {
+    // dividir grupos equilibradamente em 2 colunas
+    var totalItems=0;
+    grupos.forEach(function(g){totalItems+=g.items.length+1;});
+    var meio=totalItems/2,acc=0,splitIdx=0;
+    for(var i=0;i<grupos.length;i++){
+      acc+=grupos[i].items.length+1;
+      if(acc>=meio){splitIdx=i+1;break;}
+    }
+    grupos.forEach(function(g,i){
+      cols[i<splitIdx?0:1]+=renderGrupo(g);
+    });
+  }
+
+  var gridStyle='display:grid;grid-template-columns:'+
+    (isFem?'1.4fr 1fr 0.9fr':'1fr 1fr')+';gap:0 24px;';
+
+  var html='<div style="font-size:.7rem;color:var(--muted);margin-bottom:10px;">'+
+    '<strong style="color:'+cor+'">'+totalGeral+'</strong> referências na coleção</div>'+
+    '<div style="'+gridStyle+'">';
+  cols.forEach(function(c){html+='<div>'+c+'</div>';});
+  html+='</div>';
+
+  var el=document.getElementById('comp-grid');
+  if(el) el.innerHTML=html;
+}
 
 // ============================================================
-// FUNÇÕES
+// DADOS DE REFERÊNCIAS (1209 linhas parseadas)
 // ============================================================
-var chartGPizza=null;
+var RAW_REF = [
+["00032", "CF22210", "CALCA FEM. WIDECROPPED", 69, true],
+["00032", "CF22262", "CALCA FEM. SKINNY", 66, false],
+["00032", "CF22267", "CALCA FEM. RETA", 51, false],
+["00018", "CF22278", "CALCA FEM. LITTLEBOOT", 48, true],
+["00032", "CF22211", "CALCA FEM. WIDELEG", 44, false],
+["00032", "CF22176", "CALCA FEM. LITTLEBOOT", 31, false],
+["00032", "JQ22269", "JAQUETA FEM.CROPPED", 31, false],
+["00032", "CF22261", "CALCA FEM. SKINNY", 30, false],
+["00032", "CF22322", "CALCA FEM. WIDECROPPED LIPO", 26, false],
+["06693", "CF22211", "CALCA FEM. WIDELEG", 26, false],
+["06693", "CF22322", "CALCA FEM. WIDECROPPED LIPO", 26, false],
+["00032", "CF22193", "CALCA FEM. SKINNY", 25, true],
+["00032", "CF22323", "CALCA FEM. WIDECROPPED", 25, false],
+["06693", "SA22258", "SAIA FEM. MEDIA", 24, false],
+["00032", "CF22307", "CALCA FEM. MOM", 23, false],
+["06693", "CF22233", "CALCA FEM. BOOTCUT", 23, false],
+["00032", "CF22279", "CALCA FEM. WIDELEG", 22, false],
+["00032", "CF22230", "CALCA FEM. WIDECROPPED", 21, false],
+["06693", "SA22257", "SAIA FEM. MEDIA", 21, false],
+["06693", "CF22183", "CALCA FEM. WIDECROPPED", 21, false],
+["00018", "CF22176", "CALCA FEM. LITTLEBOOT", 20, false],
+["00032", "CF22278", "CALCA FEM. LITTLEBOOT", 20, true],
+["06693", "CF22262", "CALCA FEM. SKINNY", 20, false],
+["06693", "CF22314", "CALCA FEM. RETA", 19, false],
+["00032", "CF22280", "CALCA FEM. WIDECROPPED", 19, false],
+["00032", "CF22253", "CALCA FEM. SKINNYLEGGING", 19, false],
+["00032", "CF22182", "CALCA FEM. SKINNY", 19, false],
+["00032", "CF22266", "CALCA FEM. LITTLEBOOT", 19, false],
+["07891", "CM30952", "CALCA MASC.CIGARRETE", 18, false],
+["06693", "CF22261", "CALCA FEM. SKINNY", 18, false],
+["06693", "CF22253", "CALCA FEM. SKINNYLEGGING", 18, false],
+["00018", "CF22341", "CALCA FEM. RETACROPPED", 18, false],
+["07891", "CM31014", "CALCA MASC. SLIM", 18, false],
+["07891", "CM30968", "CALCA MASC. SLIM", 18, false],
+["00032", "CF22305", "CALCA FEM. MOM", 17, false],
+["06693", "CF22242", "CALCA FEM. LITTLEBOOT", 17, false],
+["06693", "CF22251", "CALCA FEM. SKINNYLEGGING", 16, false],
+["00032", "CF22242", "CALCA FEM. LITTLEBOOT", 16, false],
+["00018", "CF22225", "CALCA FEM. WIDELEG", 16, false],
+["00032", "CF22336", "CALCA FEM. LITTLEBOOT", 16, false],
+["06693", "CF22277", "CALCA FEM. WIDELEG", 16, false],
+["00032", "CF22335", "CALCA FEM. LITLLEBOOT", 16, false],
+["06693", "CF22223", "CALCA FEM. LITTLEBOOT", 15, false],
+["06693", "CF22280", "CALCA FEM. WIDECROPPED", 15, false],
+["00032", "JQ22360", "JAQUETA FEM.BOMBER", 14, false],
+["00018", "CF22303", "CALCA FEM. BARREL", 14, false],
+["07607", "B30993", "BERMUDAMASC.TRADICIONAL", 14, true],
+["00032", "B22339", "BERMUDA FEM. WIDELEG", 14, false],
+["07891", "CF22327", "CALCA FEM.SLOUCHY", 14, false],
+["07891", "CF22313", "CALCA FEM. BOOTCUT", 14, false],
+["00032", "CF22180", "CALCA FEM. SKINNY", 14, false],
+["07891", "CF22312", "CALCA FEM. BOOTCUT", 14, false],
+["07891", "CF22307", "CALCA FEM. MOM", 14, false],
+["07891", "CF22279", "CALCA FEM. WIDELEG", 14, false],
+["07891", "CF22228", "CALCA FEM. RETA", 14, false],
+["07891", "CF22223", "CALCA FEM. LITTLEBOOT", 14, false],
+["06693", "CA22284", "CAMISA FEM.ALONGADA", 14, false],
+["00032", "CF22265", "CALCA FEM. WIDELEG", 14, false],
+["00018", "CF22222", "CALCA FEM. RETA", 14, false],
+["00032", "SA22240", "SAIA FEM. EVASÊ", 14, false],
+["00018", "CF22325", "CALCA FEM. WIDECROPPED", 13, false],
+["00032", "CF22304", "CALCA FEM. BARREL", 13, false],
+["00032", "SA22268", "SAIA FEM. MIDI", 13, false],
+["06693", "CF22313", "CALCA FEM. BOOTCUT", 13, false],
+["00032", "CF22252", "CALCA FEM. SKINNYLEGGING", 12, false],
+["00032", "CF22186", "CALCA FEM. SKINNY", 12, false],
+["00032", "SA22207", "SAIA FEM. LAPIS", 12, false],
+["00032", "CF22181", "CALCA FEM.CIGARRETE", 12, false],
+["00018", "CF22318", "CALCA FEM. RETALIPO", 12, false],
+["06693", "CF22189", "CALCA FEM. WIDELEG", 12, false],
+["06693", "CF22194", "CALCA FEM. LITTLEBOOT", 12, false],
+["00018", "CF22315", "CALCA FEM. RETACROPPED", 12, false],
+["00018", "CF22302", "CALCA FEM. BARREL", 12, false],
+["06693", "CA22286", "CAMISA FEM.ALONGADA", 12, false],
+["00032", "CF22302", "CALCA FEM. BARREL", 11, false],
+["00032", "CF22264", "CALCA FEM. MOM", 11, false],
+["00032", "CF22313", "CALCA FEM. BOOTCUT", 11, false],
+["00018", "CF22314", "CALCA FEM. RETA", 11, false],
+["00018", "CF22183", "CALCA FEM. WIDECROPPED", 11, false],
+["00018", "CF22178", "CALCA FEM. WIDECROPPED", 11, false],
+["06693", "CF22185", "CALCA FEM. SKINNY", 11, false],
+["00018", "CF22323", "CALCA FEM. WIDECROPPED", 10, false],
+["00018", "S22326", "SHORTS FEM. CURTO", 10, false],
+["00045", "CM30968", "CALCA MASC. SLIM", 10, false],
+["00045", "CM30962", "CALCA MASC.SKINNY", 10, false],
+["00032", "CF22178", "CALCA FEM. WIDECROPPED", 10, false],
+["08281", "CF22335", "CALCA FEM. LITLLEBOOT", 10, false],
+["00032", "JQ22224", "JAQUETA FEM.CROPPED", 10, false],
+["06693", "CO22241", "COLETE FEM.ALONGADO", 10, false],
+["06693", "CF22228", "CALCA FEM. RETA", 10, false],
+["00032", "CF22341", "CALCA FEM. RETACROPPED", 10, false],
+["00032", "CF22194", "CALCA FEM. LITTLEBOOT", 10, false],
+["00032", "CF22183", "CALCA FEM. WIDECROPPED", 10, false],
+["06693", "CF22247", "CALCA FEM. BOOTCUT", 10, false],
+["08281", "CF22278", "CALCA FEM. LITTLEBOOT", 10, true],
+["00018", "CA22221", "CAMISA FEM.", 9, false],
+["06693", "CF22246", "CALCA FEM. BOOTCUT", 9, false],
+["00032", "CF22312", "CALCA FEM. BOOTCUT", 9, false],
+["00018", "S22282", "SHORTS FEM. CURTO", 9, false],
+["00045", "CM31014", "CALCA MASC. SLIM", 9, false],
+["00045", "CM31000", "CALCA MASC.SKINNY", 9, false],
+["00032", "CF22185", "CALCA FEM. SKINNY", 9, false],
+["00032", "CF22319", "CALCA FEM. WIDELEG", 9, false],
+["00032", "CF22338", "CALCA FEM.SLOUCHY", 9, false],
+["00045", "CM30958", "CALCA MASC.SKINNY", 9, false],
+["00032", "CF22247", "CALCA FEM. BOOTCUT", 9, false],
+["00032", "JQ22232", "JAQUETA FEM.CROPPED", 9, false],
+["00032", "CF22179", "CALCA FEM. BOOTCUT", 9, false],
+["00032", "CF22311", "CALCA FEM. LITTLEBOOT", 9, false],
+["00032", "SA22342", "SAIA FEM. MIDI", 9, false],
+["06693", "CF22180", "CALCA FEM. SKINNY", 8, false],
+["00032", "CF22238", "CALCA FEM. SUPERWIDE LEG", 8, false],
+["07607", "SA22342", "SAIA FEM. MIDI", 8, false],
+["00032", "CF22277", "CALCA FEM. WIDELEG", 8, false],
+["00032", "CF22303", "CALCA FEM. BARREL", 8, false],
+["07607", "SA22268", "SAIA FEM. MIDI", 8, false],
+["00032", "CF22325", "CALCA FEM. WIDECROPPED", 8, false],
+["07607", "CF22319", "CALCA FEM. WIDELEG", 8, false],
+["07607", "CF22314", "CALCA FEM. RETA", 8, false],
+["07607", "CF22189", "CALCA FEM. WIDELEG", 8, false],
+["07607", "CF22183", "CALCA FEM. WIDECROPPED", 8, false],
+["00032", "CM31014", "CALCA MASC. SLIM", 8, false],
+["06693", "JQ22354", "JAQUETA FEM.", 8, false],
+["06693", "JQ22269", "JAQUETA FEM.CROPPED", 8, false],
+["06693", "CO22226", "COLETE FEM.ALONGADO", 8, false],
+["06693", "CM30957", "CALCA MASC.SKINNY", 8, false],
+["06693", "CF22336", "CALCA FEM. LITTLEBOOT", 8, false],
+["06693", "CF22335", "CALCA FEM. LITLLEBOOT", 8, false],
+["00045", "CM30953", "CALCA MASC.CIGARRETE", 8, false],
+["00032", "CM30972", "CALCA MASC. SLIM", 7, false],
+["07607", "CF22184", "CALCA FEM. WIDELEG", 7, false],
+["00032", "CF22317", "CALCA FEM. RETACROPPED", 7, false],
+["07607", "CF22315", "CALCA FEM. RETACROPPED", 7, false],
+["00045", "CF22279", "CALCA FEM. WIDELEG", 7, false],
+["00045", "S22281", "SHORTS FEM. MEIACOXA", 7, false],
+["00045", "S22293", "SHORTS FEM.SLOUCHY", 7, false],
+["00045", "S22340", "SHORTS FEM. MOMMEIA COXA", 7, false],
+["00032", "CF22309", "CALCA FEM.CIGARRETE LIPO", 7, false],
+["07607", "CF22316", "CALCA FEM. RETACROPPED", 7, false],
+["06693", "CF22266", "CALCA FEM. LITTLEBOOT", 7, false],
+["00032", "CF22259", "CALCA FEM.CIGARRETE", 7, false],
+["00032", "CF22251", "CALCA FEM. SKINNYLEGGING", 7, false],
+["00032", "CF22246", "CALCA FEM. BOOTCUT", 7, false],
+["00032", "CM30974", "CALCA MASC.SPORT FINO", 7, false],
+["00032", "CF22223", "CALCA FEM. LITTLEBOOT", 7, false],
+["00032", "CF22184", "CALCA FEM. WIDELEG", 7, false],
+["07607", "S22282", "SHORTS FEM. CURTO", 7, false],
+["07607", "CF22317", "CALCA FEM. RETACROPPED", 7, false],
+["00018", "CF22316", "CALCA FEM. RETACROPPED", 7, false],
+["08281", "CF22277", "CALCA FEM. WIDELEG", 6, false],
+["06693", "CM30976", "CALCA MASC.SPORT FINO", 6, false],
+["06693", "CM30978", "CALCA MASC.SPORT FINO", 6, false],
+["06693", "CF22316", "CALCA FEM. RETACROPPED", 6, false],
+["00032", "S22289", "SHORTS FEM. MOMMEIA COXA", 6, false],
+["07607", "B31009", "BERMUDA MASC.", 6, false],
+["06693", "CF22309", "CALCA FEM.CIGARRETE LIPO", 6, false],
+["06693", "CF22307", "CALCA FEM. MOM", 6, false],
+["07607", "CM30995", "CALCA MASC. RETA", 6, false],
+["06693", "CF22306", "CALCA FEM. MOM", 6, false],
+["00045", "CF22223", "CALCA FEM. LITTLEBOOT", 6, false],
+["00045", "CF22313", "CALCA FEM. BOOTCUT", 6, false],
+["00045", "CF22317", "CALCA FEM. RETACROPPED", 6, false],
+["06693", "CF22182", "CALCA FEM. SKINNY", 6, false],
+["00032", "CF22321", "CALCA FEM. WIDELEG CARGO", 6, false],
+["07607", "SA22296", "SAIA FEM. MEDIA", 6, false],
+["00032", "CF22316", "CALCA FEM. RETACROPPED", 6, false],
+["00018", "CF22191", "CALCA FEM. BARREL", 6, false],
+["00032", "CF22308", "CALCA FEM.CIGARRETE LIPO", 6, false],
+["00032", "CF22234", "CALCA FEM. WIDELEG", 6, false],
+["00032", "JQ22333", "JAQUETA FEM.", 6, false],
+["08281", "S22293", "SHORTS FEM.SLOUCHY", 5, false],
+["00018", "S22291", "SHORTS FEM. MEIACOXA", 5, false],
+["00032", "CF22222", "CALCA FEM. RETA", 5, false],
+["00032", "CF22225", "CALCA FEM. WIDELEG", 5, false],
+["00032", "CF22306", "CALCA FEM. MOM", 5, false],
+["00032", "CF22314", "CALCA FEM. RETA", 5, false],
+["00032", "CM30959", "CALCA MASC.SKINNY", 5, false],
+["00032", "SA22257", "SAIA FEM. MEDIA", 5, false],
+["00045", "B22339", "BERMUDA FEM. WIDELEG", 5, false],
+["00045", "CF22337", "CALCA FEM. SUPERWIDE", 5, false],
+["06693", "CF22263", "CALCA FEM. SUPERWIDE LEG", 5, false],
+["06693", "CF22310", "CALCA FEM.CIGARRETE", 5, false],
+["06693", "CF22311", "CALCA FEM. LITTLEBOOT", 5, false],
+["06693", "CF22317", "CALCA FEM. RETACROPPED", 5, false],
+["06693", "CF22338", "CALCA FEM.SLOUCHY", 5, false],
+["06693", "CM30969", "CALCA MASC. SLIM", 5, false],
+["06693", "JQ22360", "JAQUETA FEM.BOMBER", 5, false],
+["07607", "CF22216", "CALCA FEM. WIDECROPPED PLUS", 5, false],
+["07607", "CF22218", "CALCA FEM. RETACROPPED PLUS", 5, false],
+["08281", "CF22176", "CALCA FEM. LITTLEBOOT", 5, false],
+["08281", "CF22179", "CALCA FEM. BOOTCUT", 5, false],
+["08281", "CF22184", "CALCA FEM. WIDELEG", 5, false],
+["08281", "CF22194", "CALCA FEM. LITTLEBOOT", 5, false],
+["08281", "CF22211", "CALCA FEM. WIDELEG", 5, false],
+["08281", "CF22233", "CALCA FEM. BOOTCUT", 5, false],
+["08281", "CF22238", "CALCA FEM. SUPERWIDE LEG", 5, false],
+["08281", "CF22247", "CALCA FEM. BOOTCUT", 5, false],
+["08281", "CF22263", "CALCA FEM. SUPERWIDE LEG", 5, false],
+["08281", "CF22264", "CALCA FEM. MOM", 5, false],
+["08281", "CF22275", "CALCA FEM. FLARE", 5, false],
+["08281", "CF22279", "CALCA FEM. WIDELEG", 5, false],
+["08281", "CF22305", "CALCA FEM. MOM", 5, false],
+["08281", "CF22312", "CALCA FEM. BOOTCUT", 5, false],
+["08281", "CF22315", "CALCA FEM. RETACROPPED", 5, false],
+["08281", "CF22325", "CALCA FEM. WIDECROPPED", 5, false],
+["08281", "CF22337", "CALCA FEM. SUPERWIDE", 5, false],
+["08281", "CF22359", "CALCA FEM. BOOTCUT COUNTRY", 5, false],
+["08281", "S22270", "SHORTS FEM. MOMMEIA COXA", 5, false],
+["08281", "S22281", "SHORTS FEM. MEIACOXA", 5, false],
+["00018", "S22292", "SHORTS FEM. CURTO", 4, false],
+["06693", "CM31011", "CALCA MASC.SPORT FINO LINHO", 4, false],
+["06693", "CM30971", "CALCA MASC. SLIM", 4, false],
+["06693", "CM31001", "CALCA MASC. RETA", 4, false],
+["06693", "CF22305", "CALCA FEM. MOM", 4, false],
+["06693", "CM30996", "CALCA MASC. RETA", 4, false],
+["00032", "JQ22236", "JAQUETA FEM.TRADICIONAL", 4, false],
+["06693", "CF22195", "CALCA FEM.CIGARRETE SPORT FINO", 4, false],
+["00032", "S22288", "SHORTS FEM. MOMMEIA COXA", 4, false],
+["06693", "CF22225", "CALCA FEM. WIDELEG", 4, false],
+["00018", "CF22279", "CALCA FEM. WIDELEG", 4, false],
+["06693", "CF22215", "CALCA FEM. LITLLEBOOT PLUS", 4, false],
+["08281", "BL22254", "BLUSA FEM.", 4, false],
+["08281", "BL22237", "BLUSA FEM.", 4, false],
+["00032", "SA22300", "SAIA FEM. EVASÊ", 4, false],
+["00032", "SA22231", "SAIA FEM. MIDI", 4, false],
+["00032", "CF22324", "CALCA FEM. WIDECROPPED LIPO", 4, false],
+["06693", "CF22330", "CALCA FEM. RETAALFAIATARIA", 4, false],
+["08281", "JQ22287", "JAQUETA FEM.BOMBER", 4, false],
+["08281", "JQ22236", "JAQUETA FEM.TRADICIONAL", 4, false],
+["06693", "CF22337", "CALCA FEM. SUPERWIDE", 4, false],
+["00018", "CF22184", "CALCA FEM. WIDELEG", 4, false],
+["00045", "SA22283", "SAIA FEM. MEDIA", 4, false],
+["00032", "CM30969", "CALCA MASC. SLIM", 4, false],
+["06693", "CM30960", "CALCA MASC.SKINNY", 4, false],
+["06693", "SA22342", "SAIA FEM. MIDI", 4, false],
+["00045", "SA22296", "SAIA FEM. MEDIA", 4, false],
+["06693", "JQ22224", "JAQUETA FEM.CROPPED", 4, false],
+["06693", "CM30974", "CALCA MASC.SPORT FINO", 3, false],
+["08281", "JQ22333", "JAQUETA FEM.", 3, false],
+["06693", "CF22323", "CALCA FEM. WIDECROPPED", 3, false],
+["06693", "CF22324", "CALCA FEM. WIDECROPPED LIPO", 3, false],
+["00032", "JQ31006", "JAQUETA MASC.", 3, false],
+["06693", "CF22341", "CALCA FEM. RETACROPPED", 3, false],
+["06693", "CM30962", "CALCA MASC.SKINNY", 3, false],
+["06693", "CS22353", "TRENCH COAT FEM.", 3, false],
+["06693", "JQ22249", "JAQUETA FEM.BOMBER", 3, false],
+["08281", "JQ22360", "JAQUETA FEM.BOMBER", 3, false],
+["06693", "SA22283", "SAIA FEM. MEDIA", 3, false],
+["00032", "CM30967", "CALCA MASC. SLIM", 3, false],
+["00032", "CF22337", "CALCA FEM. SUPERWIDE", 3, false],
+["00032", "CF22332", "CALCA FEM. RETAALFAIATARIA", 3, false],
+["00032", "CF22191", "CALCA FEM. BARREL", 3, false],
+["00032", "CF22177", "CALCA FEM.CIGARRETE", 3, false],
+["06693", "CF22212", "CALCA FEM. SKINNYPLUS SIZE", 3, false],
+["06693", "CF22214", "CALCA FEM.CIGARRETE PLUS", 3, false],
+["06693", "CF22186", "CALCA FEM. SKINNY", 3, false],
+["06693", "CF22234", "CALCA FEM. WIDELEG", 3, false],
+["06693", "CF22179", "CALCA FEM. BOOTCUT", 3, false],
+["06693", "CF22260", "CALCA FEM.CIGARRETE", 3, false],
+["06693", "CF22264", "CALCA FEM. MOM", 3, false],
+["06693", "CF22302", "CALCA FEM. BARREL", 3, false],
+["06693", "CF22230", "CALCA FEM. WIDECROPPED", 2, false],
+["06693", "CF22245", "CALCA FEM. WIDELEG", 2, false],
+["06693", "JQ22250", "JAQUETA FEM.BOMBER", 2, false],
+["00032", "CO22272", "COLETE FEM.", 2, false],
+["06693", "CF22275", "CALCA FEM. FLARE", 2, false],
+["06693", "JQ31006", "JAQUETA MASC.", 2, false],
+["06693", "JQ31007", "JAQUETAMASC.IMPORTADA", 2, false],
+["06693", "SA22231", "SAIA FEM. MIDI", 2, false],
+["00032", "CM30976", "CALCA MASC.SPORT FINO", 2, false],
+["06693", "SA22268", "SAIA FEM. MIDI", 2, false],
+["06693", "SA22300", "SAIA FEM. EVASÊ", 2, false],
+["06693", "CM30961", "CALCA MASC.SKINNY", 2, false],
+["06693", "SS22190", "SHORTS SAIA FEM.", 2, false],
+["06693", "CF22176", "CALCA FEM. LITTLEBOOT", 2, false],
+["07607", "CF22244", "CALCA FEM. WIDELEG", 2, false],
+["00032", "CM30961", "CALCA MASC.SKINNY", 2, false],
+["00032", "CM30954", "CALCA MASC.CIGARRETE", 2, false],
+["00032", "CM30953", "CALCA MASC.CIGARRETE", 2, false],
+["06693", "CA22285", "CAMISA FEM.ALONGADA", 2, false],
+["07607", "SA22240", "SAIA FEM. EVASÊ", 2, false],
+["06693", "CF22325", "CALCA FEM. WIDECROPPED", 2, false],
+["00032", "CF22320", "CALCA FEM. WIDELEG", 2, false],
+["00032", "CF22244", "CALCA FEM. WIDELEG", 2, false],
+["00032", "CF22228", "CALCA FEM. RETA", 2, false],
+["00032", "CA22285", "CAMISA FEM.ALONGADA", 2, false],
+["06693", "CF22319", "CALCA FEM. WIDELEG", 2, false],
+["08281", "CA22239", "CAMISA FEM.", 2, false],
+["06693", "CF22318", "CALCA FEM. RETALIPO", 2, false],
+["06693", "CF22196", "CALCA FEM.CIGARRETE SPORT FINO", 2, false],
+["06693", "JQ22229", "JAQUETA FEM.TRADICIONAL", 2, false],
+["06693", "CF22274", "CALCA FEM. FLARE", 2, false],
+["06693", "CF22181", "CALCA FEM.CIGARRETE", 2, false],
+["00032", "CS22353", "TRENCH COAT FEM.", 2, false],
+["06693", "CM30995", "CALCA MASC. RETA", 2, false],
+["06693", "CM30975", "CALCA MASC.SPORT FINO", 2, false],
+["06693", "CM30972", "CALCA MASC. SLIM", 2, false],
+["00032", "CS22348", "CASACO MEDIO FEM.", 2, false],
+["00032", "CS22347", "CASACO MEDIO FEM.", 2, false],
+["06693", "CO22272", "COLETE FEM.", 2, false],
+["06693", "CS22347", "CASACO MEDIO FEM.", 2, false],
+["06693", "CF22244", "CALCA FEM. WIDELEG", 2, false],
+["06693", "CM30963", "CALCA MASC.SKINNY", 2, false],
+["06693", "JQ22248", "JAQUETA FEM.BOMBER", 1, false],
+["00032", "CF22233", "CALCA FEM. BOOTCUT", 1, false],
+["06693", "CM31014", "CALCA MASC. SLIM", 1, false],
+["00032", "CF22214", "CALCA FEM.CIGARRETE PLUS", 1, false],
+["00032", "CO22241", "COLETE FEM.ALONGADO", 1, false],
+["00032", "CF22208", "CALCA FEM.SKINNYPLUS SIZE", 1, false],
+["06693", "CA22221", "CAMISA FEM.", 1, false],
+["06693", "BL22254", "BLUSA FEM.", 1, false],
+["06693", "JQ31008", "JAQUETAMASC.IMPORTADA", 1, false],
+["06693", "CM31016", "CALCA MASC. RETACOUNTRY", 1, false],
+["06693", "SA22240", "SAIA FEM. EVASÊ", 1, false],
+["00032", "CM30995", "CALCA MASC. RETA", 1, false],
+["00032", "CA22284", "CAMISA FEM.ALONGADA", 1, false],
+["00032", "CA22239", "CAMISA FEM.", 1, false],
+["06693", "CF22178", "CALCA FEM. WIDECROPPED", 1, false],
+["00032", "CA22221", "CAMISA FEM.", 1, false],
+["00032", "S22255", "SHORTS FEM. MEIACOXA", 1, false],
+["06693", "CS22351", "CASACO CURTOFEM.", 1, false],
+["00032", "CM30971", "CALCA MASC. SLIM", 1, false],
+["00032", "JQ22248", "JAQUETA FEM.BOMBER", 1, false],
+["07607", "BL22237", "BLUSA FEM.", 1, false],
+["07607", "BL22254", "BLUSA FEM.", 1, false],
+["06693", "CS22348", "CASACO MEDIO FEM.", 1, false],
+["00032", "CM30966", "CALCA MASC. SLIM", 1, true],
+["00032", "CM30963", "CALCA MASC.SKINNY", 1, false],
+["00032", "BL22237", "BLUSA FEM.", 1, false],
+["00032", "JQ22354", "JAQUETA FEM.", 1, false],
+["06693", "CF22213", "CALCA FEM.CIGARRETE PLUS SIZE", 1, false],
+["07607", "CF22246", "CALCA FEM. BOOTCUT", 1, false],
+["07607", "CF22247", "CALCA FEM. BOOTCUT", 1, false],
+["00045", "B31010", "BERMUDA MASC.SPORT FINO MEDIA", 1, false],
+["00032", "CM30958", "CALCA MASC.SKINNY", 1, false],
+["06693", "CS22350", "CASACO CURTOFEM.", 1, false],
+["06693", "CF22222", "CALCA FEM. RETA", 1, false],
+["06693", "CS22344", "CASACO LONGOFEM.", 1, false],
+["06693", "CF22312", "CALCA FEM. BOOTCUT", 1, false],
+["00032", "CF22331", "CALCA FEM. RETAALFAIATARIA", 1, false],
+["00032", "S22256", "SHORTS FEM. MEIACOXA", 1, false],
+["00032", "S22340", "SHORTS FEM. MOMMEIA COXA", 1, false],
+["06693", "CM30970", "CALCA MASC. SLIM", 1, false],
+["06693", "BL22237", "BLUSA FEM.", 1, false]
+];
+var RANK_ANT={};
+
+// ============================================================
+// FUNÇÕES REFERÊNCIAS
+// ============================================================
+var PRECOS_REF = {"B22339": 134.9, "B30983": 112.9, "B30984": 112.9, "B30985": 112.9, "B30986": 112.9, "B30987": 112.9, "B30988": 110.9, "B30989": 110.9, "B30990": 110.9, "B30991": 110.9, "B30992": 108.9, "B30993": 104.9, "B30994": 121.9, "B30998": 129.9, "B30999": 123.9, "B31002": 122.9, "B31003": 135.9, "B31004": 113.9, "B31005": 109.9, "B31009": 132.9, "B31010": 123.9, "B31015": 123.9, "BL22237": 134.9, "BL22254": 134.9, "CA22221": 153.9, "CA22239": 159.9, "CA22284": 196.9, "CA22285": 196.9, "CA22286": 196.9, "CF22176": 143.9, "CF22177": 145.9, "CF22178": 145.9, "CF22179": 130.9, "CF22180": 119.9, "CF22181": 147.9, "CF22182": 147.9, "CF22183": 137.9, "CF22184": 138.9, "CF22185": 119.9, "CF22186": 149.9, "CF22187": 138.9, "CF22188": 156.9, "CF22189": 159.9, "CF22191": 134.9, "CF22192": 137.9, "CF22193": 110.9, "CF22194": 128.9, "CF22195": 128.9, "CF22196": 147.9, "CF22197": 147.9, "CF22198": 147.9, "CF22208": 132.9, "CF22210": 116.9, "CF22211": 136.9, "CF22212": 144.9, "CF22213": 149.9, "CF22214": 152.9, "CF22215": 149.9, "CF22216": 159.9, "CF22217": 118.9, "CF22218": 141.9, "CF22222": 125.9, "CF22223": 162.9, "CF22225": 142.9, "CF22227": 147.9, "CF22228": 157.9, "CF22230": 137.9, "CF22233": 120.9, "CF22234": 137.9, "CF22235": 131.9, "CF22238": 148.9, "CF22242": 143.9, "CF22244": 170.9, "CF22245": 170.9, "CF22246": 157.9, "CF22247": 157.9, "CF22251": 137.9, "CF22252": 137.9, "CF22253": 137.9, "CF22259": 145.9, "CF22260": 152.9, "CF22261": 129.9, "CF22262": 129.9, "CF22263": 147.9, "CF22264": 137.9, "CF22265": 159.9, "CF22266": 150.9, "CF22267": 130.9, "CF22274": 166.9, "CF22275": 136.9, "CF22277": 178.9, "CF22278": 112.9, "CF22279": 149.9, "CF22280": 158.9, "CF22302": 159.9, "CF22303": 151.9, "CF22304": 133.9, "CF22305": 120.9, "CF22306": 125.9, "CF22307": 149.9, "CF22308": 133.9, "CF22309": 133.9, "CF22310": 138.9, "CF22311": 136.9, "CF22312": 145.9, "CF22313": 146.9, "CF22314": 145.9, "CF22315": 117.9, "CF22316": 139.9, "CF22317": 152.9, "CF22318": 131.9, "CF22319": 147.9, "CF22320": 137.9, "CF22321": 159.9, "CF22322": 164.9, "CF22323": 126.9, "CF22324": 143.9, "CF22325": 139.9, "CF22327": 124.9, "CF22328": 123.9, "CF22329": 123.9, "CF22330": 158.9, "CF22331": 158.9, "CF22332": 158.9, "CF22335": 150.9, "CF22336": 150.9, "CF22337": 166.9, "CF22338": 144.9, "CF22341": 134.9, "CF22357": 189.9, "CF22358": 199.9, "CF22359": 142.9, "CM30952": 161.9, "CM30953": 140.9, "CM30954": 137.9, "CM30957": 163.9, "CM30958": 146.9, "CM30959": 119.9, "CM30960": 130.9, "CM30961": 138.9, "CM30962": 136.9, "CM30963": 152.9, "CM30966": 116.9, "CM30967": 135.9, "CM30968": 139.9, "CM30969": 139.9, "CM30970": 128.9, "CM30971": 124.9, "CM30972": 166.9, "CM30974": 127.9, "CM30975": 127.9, "CM30976": 127.9, "CM30977": 127.9, "CM30978": 127.9, "CM30979": 121.9, "CM30980": 121.9, "CM30981": 121.9, "CM30982": 121.9, "CM30995": 159.9, "CM30996": 122.9, "CM30997": 152.9, "CM31000": 152.9, "CM31001": 138.9, "CM31011": 133.9, "CM31013": 170.9, "CM31014": 165.9, "CM31016": 159.9, "CO22226": 163.9, "CO22241": 163.9, "CO22271": 116.9, "CO22272": 116.9, "CS22344": 298.9, "CS22345": 298.9, "CS22347": 294.9, "CS22348": 294.9, "CS22350": 188.9, "CS22351": 188.9, "CS22353": 240.9, "JQ22224": 185.9, "JQ22229": 208.9, "JQ22232": 178.9, "JQ22236": 175.9, "JQ22248": 265.9, "JQ22249": 218.9, "JQ22250": 218.9, "JQ22269": 173.9, "JQ22287": 165.9, "JQ22333": 213.9, "JQ22354": 211.9, "JQ22360": 228.9, "JQ31006": 229.9, "JQ31007": 160.9, "JQ31008": 160.9, "JQ31012": 258.9, "S22199": 101.9, "S22200": 105.9, "S22201": 99.9, "S22202": 106.9, "S22203": 138.9, "S22204": 138.9, "S22205": 138.9, "S22206": 106.9, "S22209": 110.9, "S22219": 118.9, "S22220": 126.9, "S22255": 124.9, "S22256": 124.9, "S22270": 120.9, "S22281": 121.9, "S22282": 120.9, "S22288": 120.9, "S22289": 114.9, "S22290": 135.9, "S22291": 110.9, "S22292": 120.9, "S22293": 97.9, "S22294": 122.9, "S22295": 114.9, "S22326": 116.9, "S22340": 133.9, "SA22207": 107.9, "SA22231": 128.9, "SA22240": 139.9, "SA22257": 122.9, "SA22258": 122.9, "SA22268": 121.9, "SA22283": 105.9, "SA22296": 115.9, "SA22297": 103.9, "SA22298": 129.9, "SA22299": 133.9, "SA22300": 161.9, "SA22342": 151.9, "SS22190": 119.9, "SS22355": 119.9, "CM31018": 149.9, "CM31019": 149.9, "CM31020": 149.9};
+
+var PRECOS_PACK = {};
+
+function getTipo(cod) {
+  if(cod.startsWith('CF')) return {key:'cf',label:'Calça Fem.',badge:'cf'};
+  if(cod.startsWith('CM')) return {key:'cm',label:'Calça Masc.',badge:'cm'};
+  if(cod.startsWith('SS')) return {key:'ss',label:'Short Saia',badge:'ss'};
+  if(cod.startsWith('SA')) return {key:'sa2',label:'Saia',badge:'sa2'};
+  if(cod.startsWith('S2')) return {key:'sh',label:'Shorts',badge:'sh'};
+  if(cod.startsWith('B22')) return {key:'bf',label:'Bermuda Fem.',badge:'bf'};
+  if(cod.startsWith('B2')) return {key:'bf',label:'Bermuda Fem.',badge:'bf'};
+  if(cod.startsWith('B3')) return {key:'bm',label:'Bermuda Masc.',badge:'bm'};
+  if(cod.startsWith('BL')) return {key:'bl',label:'Blusa',badge:'bl'};
+  if(cod.startsWith('T2')) return {key:'tp',label:'Top',badge:'tp'};
+  if(cod.startsWith('V2')) return {key:'vt',label:'Vestido',badge:'vt'};
+  if(cod.startsWith('JQ')) return {key:'jq',label:'Jaqueta',badge:'jq'};
+  if(cod.startsWith('CA')) return {key:'ca',label:'Camisa',badge:'ca'};
+  if(cod.startsWith('CO')) return {key:'co',label:'Colete',badge:'co'};
+  if(cod.startsWith('CS')) return {key:'cs',label:'Casaco',badge:'cs'};
+  return {key:'outros',label:'Outros',badge:'nn'};
+}
+
+function normDesc(s){return s.replace(/CRROPPED/g,'CROPPED').replace(/ +\./g,'.').replace(/^CALA /,'CALCA ').replace(/LITLLE/g,'LITTLE').replace(/PLUS(?! ?SIZE)/g,'PLUS SIZE').replace(/PLUSSIZE/g,'PLUS SIZE');}
+function getModelagem(desc) {
+  var d = desc.toUpperCase().replace(/SUPER ?WIDE ?LEG/g,'SUPERWIDE').replace(/WIDE LEG/g,'WIDELEG').replace(/WIDE CROPPED/g,'WIDECROPPED').replace(/LITTLE BOOT/g,'LITTLEBOOT').replace(/BOOT CUT/g,'BOOTCUT');
+  d = d.replace(/LIPO/g,''); // Lipo agora é tecnologia (tag), não modelagem — funde as variantes
+  if(d.includes('ABED')) return 'Sport Fino';
+  if(d.includes('CAMISA')) return 'Camisa';
+  if(d.includes('JAQUETA')) return 'Jaqueta';
+  if(d.includes('COLETE')) return 'Colete';
+  if(d.includes('CASACO MEDIO')) return 'Médio';
+  if(d.includes('SHORT SAIA')||d.includes('SHORTS SAIA')) return 'Short Saia';
+  if(d.includes('SKINNYLEGGING')||d.includes('SKINNY LEGGING')) return 'Skinny Legging';
+  // Bermuda Wide (fem.) — B22069/70/71, independente de alfaiataria
+  if(d.includes('BERMUDA')&&d.includes('WIDE')) return 'Bermuda Wide';
+  // Top e Blusa — antes de qualquer regra de "Cropped" genérica
+  if(d.includes('TOP FEM')) return 'Top';
+  if(d.includes('BLUSA FEM')) return 'Blusa';
+  // Short Saia
+  if(d.includes('SHORT SAIA')) return 'Short Saia';
+  // Vestido
+  if(d.includes('VESTIDO')) return 'Vestido';
+  // Reta — mais específicos primeiro
+  if(d.includes('RETACROPPED PLUS SIZE')||d.includes('RETA CROPPED PLUS SIZE')) return 'Reta Cropped Plus Size';
+  if(d.includes('RETACROPPED')||d.includes('RETA CROPPED')) return 'Reta Cropped';
+  if(d.includes('RETAALFAIATARIA')||d.includes('RETA ALFAIATARIA')) return 'Reta Alfaiataria';
+  if(d.includes('RETACARGO')||d.includes('RETA CARGO')) return 'Reta Cargo';
+  if(d.includes('RETACOUNTRY')||d.includes('RETA COUNTRY')) return 'Reta Country';
+  if(d.includes('RETACARPINTEIRO')||d.includes('RETA CARPINTEIRO')) return 'Reta Carpinteiro Country';
+  if(d.includes('RETABAGGY')||d.includes('RETA BAGGY')) return 'Reta Baggy';
+  if(d.includes('RETAPLUS SIZE')||d.includes('RETA PLUS SIZE')) return 'Reta Plus Size';
+  // Wide
+  if(d.includes('WIDECROPPED PLUS SIZE')) return 'Wide Cropped Plus Size';
+  if(d.includes('WIDECROPPED')) return 'Wide Cropped';
+  if(d.includes('WIDELEG CROPPED')) return 'Wide Leg Cropped';
+  if(d.includes('WIDELEG ALFAIATARIA')) return 'Wide Leg Alfaiataria';
+  if(d.includes('WIDELEG CINTURA')) return 'Wide Leg Cint. Interm.';
+  if(d.includes('WIDELEG CARGO')) return 'Wide Leg Cargo';
+  if(d.includes('WIDELEG PLUS SIZE')) return 'Wide Leg Plus Size';
+  if(d.includes('WIDELEG')) return 'Wide Leg';
+  if(d.includes('SUPERWIDE')||d.includes('SUPER WIDE')) return 'Super Wide';
+  // Cigarrete
+  if(d.includes('CALCAFEM.CIGARRETE')||d.includes('CALCAFEM. CIGARRETE')) return 'Cigarrete';
+  if(d.includes('CIGARRETE SPORT FINO')) return 'Cigarrete Sport Fino';
+  if(d.includes('CIGARRETE PLUS SIZE')) return 'Cigarrete Plus Size';
+  if(d.includes('CIGARRETE')) return 'Cigarrete';
+  // Skinny
+  if(d.includes('SKINNYPLUS SIZE')||d.includes('SKINNY PLUS SIZE')) return 'Skinny Plus Size';
+  if(d.includes('SKINNY')) return 'Skinny';
+  // Meia Coxa
+  if(d.includes('MOMMEIA COXA')||d.includes('MOM MEIA COXA')) return 'Mom Meia Coxa';
+  if(d.includes('MEIACOXA ALFAIATARIA')||d.includes('MEIA COXA ALFAIATARIA')) return 'Meia Coxa Alfaiataria';
+  if(d.includes('MEIACOXA SPORT FINO')||d.includes('MEIA COXA SPORT FINO')||d.includes('SPORTFINO MEIA COXA')||d.includes('SPORT FINO MEIA COXA')) return 'Meia Coxa Sport Fino';
+  if(d.includes('MEIACOXA MAIS CURTO')||d.includes('MEIA COXA MAIS CURTO')) return 'Meia Coxa Mais Curto';
+  if(d.includes('MEIACOXA PLUS SIZE')||d.includes('MEIA COXA PLUS SIZE')) return 'Meia Coxa Plus Size';
+  if(d.includes('MEIACOXA')||d.includes('MEIA COXA')) return 'Meia Coxa';
+  // Little Boot / Boot Cut
+  if(d.includes('LITTLEBOOT COUNTRY')||d.includes('LITLLEBOOT COUNTRY')) return 'Little Boot Country';
+  if(d.includes('LITTLEBOOT PLUS SIZE')) return 'Little Boot Plus Size';
+  if(d.includes('LITTLEBOOT')||d.includes('LITLLEBOOT')) return 'Little Boot';
+  if(d.includes('BOOTCUT COUNTRY')) return 'Boot Cut Country';
+  if(d.includes('BOOTCUT')) return 'Boot Cut';
+  // Outros
+  if(d.includes('CAPRIPLUS SIZE')||d.includes('PLUSSIZE CAPRI')||d.includes('CAPRI PLUS SIZE')) return 'Capri Plus Size';
+  if(d.includes('CAPRI')) return 'Capri';
+  if(d.includes('MOM')) return 'Mom';
+  if(d.includes('BARREL')) return 'Barrel';
+  if(d.includes('SLOUCHY')) return 'Slouchy';
+  if(d.includes('SLIM')) return 'Slim';
+  if(d.includes('TRADICIONAL')) return 'Tradicional';
+  if(d.includes('SPORT FINO CROPPED')) return 'Sport Fino Cropped';
+  if(d.includes('SPORT FINO MEDIA')) return 'Sport Fino Média';
+  if(d.includes('SPORT FINO')) return 'Sport Fino';
+  if(d.includes('CICLISTA PLUS SIZE')) return 'Ciclista Plus Size';
+  if(d.includes('CICLISTA')) return 'Ciclista';
+  if(d.includes('GODÊ')||d.includes('GODE')) return 'Godê';
+  if(d.includes('CURTO')) return 'Curto';
+  if(d.includes('MIDI PLUS SIZE')) return 'Midi Plus Size';
+  if(d.includes('MIDICARGO')||d.includes('MIDI CARGO')) return 'Midi Cargo';
+  if(d.includes('MINICARGO')||d.includes('MINI CARGO')) return 'Mini Cargo';
+  if(d.includes('MIDICURTA')||d.includes('MIDI CURTA')||d.includes('MIDI + CURTA')) return 'Midi Curta';
+  if(d.includes('MIDI')) return 'Midi';
+  if(d.includes('MINI')) return 'Mini';
+  if(d.includes('LAPIS')) return 'Lápis';
+  if(d.includes('EVASE')) return 'Évase';
+  if(d.includes('ALFAIATARIA')) return 'Alfaiataria';
+  if(d.includes('LONGA')) return 'Longa';
+  if(d.includes('LONGO')) return 'Longo';
+  if(d.includes('MEDIA')) return 'Média';
+  if(d.includes('CROPPED')) return 'Cropped';
+  if(d.includes('RETA')) return 'Reta';
+  if(d.includes('PLUS SIZE')) return 'Plus Size';
+  var fb=desc.replace(/FEM\.|MASC\.|CALCA|CAMISA|COLETE|CASACO|SHORTS|SAIA|BERMUDA|BLUSA|TOP|VESTIDO/gi,'').trim().split(' ').slice(0,3).join(' ').toLowerCase().replace(/(^| )([a-zà-ú])/g,function(m,a,b){return a+b.toUpperCase();});
+  return fb||'Padrão';
+}
+
+var REGIOES_ATIVAS=new Set(['Sul','Sudeste','Nordeste','Norte','Centro-Oeste']);
+function repNaRegiaoAtiva(rep){
+  var info=REPS[rep];
+  if(!info) return true;
+  return REGIOES_ATIVAS.has(info.reg);
+}
+function toggleRegiao(chk){
+  if(chk.checked) REGIOES_ATIVAS.add(chk.value);
+  else REGIOES_ATIVAS.delete(chk.value);
+  renderReferencias();
+}
+function marcarTodasRegioes(marcar){
+  document.querySelectorAll('.reg-chk').forEach(function(c){
+    c.checked=marcar;
+    if(marcar) REGIOES_ATIVAS.add(c.value);
+    else REGIOES_ATIVAS.delete(c.value);
+  });
+  renderReferencias();
+}
+function getRefDados(codRep) {
+  var m={};
+  for(var i=0;i<RAW_REF.length;i++){
+    var row=RAW_REF[i];
+    var rep=row[0],cod=row[1],desc=row[2],qtde=row[3],isPack=row[4]===true;
+    if(codRep!=='TODOS'&&rep!==codRep) continue;
+    if(!repNaRegiaoAtiva(rep)) continue;
+    if(!REF_CATALOGO[cod]) continue; // referência fora da tabela de preços: desconsiderada
+    if(refMix!=='TODOS'&&!!REF_IMPORTADO[cod]!==(refMix==='IMPORTADO')) continue; // mix nacional x importado separados
+    desc=normDesc(desc);
+    if(!m[cod]) m[cod]={cod:cod,desc:desc,qtde:0,tipo:getTipo(cod),mod:getModelagem(desc),pack:isPack};
+    m[cod].qtde+=qtde;
+    if(isPack) m[cod].pack=true;
+  }
+  Object.keys(REF_CATALOGO).forEach(function(cod){
+    if(m[cod]) return;
+    if(refMix!=='TODOS'&&!!REF_IMPORTADO[cod]!==(refMix==='IMPORTADO')) return;
+    var ds=normDesc(REF_CATALOGO[cod][0]);
+    m[cod]={cod:cod,desc:ds,qtde:0,tipo:getTipo(cod),mod:getModelagem(ds),pack:false};
+  });
+  var arr=[];
+  var keys=Object.keys(m);
+  for(var i=0;i<keys.length;i++) arr.push(m[keys[i]]);
+  arr.sort(function(a,b){return (b.qtde-a.qtde)||(a.cod<b.cod?-1:1);});
+  return arr;
+}
+
+var COD_TEC = {"CF22177": ["Triple Dry", "Infinity Flex"], "CF22187": ["Efeito Lipo"], "CF22188": ["Triple Dry", "Infinity Flex"], "CF22223": ["Triple Dry", "Infinity Flex"], "CF22308": ["Efeito Lipo", "Infinity Flex"], "CF22309": ["Efeito Lipo"], "CF22318": ["Efeito Lipo"], "CF22322": ["Efeito Lipo"], "CF22324": ["Efeito Lipo"], "CM30952": ["Triple Dry", "Infinity Flex"], "CM31013": ["Triple Dry", "Infinity Flex"], "CM31014": ["Triple Dry", "Infinity Flex"], "CF22181": ["Infinity Flex"], "CF22182": ["Infinity Flex"], "CF22186": ["Infinity Flex"], "CF22192": ["Infinity Flex"], "CF22259": ["Infinity Flex"], "CF22260": ["Infinity Flex"], "CF22266": ["Infinity Flex"], "CF22274": ["Infinity Flex"], "CF22313": ["Infinity Flex"], "CM30957": ["Infinity Flex"], "CM30963": ["Infinity Flex"], "S22220": ["Infinity Flex"], "B30983": ["Não Desbota"], "B30984": ["Não Desbota"], "B30985": ["Não Desbota"], "B30986": ["Não Desbota"], "B30987": ["Não Desbota"], "B30988": ["Não Desbota"], "B30989": ["Não Desbota"], "B30990": ["Não Desbota"], "B30991": ["Não Desbota"], "B30992": ["Não Desbota"], "CF22179": ["Não Desbota"], "CF22180": ["Não Desbota"], "CF22194": ["Não Desbota"], "CF22196": ["Não Desbota"], "CF22197": ["Não Desbota"], "CF22198": ["Não Desbota"], "CF22208": ["Não Desbota"], "CF22330": ["Não Desbota"], "CM30959": ["Não Desbota"], "CM30974": ["Não Desbota"], "CM30975": ["Não Desbota"], "CM30976": ["Não Desbota"], "CM30977": ["Não Desbota"], "CM30978": ["Não Desbota"], "CM30979": ["Não Desbota"], "CM30980": ["Não Desbota"], "CM30981": ["Não Desbota"], "CM30982": ["Não Desbota"], "S22199": ["Não Desbota"], "S22200": ["Não Desbota"], "S22203": ["Não Desbota"], "S22204": ["Não Desbota"], "S22205": ["Não Desbota"], "S22206": ["Não Desbota"], "S22209": ["Não Desbota"], "SA22207": ["Não Desbota"], "CA22284": ["Térmica"], "CA22285": ["Térmica"], "CA22286": ["Térmica"], "CF22251": ["Térmica"], "CF22252": ["Térmica"], "CF22253": ["Térmica"], "CF22261": ["Térmica"], "CF22262": ["Térmica"], "B30993": ["Pack"], "CF22193": ["Pack"], "CF22210": ["Pack"], "CF22278": ["Pack"], "CM30966": ["Pack"], "S22201": ["Pack"], "BL22237": ["Resinado"], "BL22254": ["Resinado"], "CF22235": ["Resinado"], "CF22246": ["Resinado"], "CF22247": ["Resinado"], "CF22328": ["Resinado"], "CF22329": ["Resinado"], "CF22335": ["Resinado"], "CF22336": ["Resinado"], "CO22271": ["Resinado"], "CO22272": ["Resinado"], "JQ22236": ["Resinado"], "SS22190": ["Resinado"], "SS22355": ["Resinado"], "B30994": ["Moletom"], "CM30960": ["Moletom"], "CM30962": ["Moletom"], "CM30967": ["Moletom"], "CM30968": ["Moletom"]};
+
+var TECNOLOGIAS_LISTA = ["Infinity Flex","Efeito Lipo","Não Desbota","Triple Dry","Térmica","Resinado","Moletom","Pack"];
+
+var REF_TECIDO = {"B22339": "INDIGO 13 OZ", "B30983": "RUES PRETO", "B30984": "RUES MARINHO", "B30985": "RUES CHUMBO", "B30986": "RUES CAQUI", "B30987": "RUES AREIA", "B30988": "RUES PRETO", "B30989": "RUES CAQUI", "B30990": "RUES AREIA", "B30991": "RUES CHUMBO", "B30992": "BEATRICE", "B30993": "FORTE", "B30994": "SPINNING", "B30998": "SOLARIS", "B30999": "SOLARIS", "B31002": "CODY BLACKOUT", "B31003": "NEW SANDLER", "B31004": "THOR SUPER INTENSE", "B31005": "LORD", "B31009": "INDIGO 13 OZ", "B31010": "MIXLINHO", "B31015": "MIXLINHO", "BL22237": "BENGALINE RESINADO PREMIUM MARROM", "BL22254": "BENGALINE RESINADO PREMIUM PRETO", "CA22221": "THOR SUPER INTENSE", "CA22239": "THOR BROWN", "CA22284": "QECHUA PRETO", "CA22285": "QECHUA CARAMELO", "CA22286": "QECHUA MARROM", "CF22176": "MATRIX INTENSE", "CF22177": "TRIPLE DRY", "CF22178": "THOR BROWN", "CF22179": "BEATRICE", "CF22180": "BEATRICE", "CF22181": "QUEEN", "CF22182": "QUEEN", "CF22183": "MILA", "CF22184": "THOR SUPER INTENSE", "CF22185": "CATARINA BLACK BLACK", "CF22186": "NEW MOTHER DUO CORE", "CF22187": "VALERIA", "CF22188": "TRIPLE DRY", "CF22189": "MARRAKEXE", "CF22191": "THOR SUPER INTENSE", "CF22192": "CHLOE PT", "CF22193": "FORTE", "CF22194": "BEATRICE", "CF22195": "MIXLINHO", "CF22196": "COTS PRETO", "CF22197": "COTS CAQUI", "CF22198": "COTS AREIA", "CF22208": "BEATRICE", "CF22210": "FORTE", "CF22211": "ALEC PT", "CF22212": "AYLA", "CF22213": "MATRIX INTENSE", "CF22214": "MATRIX INTENSE", "CF22215": "MATRIX INTENSE", "CF22216": "VIRAMUNDO", "CF22217": "FORTE", "CF22218": "MATRIX INTENSE", "CF22222": "THOR SUPER INTENSE", "CF22223": "TRIPLE DRY", "CF22225": "CATARINA BLACK BLACK", "CF22227": "VIRAMUNDO", "CF22228": "VIRAMUNDO", "CF22230": "KRATOS BLUE", "CF22233": "HOLIDAY GALAXY", "CF22234": "THOR GRAY", "CF22235": "MUSK PRETO / CATARINA BLACK", "CF22238": "THOR BROWN", "CF22242": "NEO SKY", "CF22244": "PU PESADO PRETO", "CF22245": "PU PESADO MARROM", "CF22246": "BENGALINE RESINADO PREMIUM PRETO", "CF22247": "BENGALINE RESINADO PREMIUM MARROM", "CF22251": "QECHUA PRETO", "CF22252": "QECHUA CARAMELO", "CF22253": "QECHUA MARROM", "CF22259": "QUEEN", "CF22260": "NEW MOTHER DUO CORE", "CF22261": "BENGALINE LAURA PRETO", "CF22262": "BENGALINE LAURA MARROM", "CF22263": "THOR SUPER INTENSE", "CF22264": "THOR BROWN", "CF22265": "SOLARIS", "CF22266": "CHLOE PT", "CF22267": "LORENZO PT", "CF22274": "FABRICA", "CF22275": "MATRIX INTENSE", "CF22277": "NEW SANDLER", "CF22278": "FORTE", "CF22279": "INDIGO 13 OZ", "CF22280": "INDIGO 13 OZ", "CF22302": "INDIGO 13 OZ", "CF22303": "ZAT BLACK BLACK", "CF22304": "BOREN", "CF22305": "ZAT BLACK BLACK", "CF22306": "THOR GRAY", "CF22307": "INDIGO 13 OZ", "CF22308": "MELINA", "CF22309": "VALERIA", "CF22310": "PRESENCE BABY ROYAL", "CF22311": "CATARINA BLACK BLACK", "CF22312": "MATRIX INTENSE", "CF22313": "MELINA", "CF22314": "BAHAMAS", "CF22315": "NATURAL DENIM", "CF22316": "MATRIX INTENSE", "CF22317": "INDIGO 13 OZ", "CF22318": "NEO SKY", "CF22319": "NEO SKY", "CF22320": "MIXLINHO", "CF22321": "THOR SUPER INTENSE", "CF22322": "MATRIX INTENSE", "CF22323": "ZAT BLACK BLACK", "CF22324": "MATRIX INTENSE", "CF22325": "THOR SUPER INTENSE", "CF22327": "LORD", "CF22328": "MUSK PRETO", "CF22329": "MUSK MARROM", "CF22330": "COTS PRETO", "CF22331": "COTS OCRE", "CF22332": "COTS CAQUI", "CF22335": "BENGALINE RESINADO PREMIUM PRETO", "CF22336": "BENGALINE RESINADO PREMIUM MARROM", "CF22337": "INDIGO 13 OZ", "CF22338": "VIRAMUNDO", "CF22341": "JERRY LISTRADO", "CF22357": "MATRIX INTENSE", "CF22358": "MATRIX INTENSE", "CF22359": "FORTE", "CM30952": "TRIPLE DRY", "CM30953": "MATRIX INTENSE", "CM30954": "NEO SKY", "CM30957": "FABRICA", "CM30958": "VALERIA", "CM30959": "BEATRICE", "CM30960": "SPINNING", "CM30961": "CATARINA BLACK BLACK", "CM30962": "PLUSH", "CM30963": "FABRICA", "CM30966": "FORTE", "CM30967": "SPINNING", "CM30968": "PLUSH", "CM30969": "NEO SKY", "CM30970": "THOR SUPER INTENSE", "CM30971": "VENTURA", "CM30972": "NEW SANDLER", "CM30974": "RUES PRETO", "CM30975": "RUES MARINHO", "CM30976": "RUES CHUMBO", "CM30977": "RUES CAQUI", "CM30978": "RUES AREIA", "CM30979": "RUES PRETO", "CM30980": "RUES MARINHO", "CM30981": "RUES CAQUI", "CM30982": "RUES AREIA", "CM30995": "VIRAMUNDO", "CM30996": "LORD", "CM30997": "SOLARIS", "CM31000": "MATRIX INTENSE", "CM31001": "MILA", "CM31011": "MIXLINHO", "CM31013": "TRIPLE DRY", "CM31014": "TRIPLE DRY", "CM31016": "ALCARAZ", "CO22226": "PU PESADO PRETO", "CO22241": "PU PESADO MARROM", "CO22271": "MUSK PRETO", "CO22272": "MUSK MARROM", "CS22344": "LÃ BATIDA CAQUI", "CS22345": "LÃ BATIDA CAFÉ", "CS22347": "LÃ BATIDA CASTANHO", "CS22348": "LÃ BATIDA PRETO", "CS22350": "SUEDE CASTANHO", "CS22351": "SUEDE BEGE", "CS22353": "TECIDO IMPORTADO", "JQ22224": "CATARINA BLACK BLACK", "JQ22229": "VIRAMUNDO", "JQ22232": "KRATOS BLUE", "JQ22236": "MUSK PRETO / CATARINA BLACK", "JQ22248": "MIXLINHO", "JQ22249": "PU PRETO", "JQ22250": "PU CAFÉ", "JQ22269": "LORENZO PT", "JQ22287": "NATURAL DENIM / PU CARAMELO", "JQ22333": "ALEC PT", "JQ22354": "KRATOS BLUE", "JQ22360": "PU PESADO PRETO", "JQ31006": "SPINNING PT", "JQ31007": "PU PRETO", "JQ31008": "PU CAFÉ", "JQ31012": "VIRAMUNDO", "S22199": "BEATRICE", "S22200": "BEATRICE", "S22201": "FORTE", "S22202": "MIXLINHO", "S22203": "COTS PRETO", "S22204": "COTS AREIA", "S22205": "COTS CAQUI", "S22206": "BEATRICE", "S22209": "BEATRICE", "S22219": "MATRIX INTENSE", "S22220": "AYLA", "S22255": "PU PESADO PRETO", "S22256": "PU PESADO MARROM", "S22270": "THOR BROWN", "S22281": "INDIGO 13 OZ", "S22282": "KRATOS BLUE", "S22288": "VIRAMUNDO", "S22289": "ALEC PT", "S22290": "ZAT BLACK BLACK", "S22291": "NEO SKY", "S22292": "THOR SUPER INTENSE", "S22293": "NATURAL DENIM", "S22294": "KRIPTO ROYAL", "S22295": "MATRIX INTENSE", "S22326": "NEO SKY", "S22340": "INDIGO 13 OZ", "SA22207": "BEATRICE", "SA22231": "KRATOS BLUE", "SA22240": "PU LIGHT ROYALE PRETO", "SA22257": "PU PESADO PRETO", "SA22258": "PU PESADO MARROM", "SA22268": "LORENZO PT", "SA22283": "KRATOS BLUE", "SA22296": "VIRAMUNDO", "SA22297": "LORENZO PT", "SA22298": "SOLARIS", "SA22299": "ALEC PT", "SA22300": "THOR SUPER INTENSE", "SA22342": "INDIGO 13 OZ", "SS22190": "MUSK MARROM", "SS22355": "MUSK PRETO"};
+
+var REF_COMPOSICAO = {"B22339": "100% Algodão", "B30983": "Com Elastano", "B30984": "Com Elastano", "B30985": "Com Elastano", "B30986": "Com Elastano", "B30987": "Com Elastano", "B30988": "Com Elastano", "B30989": "Com Elastano", "B30990": "Com Elastano", "B30991": "Com Elastano", "B30992": "Com Elastano", "B30993": "Com Elastano", "B30994": "Com Elastano", "B31002": "100% Algodão", "B31004": "100% Algodão", "B31005": "Com Elastano", "B31009": "100% Algodão", "B31010": "Com Elastano", "B31015": "Com Elastano", "CA22221": "100% Algodão", "CA22239": "100% Algodão", "CF22176": "Com Elastano", "CF22177": "Com Elastano", "CF22178": "100% Algodão", "CF22179": "Com Elastano", "CF22180": "Com Elastano", "CF22181": "Com Elastano", "CF22182": "Com Elastano", "CF22183": "Com Elastano", "CF22184": "100% Algodão", "CF22185": "Com Elastano", "CF22186": "Com Elastano", "CF22187": "Com Elastano", "CF22188": "Com Elastano", "CF22191": "100% Algodão", "CF22192": "Com Elastano", "CF22193": "Com Elastano", "CF22194": "Com Elastano", "CF22195": "Com Elastano", "CF22196": "Com Elastano", "CF22197": "Com Elastano", "CF22198": "Com Elastano", "CF22208": "Com Elastano", "CF22210": "Com Elastano", "CF22211": "Com Elastano", "CF22212": "Com Elastano", "CF22213": "Com Elastano", "CF22214": "Com Elastano", "CF22215": "Com Elastano", "CF22217": "Com Elastano", "CF22218": "Com Elastano", "CF22222": "100% Algodão", "CF22223": "Com Elastano", "CF22225": "Com Elastano", "CF22238": "100% Algodão", "CF22242": "Com Elastano", "CF22259": "Com Elastano", "CF22260": "Com Elastano", "CF22263": "100% Algodão", "CF22264": "100% Algodão", "CF22266": "Com Elastano", "CF22275": "Com Elastano", "CF22278": "Com Elastano", "CF22279": "100% Algodão", "CF22280": "100% Algodão", "CF22302": "100% Algodão", "CF22304": "100% Algodão", "CF22307": "100% Algodão", "CF22309": "Com Elastano", "CF22310": "Com Elastano", "CF22311": "Com Elastano", "CF22312": "Com Elastano", "CF22314": "100% Algodão", "CF22315": "Com Elastano", "CF22316": "Com Elastano", "CF22317": "100% Algodão", "CF22318": "Com Elastano", "CF22319": "Com Elastano", "CF22320": "Com Elastano", "CF22321": "100% Algodão", "CF22322": "Com Elastano", "CF22324": "Com Elastano", "CF22325": "100% Algodão", "CF22327": "Com Elastano", "CF22330": "Com Elastano", "CF22331": "Com Elastano", "CF22332": "Com Elastano", "CF22337": "100% Algodão", "CF22341": "100% Algodão", "CF22357": "Com Elastano", "CF22358": "Com Elastano", "CF22359": "Com Elastano", "CM30952": "Com Elastano", "CM30953": "Com Elastano", "CM30954": "Com Elastano", "CM30958": "Com Elastano", "CM30959": "Com Elastano", "CM30960": "Com Elastano", "CM30961": "Com Elastano", "CM30962": "Com Elastano", "CM30966": "Com Elastano", "CM30967": "Com Elastano", "CM30968": "Com Elastano", "CM30969": "Com Elastano", "CM30970": "100% Algodão", "CM30971": "Com Elastano", "CM30974": "Com Elastano", "CM30975": "Com Elastano", "CM30976": "Com Elastano", "CM30977": "Com Elastano", "CM30978": "Com Elastano", "CM30979": "Com Elastano", "CM30980": "Com Elastano", "CM30981": "Com Elastano", "CM30982": "Com Elastano", "CM30996": "Com Elastano", "CM31000": "Com Elastano", "CM31001": "Com Elastano", "CM31011": "Com Elastano", "CM31013": "Com Elastano", "CM31014": "Com Elastano", "CM31016": "Com Elastano", "JQ22224": "Com Elastano", "JQ22248": "Com Elastano", "JQ22333": "Com Elastano", "JQ31006": "Com Elastano", "S22199": "Com Elastano", "S22200": "Com Elastano", "S22201": "Com Elastano", "S22202": "Com Elastano", "S22203": "Com Elastano", "S22204": "Com Elastano", "S22205": "Com Elastano", "S22206": "Com Elastano", "S22209": "Com Elastano", "S22219": "Com Elastano", "S22220": "Com Elastano", "S22270": "100% Algodão", "S22281": "100% Algodão", "S22289": "Com Elastano", "S22291": "Com Elastano", "S22292": "100% Algodão", "S22293": "Com Elastano", "S22295": "Com Elastano", "S22326": "Com Elastano", "S22340": "100% Algodão", "SA22207": "Com Elastano", "SA22299": "Com Elastano", "SA22300": "100% Algodão", "SA22342": "100% Algodão", "B30998": "Com Elastano", "B30999": "Com Elastano", "B31003": "Com Elastano", "BL22237": "Com Elastano", "BL22254": "Com Elastano", "CA22284": "Com Elastano", "CA22285": "Com Elastano", "CA22286": "Com Elastano", "CF22189": "Com Elastano", "CF22216": "Com Elastano", "CF22227": "Com Elastano", "CF22228": "Com Elastano", "CF22230": "100% Algodão", "CF22234": "100% Algodão", "CF22235": "Com Elastano", "CF22246": "Com Elastano", "CF22247": "Com Elastano", "CF22251": "Com Elastano", "CF22252": "Com Elastano", "CF22253": "Com Elastano", "CF22261": "Com Elastano", "CF22262": "Com Elastano", "CF22265": "Com Elastano", "CF22267": "Com Elastano", "CF22274": "Com Elastano", "CF22277": "Com Elastano", "CF22306": "100% Algodão", "CF22308": "Com Elastano", "CF22313": "Com Elastano", "CF22328": "Com Elastano", "CF22329": "Com Elastano", "CF22335": "Com Elastano", "CF22336": "Com Elastano", "CF22338": "Com Elastano", "CM30957": "Com Elastano", "CM30963": "Com Elastano", "CM30972": "Com Elastano", "CM30995": "Com Elastano", "CM30997": "Com Elastano", "CO22271": "Com Elastano", "CO22272": "Com Elastano", "JQ22229": "Com Elastano", "JQ22232": "100% Algodão", "JQ22236": "Com Elastano", "JQ22269": "Com Elastano", "JQ22354": "100% Algodão", "JQ31012": "Com Elastano", "S22282": "100% Algodão", "S22288": "Com Elastano", "SA22231": "100% Algodão", "SA22268": "Com Elastano", "SA22283": "100% Algodão", "SA22296": "Com Elastano", "SA22297": "Com Elastano", "SA22298": "Com Elastano", "SS22190": "Com Elastano", "SS22355": "Com Elastano", "CF22233": "Com Elastano", "CF22244": "PU", "CF22245": "PU", "CF22303": "100% Algodão", "CF22305": "100% Algodão", "CF22323": "100% Algodão", "CO22226": "PU", "CO22241": "PU", "JQ22249": "PU", "JQ22250": "PU", "JQ22287": "PU", "JQ22360": "PU", "JQ31007": "PU", "JQ31008": "PU", "S22255": "PU", "S22256": "PU", "S22290": "100% Algodão", "SA22240": "PU", "SA22257": "PU", "SA22258": "PU"};
+
+var REF_COR_MANUAL = {"B30983": ["Preto"], "B30984": ["Marinho"], "B30985": ["Chumbo"], "B30986": ["Caqui"], "B30987": ["Areia"], "B30988": ["Preto"], "B30989": ["Caqui"], "B30990": ["Areia"], "B30991": ["Chumbo"], "B30993": ["Clara", "Média", "Escura"], "B30994": ["Verde", "Caqui", "Areia"], "B31010": ["Azul"], "B31015": ["Crua"], "BL22254": ["Preto"], "CF22192": ["Marrom", "Areia"], "CF22193": ["Clara", "Média", "Escura", "Amaciada"], "CF22196": ["Preto"], "CF22197": ["Caqui"], "CF22198": ["Areia"], "CF22210": ["Clara", "Média", "Escura"], "CF22211": ["Marrom", "Preto", "Off White", "Caqui"], "CF22244": ["Preto"], "CF22245": ["Marrom"], "CF22246": ["Preto"], "CF22247": ["Marrom"], "CF22251": ["Preto"], "CF22252": ["Caramelo"], "CF22253": ["Marrom"], "CF22261": ["Preto"], "CF22262": ["Marrom"], "CF22266": ["Caqui", "Marrom Claro", "Marfim"], "CF22267": ["Cores"], "CF22278": ["Média", "Escura", "Amaciada"], "CF22304": ["Marfim", "Marrom", "Caqui"], "CF22330": ["Preto"], "CF22331": ["Ocre"], "CF22332": ["Caqui"], "CF22335": ["Preto"], "CF22336": ["Marrom"], "CM30960": ["Linho", "Caqui"], "CM30961": ["Areia", "Marrom", "Verde Militar"], "CM30966": ["Claro", "Médio", "Escuro", "Amaciado"], "CM30967": ["Caqui", "Preto", "Verde Militar"], "CM30974": ["Preto"], "CM30975": ["Marinho"], "CM30976": ["Chumbo"], "CM30977": ["Caqui"], "CM30978": ["Areia"], "CM30979": ["Preto"], "CM30980": ["Marinho"], "CM30981": ["Caqui"], "CM30982": ["Areia"], "CM31013": ["Escura"], "CM31014": ["Média"], "CO22226": ["Preto"], "CO22241": ["Marrom"], "CO22271": ["Preto"], "CO22272": ["Marrom"], "JQ22269": ["Marrom", "Cappuccino"], "JQ22333": ["Off White", "Preto", "Caqui"], "JQ31006": ["Verde Militar", "Preto", "Caqui"], "S22201": ["Clara", "Média", "Escura"], "S22203": ["Preto"], "S22204": ["Areia"], "S22205": ["Caqui"], "S22255": ["Preto"], "S22256": ["Marrom"], "S22289": ["Marrom", "Caqui", "Marfim"], "SA22240": ["Preto"], "SA22257": ["Preto"], "SA22258": ["Marrom"], "SA22268": ["Cappuccino", "Marrom"], "SA22297": ["Marrom", "Cappuccino"], "SA22299": ["Preto", "Caqui", "Marrom"], "SS22190": ["Marrom"], "SS22355": ["Preto"], "CM31018": ["Preto"], "CM31019": ["Chumbo"], "CM31020": ["Caqui"], "BL22237": ["Marrom"], "CA22284": ["Preto"], "CA22285": ["Caramelo"], "CA22286": ["Marrom"], "CF22235": ["Preto"], "CF22328": ["Preto"], "CF22329": ["Marrom"], "CS22344": ["Caqui"], "CS22345": ["Café"], "CS22347": ["Castanho"], "CS22348": ["Preto"], "CS22350": ["Castanho"], "CS22351": ["Bege"], "JQ22236": ["Preto"], "JQ22249": ["Preto"], "JQ22250": ["Café"], "JQ22287": ["Caramelo"], "JQ22360": ["Preto"], "JQ31007": ["Preto"], "JQ31008": ["Café"]};
+var GRADE_EXTENDIDA={"B31005": true, "CF22194": true, "CM30959": true, "CM30971": true, "CM30974": true, "CM30975": true, "CM30976": true, "CM30977": true, "CM30978": true, "CM30996": true, "CM31001": true};
+var REF_GRADE_RANGE = {"B22339": "34-44", "B30983": "36-48", "B30984": "36-48", "B30985": "36-48", "B30986": "36-48", "B30987": "36-48", "B30988": "36-46", "B30989": "36-46", "B30990": "36-46", "B30991": "36-46", "B30992": "36-48", "B30993": "36-48", "B30994": "36-48", "B30998": "38-48", "B30999": "36-48", "B31002": "36-46", "B31003": "36-46", "B31004": "36-46", "B31005": "38-54", "B31009": "36-46", "B31010": "36-46", "B31015": "36-46", "BL22237": "PP-GG", "BL22254": "PP-GG", "CA22221": "PP-GG", "CA22239": "PP-GG", "CA22284": "PP-GG", "CA22286": "PP-GG", "CF22176": "34-48", "CF22177": "34-48", "CF22178": "34-48", "CF22179": "34-48", "CF22180": "34-48", "CF22181": "34-48", "CF22182": "34-48", "CF22183": "34-48", "CF22184": "34-46", "CF22185": "32-48", "CF22186": "34-48", "CF22187": "34-48", "CF22188": "34-48", "CF22189": "34-48", "CF22191": "32-44", "CF22192": "34-48", "CF22193": "34-48", "CF22194": "34-54", "CF22195": "34-48", "CF22196": "34-48", "CF22197": "34-48", "CF22198": "34-48", "CF22208": "46-54", "CF22210": "34-48", "CF22211": "34-48", "CF22212": "46-54", "CF22213": "46-54", "CF22214": "46-54", "CF22215": "46-54", "CF22216": "46-54", "CF22217": "46-54", "CF22218": "46-54", "CF22222": "34-48", "CF22223": "34-48", "CF22225": "32-48", "CF22227": "34-48", "CF22228": "34-48", "CF22230": "32-46", "CF22233": "34-48", "CF22234": "32-46", "CF22235": "34-46", "CF22238": "32-44", "CF22242": "32-46", "CF22244": "34-48", "CF22245": "34-48", "CF22246": "34-48", "CF22247": "34-48", "CF22251": "PP-GG", "CF22252": "PP-GG", "CF22253": "PP-GG", "CF22259": "34-48", "CF22260": "34-46", "CF22261": "32-48", "CF22262": "32-48", "CF22263": "32-46", "CF22264": "32-46", "CF22265": "34-48", "CF22266": "34-48", "CF22267": "34-48", "CF22274": "34-48", "CF22275": "34-48", "CF22277": "32-46", "CF22278": "34-48", "CF22279": "32-46", "CF22280": "32-46", "CF22302": "32-44", "CF22303": "32-44", "CF22304": "32-44", "CF22305": "32-48", "CF22306": "32-46", "CF22307": "32-46", "CF22308": "34-46", "CF22309": "34-46", "CF22310": "34-48", "CF22311": "34-48", "CF22312": "34-48", "CF22313": "34-48", "CF22314": "32-46", "CF22315": "34-46", "CF22316": "34-46", "CF22317": "34-46", "CF22318": "32-48", "CF22319": "32-46", "CF22320": "34-48", "CF22321": "32-46", "CF22322": "34-48", "CF22323": "32-48", "CF22324": "34-48", "CF22325": "32-46", "CF22327": "32-46", "CF22328": "34-48", "CF22329": "34-48", "CF22330": "34-48", "CF22331": "34-48", "CF22332": "34-48", "CF22335": "34-48", "CF22337": "32-44", "CF22338": "34-46", "CF22341": "34-48", "CF22357": "34-48", "CF22358": "34-48", "CF22359": "34-48", "CM30952": "36-46", "CM30953": "36-46", "CM30954": "36-46", "CM30957": "38-48", "CM30958": "38-48", "CM30959": "32-54", "CM30960": "36-48", "CM30961": "36-48", "CM30962": "38-48", "CM30963": "36-46", "CM30966": "36-48", "CM30967": "36-48", "CM30968": "36-48", "CM30969": "38-48", "CM30970": "36-46", "CM30971": "38-54", "CM30972": "38-48", "CM30974": "32-54", "CM30975": "32-54", "CM30976": "32-54", "CM30977": "32-54", "CM30978": "32-54", "CM30979": "36-46", "CM30980": "36-46", "CM30981": "36-46", "CM30982": "36-46", "CM30995": "38-48", "CM30996": "38-54", "CM30997": "36-48", "CM31000": "36-46", "CM31001": "38-54", "CM31011": "36-46", "CM31013": "36-48", "CM31014": "36-48", "CM31016": "38-48", "CO22226": "PP-GG", "CO22241": "PP-GG", "CO22271": "PP-GG", "CO22272": "PP-GG", "JQ22224": "PP-GG", "JQ22229": "PP-GG", "JQ22232": "PP-GG", "JQ22236": "PP-GG", "JQ22248": "PP-GG", "JQ22249": "P-GG", "JQ22250": "P-GG", "JQ22269": "PP-GG", "JQ22287": "PP-GG", "JQ22333": "PP-GG", "JQ22354": "PP-GG", "JQ22360": "PP-GG", "JQ31006": "P-GG", "JQ31007": "P-GG", "JQ31008": "P-GG", "JQ31012": "P-GG", "S22199": "34-48", "S22200": "34-48", "S22201": "34-48", "S22202": "34-48", "S22203": "34-48", "S22204": "34-48", "S22205": "34-48", "S22206": "34-48", "S22209": "46-54", "S22219": "46-54", "S22220": "46-54", "S22255": "32-48", "S22256": "32-48", "S22270": "34-46", "S22281": "34-46", "S22282": "34-46", "S22288": "34-48", "S22289": "34-48", "S22290": "34-48", "S22291": "34-46", "S22292": "32-46", "S22293": "34-46", "S22294": "34-46", "S22295": "34-48", "S22326": "34-46", "S22340": "34-46", "SA22207": "34-48", "SA22231": "34-48", "SA22240": "34-44", "SA22257": "32-46", "SA22258": "32-46", "SA22268": "34-48", "SA22283": "34-44", "SA22296": "34-44", "SA22297": "34-46", "SA22298": "34-48", "SA22299": "34-48", "SA22300": "34-44", "SA22342": "34-48", "SS22190": "32-44", "SS22355": "32-44", "CA22285": "PP-GG"};
+var REF_CATALOGO = {"B22339": ["BERMUDA FEM. WIDE LEG", 134.9], "B30983": ["BERMUDA MASC. SPORT FINO", 112.9], "B30984": ["BERMUDA MASC. SPORT FINO", 112.9], "B30985": ["BERMUDA MASC. SPORT FINO", 112.9], "B30986": ["BERMUDA MASC. SPORT FINO", 112.9], "B30987": ["BERMUDA MASC. SPORT FINO", 112.9], "B30988": ["BERMUDA MASC. SPORT FINO MEDIA", 110.9], "B30989": ["BERMUDA MASC. SPORT FINO MEDIA", 110.9], "B30990": ["BERMUDA MASC. SPORT FINO MEDIA", 110.9], "B30991": ["BERMUDA MASC. SPORT FINO MEDIA", 110.9], "B30992": ["BERMUDA MASC.TRADICIONAL", 108.9], "B30993": ["BERMUDA MASC.TRADICIONAL", 104.9], "B30994": ["BERMUDA MASC.TRADICIONAL", 121.9], "B30998": ["BERMUDA MASC.", 129.9], "B30999": ["BERMUDA MASC.", 123.9], "B31002": ["BERMUDA MASC.", 122.9], "B31003": ["BERMUDA MASC.", 135.9], "B31004": ["BERMUDA MASC.", 113.9], "B31005": ["BERMUDA MASC. TRADICIONAL", 109.9], "B31009": ["BERMUDA MASC.", 132.9], "B31010": ["BERMUDA MASC. SPORT FINO MEDIA", 123.9], "B31015": ["BERMUDA MASC. SPORT FINO MEDIA", 123.9], "BL22237": ["BLUSA FEM.", 134.9], "BL22254": ["BLUSA FEM.", 134.9], "CA22221": ["CAMISA FEM.", 153.9], "CA22239": ["CAMISA FEM.", 159.9], "CA22284": ["CAMISA FEM. ALONGADA", 196.9], "CA22285": ["CAMISA FEM. ALONGADA", 196.9], "CA22286": ["CAMISA FEM. ALONGADA", 196.9], "CF22176": ["CALCA FEM. LITTLE BOOT", 143.9], "CF22177": ["CALCA FEM. CIGARRETE", 145.9], "CF22178": ["CALCA FEM. WIDE CROPPED", 145.9], "CF22179": ["CALCA FEM. BOOT CUT", 130.9], "CF22180": ["CALCA FEM. SKINNY", 119.9], "CF22181": ["CALCA FEM. CIGARRETE", 147.9], "CF22182": ["CALCA FEM. SKINNY", 147.9], "CF22183": ["CALCA FEM. WIDE CROPPED", 137.9], "CF22184": ["CALCA FEM. WIDE LEG", 138.9], "CF22185": ["CALCA FEM. SKINNY", 119.9], "CF22186": ["CALCA FEM. SKINNY", 149.9], "CF22187": ["CALCA FEM. SKINNY LIPO", 138.9], "CF22188": ["CALCA FEM. SKINNY", 156.9], "CF22189": ["CALCA FEM. WIDE LEG", 159.9], "CF22191": ["CALCA FEM. BARREL", 134.9], "CF22192": ["CALCA FEM. CIGARRETE", 137.9], "CF22193": ["CALCA FEM. SKINNY", 110.9], "CF22194": ["CALCA FEM. LITTLE BOOT", 128.9], "CF22195": ["CALCA FEM. CIGARRETE SPORT FINO", 128.9], "CF22196": ["CALCA FEM. CIGARRETE SPORT FINO", 147.9], "CF22197": ["CALCA FEM. CIGARRETE SPORT FINO", 147.9], "CF22198": ["CALCA FEM. CIGARRETE SPORT FINO", 147.9], "CF22208": ["CALCA FEM.SKINNY PLUS SIZE", 132.9], "CF22210": ["CALCA FEM. WIDE CROPPED", 116.9], "CF22211": ["CALCA FEM. WIDE LEG", 136.9], "CF22212": ["CALCA FEM. SKINNY PLUS SIZE", 144.9], "CF22213": ["CALCA FEM. CIGARRETE PLUS SIZE", 149.9], "CF22214": ["CALCA FEM. CIGARRETE PLUS", 152.9], "CF22215": ["CALCA FEM. LITLLE BOOT PLUS", 149.9], "CF22216": ["CALCA FEM. WIDE CROPPED PLUS", 159.9], "CF22217": ["CALCA FEM. RETA PLUS", 118.9], "CF22218": ["CALCA FEM. RETA CROPPED PLUS", 141.9], "CF22222": ["CALCA FEM. RETA", 125.9], "CF22223": ["CALCA FEM. LITTLE BOOT", 162.9], "CF22225": ["CALCA FEM. WIDE LEG", 142.9], "CF22227": ["CALCA FEM. MOM", 147.9], "CF22228": ["CALCA FEM. RETA", 157.9], "CF22230": ["CALCA FEM. WIDE CROPPED", 137.9], "CF22233": ["CALCA FEM. BOOT CUT", 120.9], "CF22234": ["CALCA FEM. WIDE LEG", 137.9], "CF22235": ["CALCA FEM. RETA", 131.9], "CF22238": ["CALCA FEM. SUPER WIDE LEG", 148.9], "CF22242": ["CALCA FEM. LITTLE BOOT", 143.9], "CF22244": ["CALCA FEM. WIDE LEG", 170.9], "CF22245": ["CALCA FEM. WIDE LEG", 170.9], "CF22246": ["CALCA FEM. BOOT CUT", 157.9], "CF22247": ["CALCA FEM. BOOT CUT", 157.9], "CF22251": ["CALCA FEM. SKINNY LEGGING", 137.9], "CF22252": ["CALCA FEM. SKINNY LEGGING", 137.9], "CF22253": ["CALCA FEM. SKINNY LEGGING", 137.9], "CF22259": ["CALCA FEM. CIGARRETE", 145.9], "CF22260": ["CALCA FEM. CIGARRETE", 152.9], "CF22261": ["CALCA FEM. SKINNY", 129.9], "CF22262": ["CALCA FEM. SKINNY", 129.9], "CF22263": ["CALCA FEM. SUPER WIDE LEG", 147.9], "CF22264": ["CALCA FEM. MOM", 137.9], "CF22265": ["CALCA FEM. WIDE LEG", 159.9], "CF22266": ["CALCA FEM. LITTLE BOOT", 150.9], "CF22267": ["CALCA FEM. RETA", 130.9], "CF22274": ["CALCA FEM. FLARE", 166.9], "CF22275": ["CALCA FEM. FLARE", 136.9], "CF22277": ["CALCA FEM. WIDE LEG", 178.9], "CF22278": ["CALCA FEM. LITTLE BOOT", 112.9], "CF22279": ["CALCA FEM. WIDE LEG", 149.9], "CF22280": ["CALCA FEM. WIDE CROPPED", 158.9], "CF22302": ["CALCA FEM. BARREL", 159.9], "CF22303": ["CALCA FEM. BARREL", 151.9], "CF22304": ["CALCA FEM. BARREL", 133.9], "CF22305": ["CALCA FEM. MOM", 120.9], "CF22306": ["CALCA FEM. MOM", 125.9], "CF22307": ["CALCA FEM. MOM", 149.9], "CF22308": ["CALCA FEM. CIGARRETE LIPO", 133.9], "CF22309": ["CALCA FEM. CIGARRETE LIPO", 133.9], "CF22310": ["CALCA FEM. CIGARRETE", 138.9], "CF22311": ["CALCA FEM. LITTLE BOOT", 136.9], "CF22312": ["CALCA FEM. BOOT CUT", 145.9], "CF22313": ["CALCA FEM. BOOT CUT", 146.9], "CF22314": ["CALCA FEM. RETA", 145.9], "CF22315": ["CALCA FEM. RETA CROPPED", 117.9], "CF22316": ["CALCA FEM. RETA CROPPED", 139.9], "CF22317": ["CALA FEM. RETA CROPPED", 152.9], "CF22318": ["CALCA FEM. RETA LIPO", 131.9], "CF22319": ["CALCA FEM. WIDE LEG", 147.9], "CF22320": ["CALCA FEM. WIDE LEG", 137.9], "CF22321": ["CALCA FEM. WIDE LEG CARGO", 159.9], "CF22322": ["CALCA FEM. WIDE CROPPED LIPO", 164.9], "CF22323": ["CALCA FEM. WIDE CROPPED", 126.9], "CF22324": ["CALCA FEM. WIDE CROPPED LIPO", 143.9], "CF22325": ["CALCA FEM. WIDE CROPPED", 139.9], "CF22327": ["CALCA FEM. SLOUCHY", 124.9], "CF22328": ["CALCA FEM. MOM", 123.9], "CF22329": ["CALCA FEM. MOM", 123.9], "CF22330": ["CALCA FEM. RETA ALFAIATARIA", 158.9], "CF22331": ["CALCA FEM. RETA ALFAIATARIA", 158.9], "CF22332": ["CALCA FEM. RETA ALFAIATARIA", 158.9], "CF22335": ["CALCA FEM. LITLLE BOOT", 150.9], "CF22336": ["CALCA FEM. LITTLE BOOT", 150.9], "CF22337": ["CALCA FEM. SUPER WIDE", 166.9], "CF22338": ["CALCA FEM. SLOUCHY", 144.9], "CF22341": ["CALCA FEM. RETA CROPPED", 134.9], "CF22357": ["CALCA FEM. LITTLE BOOT COUNTRY", 189.9], "CF22358": ["CALCA FEM. LITTLE BOOT COUNTRY", 199.9], "CF22359": ["CALCA FEM. BOOT CUT COUNTRY", 142.9], "CM30952": ["CALCA MASC. CIGARRETE", 161.9], "CM30953": ["CALCA MASC. CIGARRETE", 140.9], "CM30954": ["CALCA MASC. CIGARRETE", 137.9], "CM30957": ["CALCA MASC. SKINNY", 163.9], "CM30958": ["CALCA MASC. SKINNY", 146.9], "CM30959": ["CALCA MASC. SKINNY", 119.9], "CM30960": ["CALCA MASC. SKINNY", 130.9], "CM30961": ["CALCA MASC. SKINNY", 138.9], "CM30962": ["CALCA MASC. SKINNY", 136.9], "CM30963": ["CALCA MASC. SKINNY", 152.9], "CM30966": ["CALCA MASC. SLIM", 116.9], "CM30967": ["CALCA MASC. SLIM", 135.9], "CM30968": ["CALCA MASC. SLIM", 139.9], "CM30969": ["CALCA MASC. SLIM", 139.9], "CM30970": ["CALCA MASC. SLIM", 128.9], "CM30971": ["CALCA MASC. SLIM", 124.9], "CM30972": ["CALCA MASC. SLIM", 166.9], "CM30974": ["CALCA MASC. SPORT FINO", 127.9], "CM30975": ["CALCA MASC. SPORT FINO", 127.9], "CM30976": ["CALCA MASC. SPORT FINO", 127.9], "CM30977": ["CALCA MASC. SPORT FINO", 127.9], "CM30978": ["CALCA MASC. SPORT FINO", 127.9], "CM30979": ["CALCA MASC. SPORT FINO CROPPED", 121.9], "CM30980": ["CALCA MASC. SPORT FINO CROPPED", 121.9], "CM30981": ["CALCA MASC. SPORT FINO CROPPED", 121.9], "CM30982": ["CALCA MASC. SPORT FINO CROPPED", 121.9], "CM30995": ["CALCA MASC. RETA", 159.9], "CM30996": ["CALCA MASC. RETA", 122.9], "CM30997": ["CALCA MASC. SLIM", 152.9], "CM31000": ["CALCA MASC. SKINNY", 152.9], "CM31001": ["CALCA MASC. RETA", 138.9], "CM31011": ["CALCA MASC. SPORT FINO LINHO", 133.9], "CM31013": ["CALCA MASC. SLIM", 170.9], "CM31014": ["CALCA MASC. SLIM", 165.9], "CM31016": ["CALCA MASC. RETA COUNTRY", 159.9], "CO22226": ["COLETE FEM. ALONGADO", 163.9], "CO22241": ["COLETE FEM. ALONGADO", 163.9], "CO22271": ["COLETE FEM.", 116.9], "CO22272": ["COLETE FEM.", 116.9], "CS22344": ["CASACO LONGO FEM.", 298.9], "CS22345": ["CASACO LONGO FEM.", 298.9], "CS22347": ["CASACO MEDIO FEM.", 294.9], "CS22348": ["CASACO MEDIO FEM.", 294.9], "CS22350": ["CASACO CURTO FEM.", 188.9], "CS22351": ["CASACO CURTO FEM.", 188.9], "CS22353": ["TRENCH COAT FEM.", 240.9], "JQ22224": ["JAQUETA FEM. CROPPED", 185.9], "JQ22229": ["JAQUETA FEM. TRADICIONAL", 208.9], "JQ22232": ["JAQUETA FEM. CROPPED", 178.9], "JQ22236": ["JAQUETA FEM. TRADICIONAL", 175.9], "JQ22248": ["JAQUETA FEM. BOMBER", 265.9], "JQ22249": ["JAQUETA FEM. BOMBER", 218.9], "JQ22250": ["JAQUETA FEM. BOMBER", 218.9], "JQ22269": ["JAQUETA FEM. CROPPED", 173.9], "JQ22287": ["JAQUETA FEM. BOMBER", 165.9], "JQ22333": ["JAQUETA FEM.", 213.9], "JQ22354": ["JAQUETA FEM.", 211.9], "JQ22360": ["JAQUETA FEM. BOMBER", 228.9], "JQ31006": ["JAQUETA MASC.", 229.9], "JQ31007": ["JAQUETA MASC.IMPORTADA", 160.9], "JQ31008": ["JAQUETA MASC.IMPORTADA", 160.9], "JQ31012": ["JAQUETA MASC.", 258.9], "S22199": ["SHORTS FEM. CURTO", 101.9], "S22200": ["SHORTS FEM. MEIA COXA", 105.9], "S22201": ["SHORTS FEM. MEIA COXA", 99.9], "S22202": ["SHORTS FEM. MEIA COXA", 106.9], "S22203": ["SHORTS FEM. SPORT FINO MEIA COXA", 138.9], "S22204": ["SHORTS FEM.MEIA COXA SPORT FINO", 138.9], "S22205": ["SHORTS FEM. SPORT FINO MEIA COXA", 138.9], "S22206": ["SHORTS FEM. CICLISTA", 106.9], "S22209": ["SHORTS FEM. MEIA COXA PLUS", 110.9], "S22219": ["SHORTS FEM. MEIA COXA PLUS", 118.9], "S22220": ["SHORTS FEM. CICLISTA PLUS", 126.9], "S22255": ["SHORTS FEM. MEIA COXA", 124.9], "S22256": ["SHORTS FEM. MEIA COXA", 124.9], "S22270": ["SHORTS FEM. MOM MEIA COXA", 120.9], "S22281": ["SHORTS FEM. MEIA COXA", 121.9], "S22282": ["SHORTS FEM. CURTO", 120.9], "S22288": ["SHORTS FEM. MOM MEIA COXA", 120.9], "S22289": ["SHORTS FEM. MOM MEIA COXA", 114.9], "S22290": ["SHORTS FEM. MOM", 135.9], "S22291": ["SHORTS FEM. MEIA COXA", 110.9], "S22292": ["SHORTS FEM. CURTO", 120.9], "S22293": ["SHORTS FEM. SLOUCHY", 97.9], "S22294": ["SHORTS FEM. SLOUCHY", 122.9], "S22295": ["SHORTS FEM. CICLISTA", 114.9], "S22326": ["SHORTS FEM. CURTO", 116.9], "S22340": ["SHORTS FEM. MOM MEIA COXA", 133.9], "SA22207": ["SAIA FEM. LAPIS", 107.9], "SA22231": ["SAIA FEM.MIDI", 128.9], "SA22240": ["SAIA FEM. EVASÊ", 139.9], "SA22257": ["SAIA FEM. MEDIA", 122.9], "SA22258": ["SAIA FEM. MEDIA", 122.9], "SA22268": ["SAIA FEM. MIDI", 121.9], "SA22283": ["SAIA FEM. MEDIA", 105.9], "SA22296": ["SAIA FEM. MEDIA", 115.9], "SA22297": ["SAIA FEM. MEDIA", 103.9], "SA22298": ["SAIA FEM. MIDI + CURTA", 129.9], "SA22299": ["SAIA FEM. MIDI + CURTA", 133.9], "SA22300": ["SAIA FEM. EVASÊ", 161.9], "SA22342": ["SAIA FEM. MIDI", 151.9], "SS22190": ["SHORTS SAIA FEM.", 119.9], "SS22355": ["SHORTS SAIA FEM.", 119.9], "CM31018": ["CALCA MASC. ABED", 149.9], "CM31019": ["CALCA MASC. ABED", 149.9], "CM31020": ["CALCA MASC. ABED", 149.9]};
+var REF_IMPORTADO = {"CS22344": true, "CS22345": true, "CS22347": true, "CS22348": true, "CS22350": true, "CS22351": true, "CS22353": true, "JQ22249": true, "JQ22250": true, "JQ31007": true, "JQ31008": true, "CM31018": true, "CM31019": true, "CM31020": true};
+var refMix = 'TODOS';
+
+var TIPO_CORES={
+  'cf':'#e0608a','cm':'#4a8fd4','sh':'#e05c5c','sa2':'#9b59b6',
+  'bf':'#e8724a','bm':'#2e86c1','bl':'#1abc9c','tp':'#f0a500',
+  'ss':'#c0392b','vt':'#8e44ad','jq':'#5ec4a8','ca':'#d07090','co':'#9b7fd4','cs':'#a9dcf5','outros':'#888'
+};
+var TIPO_LABELS={
+  'cf':'Calça Fem.','cm':'Calça Masc.','sh':'Shorts','sa2':'Saia',
+  'bf':'Bermuda Fem.','bm':'Bermuda Masc.','bl':'Blusa','tp':'Top',
+  'ss':'Short Saia','vt':'Vestido','jq':'Jaqueta','ca':'Camisa','co':'Colete','cs':'Casaco','outros':'Outros'
+};
+
+function renderReferencias() {
+  var codRep = document.getElementById('ref-rep-select').value;
+  var dadosAll = getRefDados(codRep);
+  var dados = dadosAll.filter(function(d){return d.qtde>0;});
+  var totalQtde = dados.reduce(function(s,d){return s+d.qtde;},0);
+  popularSelectsModTecido();
+
+  // Composição só no "Todos"
+  var secComp=document.getElementById('comp-section');
+  if(secComp) secComp.style.display=codRep==='TODOS'?'':'none';
+  if(codRep==='TODOS') renderCompGrid(compSegAtivo);
+
+  // KPIs
+  var topRef = dados.length>0?dados[0]:null;
+  var tiposDistintos = {};
+  dados.forEach(function(d){tiposDistintos[d.tipo.key]=1;});
+  document.getElementById('ref-kpis').innerHTML =
+    '<div class="ref-kpi gold"><div class="lbl">Total de Peças</div><div class="val">'+fmtInt(totalQtde)+'</div><div class="sub">na seleção</div></div>'+
+    '<div class="ref-kpi"><div class="lbl">Referências Distintas</div><div class="val">'+dados.length+'</div><div class="sub">modelos vendidos</div></div>'+
+    '<div class="ref-kpi"><div class="lbl">Tipos Ativos</div><div class="val">'+Object.keys(tiposDistintos).length+'</div><div class="sub">categorias</div></div>'+
+    (topRef?'<div class="ref-kpi gold"><div class="lbl">Top Referência</div><div class="val" style="font-size:1rem">'+topRef.cod+'</div><div class="sub">'+fmtInt(topRef.qtde)+' peças</div></div>':'');
+
+  // Tipos
+  var tiposAgrup={};
+  dados.forEach(function(d){
+    var k=d.tipo.key;
+    if(!tiposAgrup[k])tiposAgrup[k]={qtde:0,label:d.tipo.label};
+    tiposAgrup[k].qtde+=d.qtde;
+  });
+  var tiposArr=Object.keys(tiposAgrup).map(function(k){return{key:k,label:tiposAgrup[k].label,qtde:tiposAgrup[k].qtde};});
+  tiposArr.sort(function(a,b){return b.qtde-a.qtde;});
+  var maxTipo=tiposArr.length>0?tiposArr[0].qtde:1;
+  var tipoHtml='';
+  tiposArr.forEach(function(t){
+    var pct=totalQtde>0?(t.qtde/totalQtde*100):0;
+    var w=maxTipo>0?(t.qtde/maxTipo*100):0;
+    var cor=TIPO_CORES[t.key]||'#888';
+    tipoHtml+='<div class="ref-tipo-card"><div class="tn"><span style="width:8px;height:8px;border-radius:50%;background:'+cor+';display:inline-block"></span>'+t.label+'</div><div class="tv">'+fmtInt(t.qtde)+'</div><div class="tp">'+pct.toFixed(1)+'%</div><div class="tbar-bg"><div class="tbar-fill" style="width:'+w.toFixed(1)+'%;background:'+cor+'"></div></div></div>';
+  });
+  document.getElementById('ref-tipo-cards').innerHTML=tipoHtml;
+
+  // KPIs por segmento (Fem / Masc / Country / Plus)
+  var segFem=0,segMasc=0,segCountry=0,segPlus=0;
+  dados.forEach(function(d){
+    var cod=d.cod, desc=d.desc.toUpperCase();
+    if(cod.startsWith('CF')||cod.startsWith('BF')||cod.startsWith('SS')||cod.startsWith('SA')||cod.startsWith('BL')||cod.startsWith('T2')||cod.startsWith('V2')||(cod.startsWith('S2'))||cod.startsWith('CA')||cod.startsWith('CO')||cod.startsWith('CS')||cod.startsWith('JQ2')){
+      // feminino — verificar plus/country primeiro
+      if(desc.indexOf('PLUS SIZE')>=0||desc.indexOf('PLUSSIZE')>=0) segPlus+=d.qtde;
+      else if(desc.indexOf('COUNTRY')>=0) segCountry+=d.qtde;
+      else segFem+=d.qtde;
+    } else if(cod.startsWith('CM')||cod.startsWith('BM')||cod.startsWith('B3')||cod.startsWith('JQ3')){
+      if(desc.indexOf('PLUS SIZE')>=0||desc.indexOf('PLUSSIZE')>=0) segPlus+=d.qtde;
+      else if(desc.indexOf('COUNTRY')>=0) segCountry+=d.qtde;
+      else segMasc+=d.qtde;
+    }
+  });
+  var segTotal=segFem+segMasc+segCountry+segPlus||1;
+  var segHtml=
+    '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;">'+
+    '<div style="background:var(--bg2);border:1px solid #e0608a44;border-radius:10px;padding:11px 14px;">'+
+      '<div style="font-size:.62rem;color:#e0608a;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Feminino</div>'+
+      '<div style="font-size:1.2rem;font-weight:700;color:#e0608a">'+fmtInt(segFem)+'</div>'+
+      '<div style="font-size:.65rem;color:var(--muted)">'+(segFem/segTotal*100).toFixed(1)+'% do total</div></div>'+
+    '<div style="background:var(--bg2);border:1px solid #4a8fd444;border-radius:10px;padding:11px 14px;">'+
+      '<div style="font-size:.62rem;color:#4a8fd4;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Masculino</div>'+
+      '<div style="font-size:1.2rem;font-weight:700;color:#4a8fd4">'+fmtInt(segMasc)+'</div>'+
+      '<div style="font-size:.65rem;color:var(--muted)">'+(segMasc/segTotal*100).toFixed(1)+'% do total</div></div>'+
+    '<div style="background:var(--bg2);border:1px solid #a9dcf544;border-radius:10px;padding:11px 14px;">'+
+      '<div style="font-size:.62rem;color:#a9dcf5;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Country</div>'+
+      '<div style="font-size:1.2rem;font-weight:700;color:#a9dcf5">'+fmtInt(segCountry)+'</div>'+
+      '<div style="font-size:.65rem;color:var(--muted)">'+(segCountry/segTotal*100).toFixed(1)+'% do total</div></div>'+
+    '<div style="background:var(--bg2);border:1px solid #3ecf7244;border-radius:10px;padding:11px 14px;">'+
+      '<div style="font-size:.62rem;color:#3ecf72;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Plus Size</div>'+
+      '<div style="font-size:1.2rem;font-weight:700;color:#3ecf72">'+fmtInt(segPlus)+'</div>'+
+      '<div style="font-size:.65rem;color:var(--muted)">'+(segPlus/segTotal*100).toFixed(1)+'% do total</div></div>'+
+    '</div>';
+
+  var elSeg=document.getElementById('ref-seg-kpis');
+  if(elSeg)elSeg.innerHTML=segHtml;
+
+  // helper: prefixo do tipo para o label do gráfico
+  function tipoPrefix(cod){
+    if(cod.startsWith('CF')) return 'Calça ';
+    if(cod.startsWith('CM')) return 'Calça ';
+    if(cod.startsWith('S2')||cod.startsWith('SS')) return 'Shorts ';
+    if(cod.startsWith('SA')) return 'Saia ';
+    if(cod.startsWith('BF')||cod.startsWith('B2')) return 'Bermuda ';
+    if(cod.startsWith('BM')||cod.startsWith('B3')) return 'Bermuda ';
+    return '';
+  }
+
+  // Gráfico Top 20 Modelagens Feminino
+  var modelMapFem={};
+  dados.filter(function(d){
+    return d.cod.startsWith('CF')||d.cod.startsWith('SA')||d.cod.startsWith('BF')||
+           d.cod.startsWith('SS')||d.cod.startsWith('S2');
+  }).forEach(function(d){
+    var lbl=tipoPrefix(d.cod)+d.mod;
+    if(!modelMapFem[lbl])modelMapFem[lbl]=0;
+    modelMapFem[lbl]+=d.qtde;
+  });
+  var modelArrFem=Object.keys(modelMapFem).map(function(k){return{mod:k,qtde:modelMapFem[k]};});
+  modelArrFem.sort(function(a,b){return b.qtde-a.qtde;});
+  var topFem=modelArrFem.slice(0,20);
+  var ctxB=document.getElementById('c-ref-barras').getContext('2d');
+  if(chartRefBarras)chartRefBarras.destroy();
+  chartRefBarras=new Chart(ctxB,{type:'bar',data:{labels:topFem.map(function(m){return m.mod;}),datasets:[{data:topFem.map(function(m){return m.qtde;}),backgroundColor:'#e0608a99',borderColor:'#e0608a',borderRadius:4,borderWidth:1}]},options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return fmtInt(c.raw)+' pc';}}}},scales:{x:{ticks:{color:'#888',callback:function(v){return fmtInt(v);}},grid:{color:'#2e2e2e'}},y:{ticks:{color:'#aaa',font:{size:10}},grid:{color:'#222'}}}}});
+
+  // Gráfico Top 10 Modelagens Masculino
+  var modelMapMasc={};
+  dados.filter(function(d){
+    return d.cod.startsWith('CM')||d.cod.startsWith('BM')||d.cod.startsWith('B3');
+  }).forEach(function(d){
+    var lbl=tipoPrefix(d.cod)+d.mod;
+    if(!modelMapMasc[lbl])modelMapMasc[lbl]=0;
+    modelMapMasc[lbl]+=d.qtde;
+  });
+  var modelArrMasc=Object.keys(modelMapMasc).map(function(k){return{mod:k,qtde:modelMapMasc[k]};});
+  modelArrMasc.sort(function(a,b){return b.qtde-a.qtde;});
+  var topMasc=modelArrMasc.slice(0,15);
+  var elMasc=document.getElementById('c-ref-barras-masc');
+  if(elMasc){
+    if(!window.chartRefBarrasMasc)window.chartRefBarrasMasc=null;
+    if(window.chartRefBarrasMasc)window.chartRefBarrasMasc.destroy();
+    window.chartRefBarrasMasc=new Chart(elMasc.getContext('2d'),{type:'bar',data:{labels:topMasc.map(function(m){return m.mod;}),datasets:[{data:topMasc.map(function(m){return m.qtde;}),backgroundColor:'#4a8fd499',borderColor:'#4a8fd4',borderRadius:4,borderWidth:1}]},options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return fmtInt(c.raw)+' pc';}}}},scales:{x:{ticks:{color:'#888',callback:function(v){return fmtInt(v);}},grid:{color:'#2e2e2e'}},y:{ticks:{color:'#aaa',font:{size:10}},grid:{color:'#222'}}}}});
+  }
+
+  // Botões tipo filtro
+  var btnsHtml='<button class="ref-tipo-btn'+(refFiltroTipo==='TODOS'?' active':'')+'" onclick="filtrarRefTipo(\'TODOS\')">Todos</button>';
+  var tiposBtn={};dadosAll.forEach(function(d){tiposBtn[d.tipo.key]=d.tipo.label;});
+  Object.keys(tiposBtn).forEach(function(k){var t={key:k,label:tiposBtn[k]};
+    btnsHtml+='<button class="ref-tipo-btn'+(refFiltroTipo===t.key?' active':'')+'" onclick="filtrarRefTipo(\''+t.key+'\')">'+t.label+'</button>';
+  });
+  document.getElementById('ref-tipo-btns').innerHTML=btnsHtml;
+
+  // Tabela
+  renderRefTabela(dadosAll, totalQtde);
+}
+
+function filtrarRefMix(mix){
+  refMix=mix;
+  ['TODOS','NACIONAL','IMPORTADO'].forEach(function(m){var b=document.getElementById('mix-btn-'+m);if(b)b.classList.toggle('active',m===mix);});
+  refFiltroTipo='TODOS';
+  renderReferencias();
+}
+
+function filtrarRefTec(tec){
+  refFiltroTec=tec;
+  ['TODAS','Infinity Flex','Efeito Lipo','Não Desbota','Triple Dry','Térmica','Resinado','Moletom','Pack'].forEach(function(t){
+    var b=document.getElementById('tec-btn-'+t);
+    if(b) b.classList.toggle('active',t===tec);
+  });
+  var codRep=document.getElementById('ref-rep-select').value;
+  var dados=getRefDados(codRep);
+  var totalQtde=dados.reduce(function(s,d){return s+d.qtde;},0);
+  renderRefTabela(dados,totalQtde);
+}
+
+function filtrarRefComp(comp){
+  refFiltroComp=comp;
+  ['TODAS','Com Elastano','100% Algodão','PU'].forEach(function(c){
+    var b=document.getElementById('comp-btn-'+c);
+    if(b) b.classList.toggle('active',c===comp);
+  });
+  var codRep=document.getElementById('ref-rep-select').value;
+  var dados=getRefDados(codRep);
+  var totalQtde=dados.reduce(function(s,d){return s+d.qtde;},0);
+  renderRefTabela(dados,totalQtde);
+}
+
+function filtrarRefMod(mod){
+  refFiltroMod=mod;
+  var codRep=document.getElementById('ref-rep-select').value;
+  var dados=getRefDados(codRep);
+  var totalQtde=dados.reduce(function(s,d){return s+d.qtde;},0);
+  renderRefTabela(dados,totalQtde);
+}
+
+function filtrarRefTecido(tecido){
+  refFiltroTecido=tecido;
+  var codRep=document.getElementById('ref-rep-select').value;
+  var dados=getRefDados(codRep);
+  var totalQtde=dados.reduce(function(s,d){return s+d.qtde;},0);
+  renderRefTabela(dados,totalQtde);
+}
+
+function toggleGradeExtendida(){
+  refFiltroGradeExt=!refFiltroGradeExt;
+  document.getElementById('grade-ext-btn').classList.toggle('active',refFiltroGradeExt);
+  var codRep=document.getElementById('ref-rep-select').value;
+  var dados=getRefDados(codRep);
+  var totalQtde=dados.reduce(function(s,d){return s+d.qtde;},0);
+  renderRefTabela(dados,totalQtde);
+}
+
+function popularSelectsModTecido(){
+  var codRep=document.getElementById('ref-rep-select').value;
+  var dados=getRefDados(codRep);
+  var mods={}, tecidos={};
+  dados.forEach(function(d){
+    if(d.mod) mods[d.mod]=true;
+    if(REF_TECIDO[d.cod]) tecidos[REF_TECIDO[d.cod]]=true;
+  });
+  var selMod=document.getElementById('mod-select');
+  var valMod=selMod.value;
+  selMod.innerHTML='<option value="TODAS">Todas</option>'+Object.keys(mods).sort().map(function(m){return '<option value="'+m+'">'+m+'</option>';}).join('');
+  selMod.value=Object.keys(mods).indexOf(valMod)>=0?valMod:'TODAS';
+  var selTec=document.getElementById('tecido-select');
+  var valTec=selTec.value;
+  selTec.innerHTML='<option value="TODOS">Todos</option>'+Object.keys(tecidos).sort().map(function(t){return '<option value="'+t+'">'+t+'</option>';}).join('');
+  selTec.value=Object.keys(tecidos).indexOf(valTec)>=0?valTec:'TODOS';
+}
+
+function filtrarRefSeg(seg){
+  refFiltroSeg=seg;
+  refFiltroTipo='TODOS'; // reset tipo ao mudar segmento
+  ['TODOS','FEM','MASC','COUNTRY','PLUS','IMPORTADO'].forEach(function(s){
+    var b=document.getElementById('seg-btn-'+s);
+    if(b) b.classList.toggle('active',s===seg);
+  });
+  var codRep=document.getElementById('ref-rep-select').value;
+  var dados=getRefDados(codRep);
+  var totalQtde=dados.reduce(function(s,d){return s+d.qtde;},0);
+  // reset botões de tipo
+  document.querySelectorAll('.ref-tipo-btn').forEach(function(b){
+    if(!b.id||!b.id.startsWith('seg-btn-')) b.classList.toggle('active',b.textContent==='Todos');
+  });
+  renderRefTabela(dados,totalQtde);
+}
+
+function filtrarRefTipo(tipo){
+  refFiltroTipo=tipo;
+  var codRep=document.getElementById('ref-rep-select').value;
+  var dados=getRefDados(codRep);
+  var totalQtde=dados.reduce(function(s,d){return s+d.qtde;},0);
+  document.querySelectorAll('.ref-tipo-btn').forEach(function(b){
+    if(!b.id||!b.id.startsWith('seg-btn-'))
+      b.classList.toggle('active',b.textContent===(tipo==='TODOS'?'Todos':TIPO_LABELS[tipo])||b.textContent==='Todos'&&tipo==='TODOS');
+  });
+  renderRefTabela(dados,totalQtde);
+}
+
+function renderRefTabela(dados, totalQtde){
+  // filtro de segmento
+  var filtrados=dados;
+  if(refFiltroSeg==='COUNTRY'){
+    filtrados=dados.filter(function(d){return !REF_IMPORTADO[d.cod]&&d.desc.toUpperCase().indexOf('COUNTRY')>=0;});
+  } else if(refFiltroSeg==='PLUS'){
+    filtrados=dados.filter(function(d){
+      var u=d.desc.toUpperCase();
+      return !REF_IMPORTADO[d.cod]&&(u.indexOf('PLUS SIZE')>=0||u.indexOf('PLUSSIZE')>=0);
+    });
+  } else if(refFiltroSeg==='MASC'){
+    filtrados=dados.filter(function(d){
+      return !REF_IMPORTADO[d.cod]&&(d.cod.startsWith('CM')||d.cod.startsWith('BM')||d.cod.startsWith('B3')||d.cod.startsWith('JQ3'));
+    });
+  } else if(refFiltroSeg==='FEM'){
+    filtrados=dados.filter(function(d){
+      return !REF_IMPORTADO[d.cod]&&!(d.cod.startsWith('CM')||d.cod.startsWith('BM')||d.cod.startsWith('B3')||d.cod.startsWith('JQ3'));
+    });
+  } else if(refFiltroSeg==='IMPORTADO'){
+    filtrados=dados.filter(function(d){return !!REF_IMPORTADO[d.cod];});
+  }
+  // filtro de tipo
+  if(refFiltroTipo!=='TODOS') filtrados=filtrados.filter(function(d){return d.tipo.key===refFiltroTipo;});
+  // filtro de tecnologia
+  if(refFiltroTec!=='TODAS') filtrados=filtrados.filter(function(d){return (COD_TEC[d.cod]||[]).indexOf(refFiltroTec)>=0;});
+  // filtro de composição
+  if(refFiltroComp!=='TODAS') filtrados=filtrados.filter(function(d){return REF_COMPOSICAO[d.cod]===refFiltroComp;});
+  // filtro de modelagem
+  if(refFiltroMod!=='TODAS') filtrados=filtrados.filter(function(d){return d.mod===refFiltroMod;});
+  // filtro de tecido
+  if(refFiltroTecido!=='TODOS') filtrados=filtrados.filter(function(d){return REF_TECIDO[d.cod]===refFiltroTecido;});
+  // filtro de grade estendida
+  if(refFiltroGradeExt) filtrados=filtrados.filter(function(d){return !!GRADE_EXTENDIDA[d.cod];});
+  var maxQ = filtrados.length>0?filtrados[0].qtde:1;
+  var html='';
+  for(var i=0;i<filtrados.length;i++){
+    var d=filtrados[i],rank=i+1;
+    var bdg=rank===1?'<span class="pos g">1</span>':rank===2?'<span class="pos s">2</span>':rank===3?'<span class="pos b">3</span>':'<span class="pos nn">'+rank+'</span>';
+    var pct=totalQtde>0?(d.qtde/totalQtde*100):0;
+    var wPct=maxQ>0?(d.qtde/maxQ*100):0;
+    var cor=TIPO_CORES[d.tipo.key]||'#888';
+    var packBadge=(d.pack||(COD_TEC[d.cod]||[]).indexOf('Pack')>=0)?'<span style="display:inline-block;background:#d4a017;color:#111;font-size:.58rem;font-weight:900;padding:1px 5px;border-radius:4px;margin-left:5px;letter-spacing:.5px;vertical-align:middle;">PACK</span>':'';
+    var foraLinhaBadge=FORA_LINHA[d.cod]?'<span title="Referência fora de linha — falta de tecido/fornecedor. Quantidades ainda aparecem pois pedidos já feitos serão entregues." style="display:inline-block;background:#3a3a3a;color:#e0a030;font-size:.58rem;font-weight:900;padding:1px 5px;border-radius:4px;margin-left:5px;letter-spacing:.5px;vertical-align:middle;border:1px solid #e0a030;">⛔ FORA DE LINHA</span>':'';
+    // indicador de variação de ranking
+    var rankVar='';
+    if(typeof RANK_ANT!=='undefined'&&RANK_ANT[d.cod]!==undefined){
+      var diff=RANK_ANT[d.cod];
+      if(diff===null){
+        rankVar='<span style="font-size:.65rem;color:#3ecf72;font-weight:700;margin-left:3px;">NEW</span>';
+      } else if(diff>0){
+        rankVar='<span style="font-size:.68rem;color:#3ecf72;font-weight:700;margin-left:3px;" title="Subiu '+diff+' posição(ões)">▲'+diff+'</span>';
+      } else if(diff<0){
+        rankVar='<span style="font-size:.68rem;color:#e05c5c;font-weight:700;margin-left:3px;" title="Desceu '+Math.abs(diff)+' posição(ões)">▼'+Math.abs(diff)+'</span>';
+      } else {
+        rankVar='<span style="font-size:.68rem;color:var(--muted);margin-left:3px;" title="Manteve posição">—</span>';
+      }
+    }
+    var precoRef=PRECOS_REF[d.cod];
+    var precoPack=PRECOS_PACK[d.cod];
+    var precoHtml=precoRef?('R$ '+precoRef.toFixed(2).replace('.',',')+(precoPack?'<br><span style="color:var(--gold);font-size:.7rem">Pack (20+): R$ '+precoPack.toFixed(2).replace('.',',')+'</span>':'')):'<span style="color:var(--muted)">—</span>';
+    // badges de tecnologia (+ grade estendida, que é um diferencial da referência)
+    var tecs=COD_TEC[d.cod]||[];
+    var tecBadges='';
+    tecs.forEach(function(t){ if(t==='Pack') return; tecBadges+='<span style="display:inline-block;background:#1f3a4a;color:#8fd0ff;font-size:.58rem;font-weight:700;padding:1px 6px;border-radius:8px;margin:2px 3px 0 0;">'+t+'</span>'; });
+    if(GRADE_EXTENDIDA[d.cod]) tecBadges+='<span style="display:inline-block;background:#3a2a1f;color:#e0a458;font-size:.58rem;font-weight:700;padding:1px 6px;border-radius:8px;margin:2px 3px 0 0;">Grade Estendida</span>';
+    // badge de cor manual
+    var coresRef=REF_COR_MANUAL[d.cod];
+    var corBadge='';
+    if(coresRef&&coresRef.length){
+      corBadge='<span style="display:inline-block;background:#2a2a2a;color:var(--gold);font-size:.58rem;font-weight:700;padding:1px 6px;border-radius:8px;margin:2px 3px 0 0;border:1px solid var(--border);">'+coresRef.join(' · ')+'</span>';
+    }
+    var extraBadgesLine=(tecBadges||corBadge)?'<div style="margin-top:3px;">'+tecBadges+corBadge+'</div>':'';
+    // colunas: tecido, composição, grade (tamanhos)
+    var tecidoCol=REF_TECIDO[d.cod]?'<span style="font-size:.75rem;">'+REF_TECIDO[d.cod]+'</span>':'<span style="color:var(--muted)">—</span>';
+    var compRef=REF_COMPOSICAO[d.cod];
+    var compCol=compRef?'<span style="font-size:.72rem;color:'+(compRef==='Com Elastano'?'#ffb98f':compRef==='PU'?'#d8a6ff':'#8fd8a0')+'">'+compRef+'</span>':'<span style="color:var(--muted)">—</span>';
+    var gradeCol=REF_GRADE_RANGE[d.cod]?'<span style="font-size:.75rem;">'+REF_GRADE_RANGE[d.cod]+'</span>':'<span style="color:var(--muted)">—</span>';
+    html+='<tr><td>'+bdg+rankVar+'</td><td><span class="ref-cod">'+d.cod+'</span></td><td style="font-size:.8rem;max-width:220px">'+d.desc+(REF_IMPORTADO[d.cod]?' <span class="ref-badge" style="background:#a9dcf522;color:#a9dcf5;border:1px solid #a9dcf555">🌎 Importado</span>':'')+packBadge+foraLinhaBadge+extraBadgesLine+'</td><td><span class="ref-badge '+d.tipo.badge+'">'+d.tipo.label+'</span></td><td><span class="ref-mod">'+d.mod+'</span></td><td>'+tecidoCol+'</td><td>'+compCol+'</td><td>'+gradeCol+'</td><td style="text-align:right;font-weight:700;font-size:.95rem">'+fmtInt(d.qtde)+'</td><td style="text-align:right;font-size:.8rem">'+precoHtml+'</td><td style="text-align:right;color:var(--gold);font-size:.82rem">'+pct.toFixed(1)+'%</td><td class="ref-bar-cell"><div class="pw"><div class="pb" style="width:'+wPct.toFixed(1)+'%;background:'+cor+'"></div></div></td></tr>';
+  }
+  var totalFiltrado=filtrados.reduce(function(s,d){return s+d.qtde;},0);
+  var totalLinha='<tr style="background:var(--bg3);border-top:2px solid var(--gold);"><td colspan="8" style="text-align:right;font-weight:800;color:var(--gold);padding:10px;">TOTAL ('+filtrados.length+' referência'+(filtrados.length===1?'':'s')+' na seleção)</td><td style="text-align:right;font-weight:800;color:var(--gold);font-size:1.05rem;padding:10px;">'+fmtInt(totalFiltrado)+'</td><td colspan="3"></td></tr>';
+  document.getElementById('ref-tbody').innerHTML=(html?html+totalLinha:'<tr><td colspan="12" style="text-align:center;color:var(--muted);padding:20px;">Sem dados.</td></tr>');
+}
+
+function initRefSelect(){
+  var sel=document.getElementById('ref-rep-select');
+  var reps=[{cod:'TODOS',nome:'Todos os Representantes'}];
+  Object.keys(REPS).forEach(function(cod){
+    // só inclui os que aparecem nos dados
+    var tem=RAW_REF.some(function(r){return r[0]===cod;});
+    if(tem) reps.push({cod:cod,nome:cod+' - '+REPS[cod].n});
+  });
+  sel.innerHTML=reps.map(function(r){return '<option value="'+r.cod+'">'+r.nome+'</option>';}).join('');
+}
+
+// ============================================================
+// FUNÇÕES GERENCIAL / GRUPO (originais mantidas)
+// ============================================================
 function fmtBR(n){return n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtInt(n){return n.toLocaleString('pt-BR',{maximumFractionDigits:0});}
 function setText(id,v){var el=document.getElementById(id);if(el)el.textContent=v;}
-function corBarra(p){return p>=100?'#3ecf72':p>=75?'#7ed957':p>=50?'#d3eefb':p>0?'#d3eefb':'#444';}
-function calcSem(){var ini=new Date('2026-10-12'),h=new Date();return Math.max(1,Math.ceil(Math.max((h-ini)/864e5,0)/7));}
+function corBarra(p){return p>=100?'#3ecf72':p>=75?'#7ed957':p>=50?'#f0b93c':p>0?'#f0b93c':'#444';}
 
 function buildLista(dados){
   var m={};for(var i=0;i<dados.length;i++)m[dados[i].cod]=dados[i];
   var lista=[],chaves=Object.keys(REPS);
   for(var i=0;i<chaves.length;i++){
     var cod=chaves[i],info=REPS[cod],v=m[cod]||{};
+    if(!info||!info.n||!info.r) continue;
     var qtde=v.qtde||0,vlr=v.vlr||0;
     lista.push({cod:cod,nome:info.n,uf:info.uf,regiao:info.r,reg:info.reg,cota:info.c,
-      qtde:qtde,vlr:vlr,cliNov:v.cliNov||0,pedidos:v.pedidos||0,
+      qtde:qtde,vlr:vlr,cliNov:v.cliNov||0,pedidos:v.pedidos||0,cliCompra:v.cliCompra||0,
       ticket:qtde>0?vlr/qtde:0,pct:qtde>0?(qtde/info.c*100):0,ativo:qtde>0});
   }
   lista.sort(function(a,b){return b.pct-a.pct;});
   return lista;
 }
 
-function calcDestaques(listaSem){
-  var dest=[],usados=[];
-  var evol=listaSem.filter(function(r){return r.ativo;}).sort(function(a,b){return b.pct-a.pct;});
-  if(evol.length>0){var mx=evol[0].pct,emp=evol.filter(function(r){return Math.abs(r.pct-mx)<0.01;});dest.push({cods:emp.map(function(r){return r.cod;}),nome:emp.map(function(r){return r.nome;}).join(' e '),icon:'⚡',desc:'Maior evolucao na cota esta semana - '+mx.toFixed(1)+'% atingido'});emp.forEach(function(r){usados.push(r.cod);});}
-  var ab=[].concat(listaSem.filter(function(r){return r.ativo&&r.cliNov>0;})).sort(function(a,b){return b.cliNov-a.cliNov;});
-  if(ab.length>0){var mx2=ab[0].cliNov,emp2=ab.filter(function(r){return r.cliNov===mx2;});dest.push({cods:emp2.map(function(r){return r.cod;}),nome:emp2.map(function(r){return r.nome;}).join(', '),icon:'🌿',desc:'Mais aberturas na semana - '+mx2+' cliente'+(mx2>1?'s':'')+' novo'+(mx2>1?'s':'')});emp2.forEach(function(r){usados.push(r.cod);});}
-  var pd=[].concat(listaSem.filter(function(r){return r.ativo&&r.pedidos>0;})).sort(function(a,b){return b.pedidos-a.pedidos;});
-  if(pd.length>0){var mx3=pd[0].pedidos,emp3=pd.filter(function(r){return r.pedidos===mx3;});dest.push({cods:emp3.map(function(r){return r.cod;}),nome:emp3.map(function(r){return r.nome;}).join(', '),icon:'📋',desc:'Mais pedidos incluidos na semana - '+mx3+' pedido'+(mx3>1?'s':'')});}
-  if(dest.length===0){dest.push({cods:[],nome:'--',icon:'⏳',desc:'Sem dados disponiveis'});dest.push({cods:[],nome:'--',icon:'⏳',desc:'Os destaques serao calculados automaticamente'});dest.push({cods:[],nome:'--',icon:'⏳',desc:'Criterios: evolucao, aberturas e pedidos'});}
-  return dest;
+function calcProjecao(qtde){var ini=VENDA_INI,h=new Date();var dias=Math.max((h-ini)/864e5,1);var total=(VENDA_FIM-ini)/864e5;return Math.round((qtde/dias)*total);}
+function calcRitmo(qtde,cota){if(qtde===0)return'aguard';var ini=VENDA_INI,h=new Date();var dias=Math.max((h-ini)/864e5,1);var total=(VENDA_FIM-ini)/864e5;var nec=cota/total,atu=qtde/dias;if(atu>=nec*0.9)return'verde';if(atu>=nec*0.6)return'amarelo';return'vermelho';}
+function initPeriodo(){var ini=VENDA_INI,fim=VENDA_FIM,h=new Date();var tot=(fim-ini)/864e5,pas=Math.min(Math.max((h-ini)/864e5,0),tot);var pct=pas/tot*100,sem=calcSem();document.getElementById('pfill').style.width=pct.toFixed(1)+'%';setText('psem','Sem. '+sem);setText('ppct',pct.toFixed(0)+'% concluido');}
+function calcSem(){var h=new Date();var s=Math.floor((h-SEM_INI)/(7*864e5))+1;return Math.min(N_SEMANAS,Math.max(1,s));}
+function semPeriodo(n){var a=new Date(SEM_INI.getTime());a.setDate(a.getDate()+(n-1)*7);var b=new Date(a.getTime());b.setDate(b.getDate()+6);var f=function(d){return (d.getDate()<10?'0':'')+d.getDate()+'/'+((d.getMonth()+1)<10?'0':'')+(d.getMonth()+1);};return f(a)+' a '+f(b);}
+
+function atualizarKPIs(dados,laAcum){
+  var tV=0,tQ=0,tC=0;
+  for(var i=0;i<dados.length;i++){tV+=dados[i].vlr;tQ+=dados[i].qtde;tC+=dados[i].cliNov;}
+  // % Cota sempre sobre o acumulado da coleção
+  var tQAcum=0;for(var i=0;i<dAcum.length;i++)tQAcum+=dAcum[i].qtde;
+  var tCota=133500; // meta real da coleção (soma das cotas dos 24 reps)
+  var pct=tQAcum/tCota*100;
+  var atv=laAcum.filter(function(l){return l.ativo;}).length;
+  var tk=tQ>0?(tV/tQ):0;
+  var subs={acumulado:'colecao',semana:'esta semana',mes:'este mes',dia:'hoje'};
+  var s=subs[filtroAtual];
+  setText('m-vlrsub','');
+  setText('m-qtde',tQ>0?fmtInt(tQ)+' pc':'--');setText('m-qtdesub',s);
+  setText('m-pct',pct>0?pct.toFixed(1)+'%':'--');
+  setText('m-atv',atv+' / '+Object.keys(REPS).length);
+  setText('m-tk',tk>0?'R$ '+tk.toFixed(2):'--');setText('m-tksub',s);
+  setText('m-cn',tC>0?tC:'--');setText('m-cnsub',s);
+}
+
+function renderTabelaSimples(tbodyId,lista){
+  var ativos=lista.filter(function(r){return r.ativo;});
+  ativos.sort(function(a,b){return b.qtde-a.qtde;});
+  var html='';
+  for(var i=0;i<ativos.length;i++){
+    var r=ativos[i],rank=i+1;
+    var bdg=rank===1?'<span class="pos g">1</span>':rank===2?'<span class="pos s">2</span>':rank===3?'<span class="pos b">3</span>':'<span class="pos nn">'+rank+'</span>';
+    html+='<tr><td>'+bdg+'</td><td style="font-weight:600">'+r.nome+'</td><td style="color:var(--muted);font-size:.78rem">'+r.regiao+'</td><td>'+fmtInt(r.qtde)+'</td><td>'+(r.ticket>0?'R$ '+r.ticket.toFixed(2):'0')+'</td><td>'+r.cliNov+'</td><td>'+r.cliCompra+'</td><td><span class="tag ta">Ativo</span></td></tr>';
+  }
+  document.getElementById(tbodyId).innerHTML=html||'<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:20px;">Sem dados.</td></tr>';
+}
+
+function renderTabelaDia(lista){
+  var ativos=lista.filter(function(r){return r.ativo;});
+  ativos.sort(function(a,b){return b.qtde-a.qtde;});
+  var html='';
+  for(var i=0;i<ativos.length;i++){
+    var r=ativos[i],rank=i+1;
+    var bdg=rank===1?'<span class="pos g">1</span>':rank===2?'<span class="pos s">2</span>':rank===3?'<span class="pos b">3</span>':'<span class="pos nn">'+rank+'</span>';
+    html+='<tr><td>'+bdg+'</td><td style="font-weight:600">'+r.nome+'</td><td style="color:var(--muted);font-size:.78rem">'+r.regiao+'</td><td style="font-weight:700;font-size:1rem">'+fmtInt(r.qtde)+'</td><td style="text-align:center;font-weight:600">'+r.cliCompra+'</td><td><span class="tag ta">Ativo</span></td></tr>';
+  }
+  document.getElementById('tbody-dia').innerHTML=html||'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px;">Sem dados.</td></tr>';
+}
+
+function renderBarrasSimples(canvasId,chartRef,lista){
+  var ctx=document.getElementById(canvasId).getContext('2d');
+  if(chartRef)chartRef.destroy();
+  var atv=lista.filter(function(r){return r.ativo;}).sort(function(a,b){return b.qtde-a.qtde;});
+  return new Chart(ctx,{type:'bar',data:{labels:atv.map(function(r){return r.nome;}),datasets:[{label:'Pecas',data:atv.map(function(r){return r.qtde;}),backgroundColor:CORES.slice(0,atv.length),borderRadius:5,borderWidth:0}]},options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return fmtInt(c.raw)+' pecas';}}}},scales:{x:{ticks:{color:'#888',font:{size:9}},grid:{color:'#222'}},y:{ticks:{color:'#888',callback:function(v){return fmtInt(v);}},grid:{color:'#2e2e2e'}}}}});
+}
+
+function renderGerDestaques(listaAcum){
+  var ativos=listaAcum.filter(function(r){return r.ativo && r.pct>=50;});
+  var cards=[];
+  var topQ=[].concat(ativos).sort(function(a,b){return b.qtde-a.qtde;});
+  if(topQ.length>0)cards.push({icon:'📊',label:'Top Quantidade',name:topQ[0].nome,desc:fmtInt(topQ[0].qtde)+' pecas na colecao'});
+  var topC=[].concat(ativos).sort(function(a,b){return b.pct-a.pct;});
+  if(topC.length>0)cards.push({icon:'🏆',label:'Lider Cota',name:topC[0].nome,desc:topC[0].pct.toFixed(1)+'% da cota atingida'});
+  var topA=[].concat(ativos).filter(function(r){return r.cliNov>0;}).sort(function(a,b){return b.cliNov-a.cliNov;});
+  if(topA.length>0)cards.push({icon:'🌿',label:'Top Aberturas',name:topA[0].nome,desc:topA[0].cliNov+' cliente'+(topA[0].cliNov>1?'s':'')+' novo'+(topA[0].cliNov>1?'s':'')});
+  var topT=[].concat(ativos).filter(function(r){return r.ticket>0;}).sort(function(a,b){return b.ticket-a.ticket;});
+  if(topT.length>0)cards.push({icon:'💰',label:'Melhor Ticket',name:topT[0].nome,desc:'R$ '+topT[0].ticket.toFixed(2)+' por peca'});
+  var html='';
+  for(var i=0;i<cards.length;i++)html+='<div class="ger-dest-card"><div class="dicon">'+cards[i].icon+'</div><div class="dinfo"><div class="dlabel">'+cards[i].label+'</div><div class="dname">'+cards[i].name+'</div><div class="ddesc">'+cards[i].desc+'</div></div></div>';
+  document.getElementById('ger-destaques-grid').innerHTML=html;
+}
+
+function renderResumoSemana(){
+  var tQ=0,tV=0,tCN=0,tPed=0;
+  for(var i=0;i<dSem.length;i++){tQ+=dSem[i].qtde;tV+=dSem[i].vlr;tCN+=dSem[i].cliNov;tPed+=dSem[i].pedidos;}
+  var atv=dSem.filter(function(d){return d.qtde>0;}).length;
+  var tk=tQ>0?(tV/tQ):0;
+  var html='';
+  html+='<div class="rsem-item"><div class="rsem-lbl">Pecas</div><div class="rsem-val">'+fmtInt(tQ)+'</div><div class="rsem-sub">esta semana</div></div>';
+  
+  html+='<div class="rsem-item"><div class="rsem-lbl">Ticket Medio</div><div class="rsem-val">R$ '+tk.toFixed(2)+'</div><div class="rsem-sub">por peca</div></div>';
+  html+='<div class="rsem-item"><div class="rsem-lbl">Clientes Novos</div><div class="rsem-val">'+tCN+'</div><div class="rsem-sub">aberturas</div></div>';
+  html+='<div class="rsem-item"><div class="rsem-lbl">Pedidos</div><div class="rsem-val">'+tPed+'</div><div class="rsem-sub">incluidos</div></div>';
+  html+='<div class="rsem-item"><div class="rsem-lbl">Reps Ativos</div><div class="rsem-val">'+atv+'</div><div class="rsem-sub">com vendas</div></div>';
+  document.getElementById('rsem-grid').innerHTML=html;
+}
+
+function renderColecao(){
+  var laAcum=buildLista(dAcum);
+  atualizarKPIs(dAcum,laAcum);
+  renderGerDestaques(laAcum);
+  renderResumoSemana();
+  var rank=0,html='';
+  for(var i=0;i<laAcum.length;i++){
+    var r=laAcum[i];if(r.ativo)rank++;
+    var pos=r.ativo?rank:'--';
+    var bdg=pos===1?'<span class="pos g">1</span>':pos===2?'<span class="pos s">2</span>':pos===3?'<span class="pos b">3</span>':'<span class="pos nn">'+pos+'</span>';
+    var cor=corBarra(r.pct),w=Math.min(r.pct,100).toFixed(1);
+    var ritmo=r.ativo?calcRitmo(r.qtde,r.cota):'aguard';
+    var rHtml=ritmo==='verde'?'<span class="semaforo verde">No ritmo</span>':ritmo==='amarelo'?'<span class="semaforo amarelo">Atencao</span>':ritmo==='vermelho'?'<span class="semaforo vermelho">Risco</span>':'<span style="color:var(--muted);font-size:.7rem">Aguard.</span>';
+    var proj=r.ativo?calcProjecao(r.qtde):0;
+    var pCor=proj>=r.cota?'#3ecf72':proj>=r.cota*0.8?'#f0b93c':'#e05c5c';
+    var pHtml=r.ativo?'<span style="font-size:.8rem;color:'+pCor+'">'+fmtInt(proj)+' / '+fmtInt(r.cota)+'</span>':'--';
+    html+='<tr class="'+(r.ativo?'':'ns')+'"><td>'+bdg+'</td><td style="font-weight:600">'+r.nome+'</td><td style="color:var(--muted);font-size:.78rem">'+r.regiao+'</td><td style="font-weight:700;color:'+cor+'">'+r.pct.toFixed(1)+'%</td><td><div class="pw"><div class="pb" style="width:'+w+'%;background:'+cor+'"></div></div></td><td>'+fmtInt(r.qtde)+'</td><td>'+(r.ticket>0?'R$ '+r.ticket.toFixed(2):'0')+'</td><td>'+r.cliNov+'</td><td>'+r.cliCompra+'</td><td>'+pHtml+'</td><td>'+rHtml+'</td><td><span class="tag '+(r.ativo?'ta':'tw2')+'">'+(r.ativo?'Ativo':'Aguard.')+'</span></td></tr>';
+  }
+  document.getElementById('tbody-acum').innerHTML=html;
+  renderEvolucao();
+  renderRegioes(laAcum);
+  renderBarChart(laAcum.filter(function(l){return l.ativo;}));
+  renderPieGerencial(laAcum.filter(function(l){return l.ativo;}));
+  renderComparativo(laAcum);
+}
+
+function renderRegioes(lista){
+  var regioes={},html='',rgs=['Sul','Sudeste','Nordeste','Norte','Centro-Oeste'];
+  for(var i=0;i<lista.length;i++){var r=lista[i];if(!regioes[r.reg])regioes[r.reg]={qtde:0,vlr:0,cota:0,ativos:0};regioes[r.reg].qtde+=r.qtde;regioes[r.reg].vlr+=r.vlr;regioes[r.reg].cota+=r.cota;if(r.ativo)regioes[r.reg].ativos++;}
+  for(var i=0;i<rgs.length;i++){var rg=rgs[i],d=regioes[rg]||{qtde:0,vlr:0,cota:0,ativos:0};var pct=d.cota>0?(d.qtde/d.cota*100):0,cor=corBarra(pct);html+='<div class="region-card"><div class="rn">'+rg+'</div><div class="rv" style="color:'+cor+'">'+pct.toFixed(1)+'%</div><div class="rs">'+fmtInt(d.qtde)+' pc - '+d.ativos+' ativos</div><div style="background:var(--border);border-radius:20px;height:4px;overflow:hidden;margin-top:6px;"><div style="height:4px;border-radius:20px;width:'+Math.min(pct,100).toFixed(1)+'%;background:'+cor+'"></div></div></div>';}
+  document.getElementById('region-grid').innerHTML=html;
+}
+
+function renderEvolucao(){
+  var ctx=document.getElementById('c-evolucao').getContext('2d');
+  if(chartEvolucao)chartEvolucao.destroy();
+  if(!dHist||dHist.length===0)return;
+  var semanas={};
+  for(var i=0;i<dHist.length;i++){var s=dHist[i].semana;if(!semanas[s])semanas[s]=0;semanas[s]+=dHist[i].qtde;}
+  var sks=Object.keys(semanas).map(Number).sort(function(a,b){return a-b;});
+  var labels=[],valores=[];
+  for(var i=0;i<sks.length;i++){labels.push(String(sks[i]));valores.push(semanas[sks[i]]);}
+  chartEvolucao=new Chart(ctx,{type:'bar',data:{labels:labels,datasets:[{label:'Pecas',data:valores,backgroundColor:valores.map(function(v,i){return i===valores.length-1?'#a9dcf5':'#a9dcf555';}),borderRadius:5,borderWidth:0}]},options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return fmtInt(c.raw)+' pecas';}}}},scales:{x:{title:{display:true,text:'Semana',color:'#888',font:{size:10}},ticks:{color:'#888',font:{size:10}},grid:{color:'#222'}},y:{ticks:{color:'#888',callback:function(v){return fmtInt(v);}},grid:{color:'#2e2e2e'}}}}});
+}
+
+function renderBarChart(atv){
+  var ctx=document.getElementById('c-cota').getContext('2d');
+  if(chartCota)chartCota.destroy();
+  chartCota=new Chart(ctx,{type:'bar',data:{labels:atv.map(function(l){return l.nome;}),datasets:[{data:atv.map(function(l){return l.pct;}),backgroundColor:atv.map(function(l){return corBarra(l.pct);}),borderRadius:4}]},options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.raw.toFixed(1)+'%';}}}},scales:{x:{ticks:{color:'#888',font:{size:8}},grid:{color:'#222'}},y:{ticks:{color:'#888',callback:function(v){return v+'%';}},grid:{color:'#2e2e2e'}}}}});
+}
+
+function renderPieGerencial(atv){
+  var ctx=document.getElementById('c-pizza').getContext('2d');
+  if(chartPizza)chartPizza.destroy();
+  var total=atv.reduce(function(s,l){return s+l.qtde;},0);
+  chartPizza=new Chart(ctx,{type:'pie',data:{labels:atv.map(function(l){return l.nome;}),datasets:[{data:atv.map(function(l){return l.qtde;}),backgroundColor:CORES.slice(0,atv.length),borderWidth:1,borderColor:'#222'}]},options:{responsive:true,plugins:{legend:{position:'right',labels:{color:'#aaa',font:{size:9},boxWidth:9,padding:6}},tooltip:{callbacks:{label:function(c){return c.label+': '+(c.raw/total*100).toFixed(1)+'%';}}}}}});
+}
+
+function renderComparativo(listaAtual){
+  var ctx=document.getElementById('c-comp').getContext('2d');
+  if(chartComp)chartComp.destroy();
+  var repsComp=listaAtual.filter(function(r){return r.ativo&&(HIST_INV26[r.cod]||HIST_V27[r.cod]||r.qtde>0);});
+  chartComp=new Chart(ctx,{type:'bar',data:{labels:repsComp.map(function(r){return r.nome;}),datasets:[{label:'Inverno 2027',data:repsComp.map(function(r){return r.qtde;}),backgroundColor:'#a9dcf5',borderRadius:3},{label:'Inv 2026',data:repsComp.map(function(r){return HIST_INV26[r.cod]||0;}),backgroundColor:'#60c9e888',borderRadius:3},{label:'Verao 2027',data:repsComp.map(function(r){return HIST_V27[r.cod]||0;}),backgroundColor:'#3ecf7244',borderRadius:3}]},options:{responsive:true,plugins:{legend:{labels:{color:'#aaa',font:{size:9}}},tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+fmtInt(c.raw)+' pc';}}}},scales:{x:{ticks:{color:'#888',font:{size:8}},grid:{color:'#222'}},y:{ticks:{color:'#888',callback:function(v){return fmtInt(v);}},grid:{color:'#2e2e2e'}}}}});
+}
+
+function renderGerencial(){
+  document.getElementById('bloco-colecao').style.display='none';
+  document.getElementById('bloco-mes').style.display='none';
+  document.getElementById('bloco-semana').style.display='none';
+  document.getElementById('bloco-dia').style.display='none';
+  var laAcum=buildLista(dAcum);
+  if(filtroAtual==='acumulado'){
+    document.getElementById('bloco-colecao').style.display='block';
+    renderColecao();
+  } else if(filtroAtual==='mes'){
+    document.getElementById('bloco-mes').style.display='block';
+    mudarMes(mesAtual);
+  } else if(filtroAtual==='semana'){
+    document.getElementById('bloco-semana').style.display='block';
+    mudarSemana(semanaAtual);
+  } else if(filtroAtual==='dia'){
+    document.getElementById('bloco-dia').style.display='block';
+    var listaDia=buildLista(dDia);
+    atualizarKPIs(dDia,laAcum);
+    renderTabelaDia(listaDia);
+    // gráfico do dia removido
+  }
 }
 
 function renderTop5(listaAcum){
@@ -222,12 +1914,8 @@ function renderTop5(listaAcum){
   document.getElementById('top5-aberturas').innerHTML=h3;
 }
 
-// Ranking da atualização anterior para setas ▲▼
-var RANK_ANT_REP=null; // primeira atualização: sem ranking anterior
-
-var SUPER_COTA={}; // Inverno 2027: sem super cota
 function renderGrupo(){
-  var sn=1,sp='12/10 a 18/10',msg='A coleção Inverno 2027 está aberta! Cada visita, cada pedido conta. Vamos juntos para o melhor resultado!',falt=Math.max(0,24-sn);
+  var sn=semanaAtual,sp=semPeriodo(sn),msg='A colecao Inverno 2027 esta aberta! Cada visita, cada pedido conta. Vamos juntos para o melhor resultado!',falt=Math.max(0,N_SEMANAS-sn);
   setText('g-semn',sn);setText('g-per',sp);setText('g-falt',falt);
   var listaAcum=buildLista(dAcum),listaSem=buildLista(dSem);
   var dest=calcDestaques(listaSem);
@@ -241,29 +1929,578 @@ function renderGrupo(){
     var pos=r.ativo?rank:'--';
     var numHtml=pos===1?'<span style="font-size:1.1rem">🥇</span>':pos===2?'<span style="font-size:1.1rem">🥈</span>':pos===3?'<span style="font-size:1.1rem">🥉</span>':'<span class="g-num">'+pos+'</span>';
     var cor=corBarra(r.pct),isd=codsDest.indexOf(r.cod)>=0,cls=pos===1?' t1':pos===2?' t2':pos===3?' t3':'';
-    var setaHtml='';
-    if(r.ativo&&RANK_ANT_REP&&RANK_ANT_REP[r.cod]!==undefined){
-      var diff=RANK_ANT_REP[r.cod]-rank;
-      if(diff>0) setaHtml='<span style="font-size:.6rem;color:#3ecf72;font-weight:700;margin-left:2px;vertical-align:middle">▲'+diff+'</span>';
-      else if(diff<0) setaHtml='<span style="font-size:.6rem;color:#e05c5c;font-weight:700;margin-left:2px;vertical-align:middle">▼'+Math.abs(diff)+'</span>';
-      else setaHtml='<span style="font-size:.6rem;color:#555;margin-left:2px;vertical-align:middle">—</span>';
-    } else if(r.ativo){
-      setaHtml='';
-    }
-    var superAtingida = SUPER_COTA[r.cod] && r.qtde >= SUPER_COTA[r.cod];
-    var superHtml = superAtingida ? ' <span title="Super cota atingida!" style="color:#d3eefb">⭐</span>' : '';
-    gh+='<div class="gi'+cls+(!r.ativo?' gns':'')+'"><span style="text-align:center">'+numHtml+setaHtml+'</span><span class="gnm">'+r.nome+(isd?' <span style="color:var(--gold)">*</span>':'')+superHtml+'<small>'+r.regiao+'</small></span><span class="guf" style="color:'+cor+'">'+r.uf+'</span><span class="gpct" style="color:'+cor+'">'+r.pct.toFixed(1)+'%</span><span class="gtk">'+(r.ticket>0?'R$'+r.ticket.toFixed(0):'0')+'</span><span class="gop">'+r.cliNov+'</span></div>';
+    gh+='<div class="gi'+cls+(!r.ativo?' gns':'')+'"><span style="text-align:center">'+numHtml+'</span><span class="gnm">'+r.nome+(isd?' <span style="color:var(--gold)">*</span>':'')+'<small>'+r.regiao+'</small></span><span class="guf" style="color:'+cor+'">'+r.uf+'</span><span class="gpct" style="color:'+cor+'">'+r.pct.toFixed(1)+'%</span><span class="gtk">'+(r.ticket>0?'R$'+r.ticket.toFixed(0):'0')+'</span><span class="gop">'+r.cliNov+'</span></div>';
   }
   document.getElementById('g-list').innerHTML=gh;
+  var atv=listaAcum.filter(function(l){return l.ativo&&l.qtde>0;});atv.sort(function(a,b){return b.qtde-a.qtde;});
+  renderPizzaGrupo(atv);
   renderTop5(listaAcum);
   setText('g-msgt',msg);
+}
+
+function renderPizzaGrupo(atv){
+  var canvasEl=document.getElementById('c-gpizza');canvasEl.height=320;
+  var ctx=canvasEl.getContext('2d');
+  if(chartGPizza)chartGPizza.destroy();
+  var total=atv.reduce(function(s,l){return s+l.qtde;},0);
+  var labelPlugin={id:'labelPlugin',afterDatasetsDraw:function(chart){var meta=chart.getDatasetMeta(0);var ds=chart.data.datasets[0];var labels=chart.data.labels;meta.data.forEach(function(arc,i){var ctx2=chart.ctx;var pct=ds.data[i]/total*100;var angle=(arc.startAngle+arc.endAngle)/2;var cosA=Math.cos(angle);var sinA=Math.sin(angle);var outerR=arc.outerRadius;var cx=arc.x;var cy=arc.y;var px1=cx+cosA*outerR;var py1=cy+sinA*outerR;var px2=cx+cosA*(outerR+80);var py2=cy+sinA*(outerR+80);ctx2.save();ctx2.strokeStyle=CORES[i%CORES.length];ctx2.lineWidth=1.5;ctx2.beginPath();ctx2.moveTo(px1,py1);ctx2.lineTo(px2,py2);ctx2.stroke();ctx2.fillStyle=CORES[i%CORES.length];ctx2.beginPath();ctx2.arc(px2,py2,2,0,Math.PI*2);ctx2.fill();ctx2.fillStyle='#f0ede8';ctx2.font='bold 13px Segoe UI';ctx2.textAlign=cosA>=0?'left':'right';ctx2.textBaseline='middle';var txtX=px2+cosA*8;ctx2.fillText(labels[i],txtX,py2-9);ctx2.fillStyle=CORES[i%CORES.length];ctx2.font='bold 12px Segoe UI';ctx2.fillText(pct.toFixed(1)+'%',txtX,py2+9);ctx2.restore();});}};
+  chartGPizza=new Chart(ctx,{type:'pie',plugins:[labelPlugin],data:{labels:atv.map(function(l){return l.nome;}),datasets:[{data:atv.map(function(l){return l.qtde;}),backgroundColor:CORES.slice(0,atv.length),borderWidth:2,borderColor:'#222'}]},options:{responsive:true,layout:{padding:{top:90,bottom:90,left:160,right:160}},plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.label+': '+(c.raw/total*100).toFixed(1)+'% ('+fmtInt(c.raw)+' pc)';}}}}}});
+}
+
+function calcDestaques(listaSem){
+  var dest=[],usados=[];
+  var ativos=listaSem.filter(function(r){return r.ativo;});
+
+  // 1. Maior % de cota atingido na semana
+  var evol=[].concat(ativos).sort(function(a,b){return b.pct-a.pct;});
+  if(evol.length>0){
+    var mx=evol[0].pct;
+    var emp=evol.filter(function(r){return Math.abs(r.pct-mx)<0.01;});
+    dest.push({cods:emp.map(function(r){return r.cod;}),nome:emp.map(function(r){return r.nome;}).join(' e '),icon:'⚡',desc:'Maior evolucao na cota esta semana - '+mx.toFixed(1)+'% atingido'});
+    emp.forEach(function(r){usados.push(r.cod);});
+  }
+
+  // 2. Mais clientes novos (aberturas) - calculado sobre TODOS os ativos, sem excluir quem já ganhou outro destaque
+  var ab=ativos.filter(function(r){return r.cliNov>0;}).sort(function(a,b){return b.cliNov-a.cliNov;});
+  if(ab.length>0){
+    var mx2=ab[0].cliNov;
+    var emp2=ab.filter(function(r){return r.cliNov===mx2;});
+    dest.push({cods:emp2.map(function(r){return r.cod;}),nome:emp2.map(function(r){return r.nome;}).join(' e '),icon:'🌿',desc:'Mais aberturas na semana - '+mx2+' cliente'+(mx2>1?'s':'')+' novo'+(mx2>1?'s':'')});
+  } else if(ativos.length>0) {
+    // sem aberturas: destaca 2º colocado em cota
+    var seg=ativos.filter(function(r){return usados.indexOf(r.cod)<0;}).sort(function(a,b){return b.pct-a.pct;});
+    if(seg.length>0){
+      dest.push({cods:[seg[0].cod],nome:seg[0].nome,icon:'📈',desc:'2° maior evolucao na semana - '+seg[0].pct.toFixed(1)+'% atingido'});
+      usados.push(seg[0].cod);
+    }
+  }
+
+  // 3. Mais pedidos incluídos na semana (independente dos outros destaques)
+  var pd=[].concat(ativos).sort(function(a,b){return b.pedidos-a.pedidos;});
+  if(pd.length>0){
+    var mx3=pd[0].pedidos;
+    var emp3=pd.filter(function(r){return r.pedidos===mx3;});
+    dest.push({cods:emp3.map(function(r){return r.cod;}),nome:emp3.map(function(r){return r.nome;}).join(' e '),icon:'📋',desc:'Mais pedidos incluidos na semana - '+mx3+' pedido'+(mx3>1?'s':'')});
+  }
+
+  if(dest.length===0){dest.push({cods:[],nome:'--',icon:'⏳',desc:'Sem dados de semana disponiveis'});dest.push({cods:[],nome:'--',icon:'⏳',desc:'Os destaques serao calculados automaticamente'});dest.push({cods:[],nome:'--',icon:'⏳',desc:'Criterios: evolucao, aberturas e volume de pecas'});}
+  return dest;
 }
 
 function carregarHtml2Canvas(cb){if(typeof html2canvas!=='undefined'){cb();return;}var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';s.onload=cb;document.head.appendChild(s);}
 function exportarRanking(){carregarHtml2Canvas(function(){var pizza=document.querySelector('.g-pizza-bottom'),old=pizza.style.display;pizza.style.display='none';html2canvas(document.querySelector('.g-wrap'),{backgroundColor:'#1a1a1a',scale:2,useCORS:true,logging:false}).then(function(canvas){pizza.style.display=old;var link=document.createElement('a');link.download='RDG_Ranking_Semana'+calcSem()+'.png';link.href=canvas.toDataURL('image/png');link.click();});});}
 function exportarPizza(){carregarHtml2Canvas(function(){html2canvas(document.querySelector('.g-pizza-bottom'),{backgroundColor:'#222222',scale:2,useCORS:true,logging:false}).then(function(canvas){var link=document.createElement('a');link.download='RDG_Pizza_Semana'+calcSem()+'.png';link.href=canvas.toDataURL('image/png');link.click();});});}
 
+// ============================================================
+// OPERACIONAL
+// ============================================================
+
+// Semanas da coleção: seg 30/06 até dom 30/11/2026
+function opMkDate(y,m,d){return new Date(y,m-1,d);}// evita UTC offset
+
+// (Programação de Faturamento por período removida no Inverno 2027)
+var OP_SEMANAS = [];
+
+// Dias úteis de corte pré-carregados
+var OP_CORTE_DIAS = {};
+
+// Faturamento previsto por período (id -> valor) - pré-carregado
+var OP_FAT = {};
+
+// Storage em memória (persiste enquanto página aberta)
+// Carrega do localStorage se disponível
+// Faturamento real já ocorrido em meses anteriores ao início da programação jul-nov
+var OP_FAT_REAL = {}; // chave = AAAAMM (ex.: 202610), valor = peças faturadas
+
+var OP_FAT_SEMANAL = [
+  {n:1,periodo:'12/10 a 18/10',valor:0}
+];
+function renderOpFatSemanal(){
+  var el = document.getElementById('op-fat-semanal-blocks');
+  if(!el) return;
+  var IDEAL_SEMANAL = 6000;
+  var total = OP_FAT_SEMANAL.reduce(function(s,w){return s+w.valor;},0);
+  var maxVal = Math.max.apply(null, OP_FAT_SEMANAL.map(function(w){return w.valor;}).concat([IDEAL_SEMANAL]));
+  var markerPct = (IDEAL_SEMANAL/maxVal*100).toFixed(1);
+  var html = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;">';
+  OP_FAT_SEMANAL.forEach(function(w){
+    var pct = maxVal>0 ? (w.valor/maxVal*100) : 0;
+    var cor = opSemCor(w.valor, IDEAL_SEMANAL, IDEAL_SEMANAL*1.25);
+    var corStyle = cor==='verde'?'#3ecf72':cor==='amarelo'?'#f0b93c':cor==='vermelho'?'#e05c5c':'var(--muted)';
+    html += '<div class="op-comp-card">';
+    html += '<div class="sem-lbl">Semana '+w.n+' — '+w.periodo+'</div>';
+    html += '<div style="font-size:1.1rem;font-weight:700;color:'+corStyle+'">'+w.valor.toLocaleString('pt-BR')+'</div>';
+    html += '<div class="op-comp-bar-wrap" style="position:relative;">';
+    html += '<div class="op-comp-bar" style="width:'+pct.toFixed(1)+'%;background:'+corStyle+';"></div>';
+    html += '<div style="position:absolute;top:-2px;left:'+markerPct+'%;width:2px;height:9px;background:var(--white);opacity:.6;"></div>';
+    html += '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  html += '<div style="margin-top:10px;font-size:.7rem;color:var(--muted);">🏳️ Linha branca = capacidade normal de '+IDEAL_SEMANAL.toLocaleString('pt-BR')+'/semana &nbsp;|&nbsp; 🟢 dentro da capacidade &nbsp; 🟡 até 25% acima &nbsp; 🔴 mais de 25% acima da capacidade</div>';
+  html += '<div style="margin-top:6px;font-size:.85rem;color:var(--muted);">Total programado ('+OP_FAT_SEMANAL.length+' sem.): <strong style="color:var(--white)">'+total.toLocaleString('pt-BR')+'</strong></div>';
+  el.innerHTML = html;
+}
+
+function opLoad(){
+  try {
+    var f = localStorage.getItem('rdg_inv27_op_fat');
+    if(f) OP_FAT = JSON.parse(f);
+    var c = localStorage.getItem('rdg_inv27_op_corte');
+    if(c) OP_CORTE_DIAS = Object.assign(OP_CORTE_DIAS, JSON.parse(c));
+    var fr = localStorage.getItem('rdg_inv27_op_fat_real');
+    if(fr) OP_FAT_REAL = Object.assign(OP_FAT_REAL, JSON.parse(fr));
+  } catch(e){}
+}
+function opSave(){
+  try {
+    localStorage.setItem('rdg_inv27_op_fat', JSON.stringify(OP_FAT));
+    localStorage.setItem('rdg_inv27_op_corte', JSON.stringify(OP_CORTE_DIAS));
+    localStorage.setItem('rdg_inv27_op_fat_real', JSON.stringify(OP_FAT_REAL));
+  } catch(e){}
+}
+function opSetFatReal(mes, val){
+  OP_FAT_REAL[mes] = parseInt(val)||0;
+  opSave();
+  renderOpComparativo();
+}
+
+function opSemCor(val, meta, limAma){
+  if(!val || val===0) return 'neutro';
+  if(val <= meta) return 'verde';
+  if(val <= limAma) return 'amarelo';
+  return 'vermelho';
+}
+function opCorteCor(val, meta){
+  if(!val || val===0) return 'neutro';
+  if(val >= meta) return 'verde';
+  if(val >= meta*0.8) return 'amarelo';
+  return 'vermelho';
+}
+function opCorteCorDia(val){
+  if(!val || val===0) return 'var(--muted)';
+  if(val >= 1200) return '#3ecf72';
+  if(val >= 960) return '#d3eefb';
+  return '#e05c5c';
+}
+
+function opFmtDtKey(d){
+  // d = Date → dd/mm/yyyy
+  return (d.getDate()<10?'0':'')+d.getDate()+'/'+(d.getMonth()<9?'0':'')+(d.getMonth()+1)+'/'+d.getFullYear();
+}
+function opDiasUteis(seg, dom){
+  // retorna array de Dates seg-sex dentro da semana
+  var dias = [];
+  var d = new Date(seg);
+  for(var i=0;i<5;i++){
+    dias.push(new Date(d));
+    d.setDate(d.getDate()+1);
+  }
+  return dias;
+}
+
+// Feriados relevantes ao período (out/2026 a mar/2027)
+var OP_FERIADOS = {
+  '12/10/2026':'Nsa. Sra. Aparecida',
+  '02/11/2026':'Finados',
+  '15/11/2026':'Proclamação da República',
+  '20/11/2026':'Consciência Negra',
+  '25/12/2026':'Natal',
+  '01/01/2027':'Confraternização Universal',
+  '08/02/2027':'Carnaval',
+  '09/02/2027':'Carnaval',
+  '26/03/2027':'Sexta-feira Santa'
+};
+function opEhFeriado(d){ return OP_FERIADOS[opFmtDtKey(d)]||null; }
+function opDiaSemanaNome(d){ return ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'][d.getDay()]; }
+
+// Gera semanas contínuas (segunda a domingo) — usado para detectar "semana atual"
+function opGerarSemanasContinuas(inicioSeg, fimSeg){
+  var out = [];
+  var cur = new Date(inicioSeg);
+  while(cur <= fimSeg){
+    var seg = new Date(cur);
+    var dom = new Date(cur); dom.setDate(dom.getDate()+6);
+    var fmt = function(d){return (d.getDate()<10?'0':'')+d.getDate()+'/'+((d.getMonth()+1)<10?'0':'')+(d.getMonth()+1);};
+    out.push({seg:seg, dom:dom, lbl:fmt(seg)+' a '+fmt(dom)});
+    cur.setDate(cur.getDate()+7);
+  }
+  return out;
+}
+
+// Gera blocos de dias úteis (seg-sex) agrupados por mês — quando a semana cruza o mês,
+// os dias são divididos entre o mês anterior e o mês seguinte
+function opGerarBlocosCorte(inicioSeg, fimSeg){
+  var blocos = [];
+  var cur = new Date(inicioSeg);
+  var nomesMes = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  var fmt = function(d){return (d.getDate()<10?'0':'')+d.getDate()+'/'+((d.getMonth()+1)<10?'0':'')+(d.getMonth()+1);};
+  while(cur <= fimSeg){
+    var diasSemana = [];
+    for(var i=0;i<5;i++){
+      var dia = new Date(cur); dia.setDate(dia.getDate()+i);
+      diasSemana.push(dia);
+    }
+    var grupos = {}, ordem = [];
+    diasSemana.forEach(function(dia){
+      var mes = dia.getFullYear()*12+dia.getMonth();
+      if(!grupos[mes]){grupos[mes]=[]; ordem.push(mes);}
+      grupos[mes].push(dia);
+    });
+    ordem.forEach(function(mes){
+      var diasGrupo = grupos[mes];
+      var primeiro = diasGrupo[0], ultimo = diasGrupo[diasGrupo.length-1];
+      blocos.push({
+        dias: diasGrupo,
+        mes: mes,
+        mesNome: nomesMes[mes%12]+'/'+String(Math.floor(mes/12)).slice(2),
+        lbl: fmt(primeiro)+' a '+fmt(ultimo)
+      });
+    });
+    cur.setDate(cur.getDate()+7);
+  }
+  return blocos;
+}
+
+function opGetCorteTotal(dias){
+  return dias.reduce(function(s,d){return s+(OP_CORTE_DIAS[opFmtDtKey(d)]||0);},0);
+}
+
+function opGetFatSem(semId){
+  return OP_FAT[semId]||0;
+}
+
+// Agrupa semanas por mês
+function opSemanasPorMes(){
+  var meses = {};
+  OP_SEMANAS.forEach(function(s){
+    if(!meses[s.mes]) meses[s.mes] = {nome:s.mesNome, semanas:[]};
+    meses[s.mes].semanas.push(s);
+  });
+  return meses;
+}
+
+function renderOperacional(){
+  opLoad();
+  renderOpCorte();      // popula todasSemanas primeiro
+  renderOpKPIs();       // agora pode usar todasSemanas
+  renderOpComparativo();
+  renderOpFatSemanal();
+}
+
+function renderOpKPIs(){
+  // KPIs: total cortado, total programado (por semana), total já faturado, % faturado
+  var totalCortado = Object.values(OP_CORTE_DIAS).reduce(function(s,v){return s+v;},0);
+  var totalFat = OP_FAT_SEMANAL.reduce(function(s,r){return s+r.valor;},0);
+  var totalFaturadoReal = Object.values(OP_FAT_REAL).reduce(function(s,v){return s+v;},0);
+  var pctFaturado = totalFat>0 ? (totalFaturadoReal/totalFat*100) : 0;
+  var corPctFat = pctFaturado>=70?'verde':pctFaturado>=40?'amarelo':'vermelho';
+
+  document.getElementById('op-kpis').innerHTML =
+    '<div class="op-kpi"><div class="lbl">Total Cortado</div><div class="val" style="color:var(--gold)">'+fmtInt(totalCortado)+'</div><div class="sub">peças na coleção</div></div>'+
+    '<div class="op-kpi"><div class="lbl">Fat. Programado</div><div class="val" style="color:var(--gold)">'+fmtInt(totalFat)+'</div><div class="sub">programação semanal</div></div>'+
+    '<div class="op-kpi"><div class="lbl">Total Já Faturado</div><div class="val" style="color:var(--gold)">'+fmtInt(totalFaturadoReal)+'</div><div class="sub">peças faturadas</div></div>'+
+    '<div class="op-kpi '+corPctFat+'"><div class="lbl">% da Coleção Já Faturado</div><div class="val">'+pctFaturado.toFixed(1)+'%</div><div class="sub">sobre fat. programado</div></div>'+
+    '<div class="op-kpi"><div class="lbl">Capacidade Mensal</div><div class="val" style="color:var(--muted)">22.000</div><div class="sub">sem hora extra</div></div>'+
+    '<div class="op-kpi"><div class="lbl">Meta Corte/Dia</div><div class="val" style="color:var(--muted)">1.200</div><div class="sub">5 dias úteis</div></div>';
+}
+
+var todasSemanas = []; // global — populado por renderOpCorte
+
+function renderOpCorte(){
+  var inicio = opMkDate(2026,10,12); // seg 12/10/2026
+  var fimGeracao = opMkDate(2027,3,22); // última semana da venda (22-26/03/2027)
+
+  // Semanas contínuas p/ detecção de "semana atual" (KPIs)
+  todasSemanas = opGerarSemanasContinuas(inicio, fimGeracao);
+
+  // Blocos de dias úteis agrupados por mês (divide semanas que cruzam o mês)
+  var blocos = opGerarBlocosCorte(inicio, fimGeracao);
+
+  var mesesMap = {};
+  blocos.forEach(function(b){
+    var temDados = b.dias.some(function(d){return OP_CORTE_DIAS[opFmtDtKey(d)]>0;});
+    if(!mesesMap[b.mes]) mesesMap[b.mes]={nome:b.mesNome, blocos:[]};
+    mesesMap[b.mes].blocos.push(b);
+  });
+
+  var html = '<div class="op-corte-grid">';
+  Object.keys(mesesMap).sort(function(a,b){return a-b;}).forEach(function(mesNum){
+    var m = mesesMap[mesNum];
+    var totalMes = 0;
+    m.blocos.forEach(function(b){totalMes+=opGetCorteTotal(b.dias);});
+    var corMes = opCorteCor(totalMes, 24000);
+    var corMesStyle = corMes==='verde'?'#3ecf72':corMes==='amarelo'?'#f0b93c':corMes==='vermelho'?'#e05c5c':'var(--muted)';
+
+    html += '<div class="op-corte-month">';
+    html += '<div class="op-corte-month-hdr"><span>'+m.nome+'</span><span style="color:'+corMesStyle+';font-size:.82rem;font-weight:700;">'+fmtInt(totalMes)+' pc</span></div>';
+
+    m.blocos.forEach(function(b){
+      var dias = b.dias;
+      var totalSem = opGetCorteTotal(dias);
+      var metaBloco = 1200 * dias.length; // proporcional ao nº de dias do bloco
+      var corSem = opCorteCor(totalSem, metaBloco);
+      var corSemStyle = corSem==='verde'?'#3ecf72':corSem==='amarelo'?'#f0b93c':corSem==='vermelho'?'#e05c5c':'var(--muted)';
+
+      html += '<div class="op-corte-week">';
+      html += '<div class="op-corte-week-hdr">';
+      html += '<span class="op-corte-week-lbl">'+b.lbl+'</span>';
+      html += '<span class="op-corte-week-total" style="color:'+corSemStyle+'">'+fmtInt(totalSem)+' pc</span>';
+      html += '</div>';
+      html += '<div class="op-corte-days">';
+      dias.forEach(function(d){
+        var key = opFmtDtKey(d);
+        var val = OP_CORTE_DIAS[key]||0;
+        var cor = opCorteCorDia(val);
+        var feriado = opEhFeriado(d);
+        var borderCor = feriado?'#f0b93c88':(val>=1200?'#3ecf7244':val>=960?'#f0b93c44':val>0?'#e05c5c44':'var(--border)');
+        html += '<div class="op-day-box" style="border-color:'+borderCor+(feriado?';border-style:dashed':'')+';">';
+        html += '<div class="op-day-lbl" style="color:'+(feriado?'#f0b93c':cor)+'">'+opDiaSemanaNome(d)+' '+(d.getDate()<10?'0':'')+d.getDate()+'/'+((d.getMonth()+1)<10?'0':'')+(d.getMonth()+1)+'</div>';
+        if(feriado){
+          html += '<div style="font-size:.6rem;color:#f0b93c;text-align:center;margin:2px 0;" title="'+feriado+'">🎉 Feriado</div>';
+        }
+        html += '<input class="op-day-input" type="number" min="0" id="corte_'+key.replace(/\//g,'_')+'" value="'+(val||'')+'" placeholder="—" style="color:'+cor+'" onchange="opSetCorte(\''+key+'\',this.value)" onfocus="this.select()">';
+        html += '</div>';
+      });
+      html += '</div></div>';
+    });
+    html += '</div>';
+  });
+  html += '</div>';
+  document.getElementById('op-corte-blocks').innerHTML = html;
+}
+
+function opSetCorte(key, val){
+  OP_CORTE_DIAS[key] = parseInt(val)||0;
+  opSave();
+  renderOpKPIs();
+  renderOpCorte();
+  renderOpComparativo();
+}
+
+function renderOpComparativo(){
+  // Comparativo mês a mês: corte acumulado no mês x faturamento (peças). Chave de mês = AAAAMM.
+  var nomesMes = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  var MESES_COL = [202610,202611,202612,202701,202702,202703];
+  var mesesMap = {};
+  var nomeYm = function(ym){var m=ym%100, a=Math.floor(ym/100); return nomesMes[m-1]+'/'+String(a).slice(2);};
+  MESES_COL.forEach(function(ym){ mesesMap[ym]={nome:nomeYm(ym), fatTotal:OP_FAT_REAL[ym]||0, corteTotal:0}; });
+  Object.keys(OP_FAT_REAL).forEach(function(k){ var ym=parseInt(k); if(!mesesMap[ym]) mesesMap[ym]={nome:nomeYm(ym), fatTotal:OP_FAT_REAL[k]||0, corteTotal:0}; });
+  Object.keys(OP_CORTE_DIAS).forEach(function(key){
+    var p = key.split('/');
+    var ym = parseInt(p[2])*100+parseInt(p[1]);
+    if(!mesesMap[ym]) mesesMap[ym] = {nome:nomeYm(ym), fatTotal:OP_FAT_REAL[ym]||0, corteTotal:0};
+    mesesMap[ym].corteTotal += OP_CORTE_DIAS[key];
+  });
+
+  var html = '';
+  var saldoAcumulado = 0;
+  var mesesOrdenados = Object.keys(mesesMap).map(Number).sort(function(a,b){return a-b;});
+  mesesOrdenados.forEach(function(ym){
+    var m = mesesMap[ym];
+    var cortado = m.corteTotal||0;
+    var faturado = m.fatTotal||0;
+    var saldoMes = cortado - faturado;
+    saldoAcumulado += saldoMes;
+    var maxBar = Math.max(cortado, faturado, 1);
+    var wC = (cortado/maxBar*100).toFixed(1);
+    var wP = (faturado/maxBar*100).toFixed(1);
+    var corSaldoMes = saldoMes>=0?'#3ecf72':'#e05c5c';
+    var corSaldoAcum = saldoAcumulado>=0?'#3ecf72':'#e05c5c';
+    var corCorte = opCorteCor(cortado,24000);
+    var corCorteStyle = corCorte==='verde'?'#3ecf72':corCorte==='amarelo'?'#f0b93c':corCorte==='vermelho'?'#e05c5c':'var(--muted)';
+    var corFatStyle = 'var(--gold)';
+
+    html += '<div class="op-comp-card" style="min-width:260px">';
+    html += '<div class="sem-lbl" style="color:var(--gold);font-weight:700;font-size:.85rem;margin-bottom:10px;">'+m.nome+'</div>';
+    html += '<div class="op-comp-row" style="margin-top:6px"><span>💰 Faturado</span>';
+    html += '<input type="number" min="0" value="'+(faturado||'')+'" placeholder="0" style="width:70px;text-align:right;color:'+corFatStyle+';background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 4px;font-weight:700" onchange="opSetFatReal('+ym+',this.value)">';
+    html += '</div>';
+    html += '<div class="op-comp-bar-wrap"><div class="op-comp-bar" style="width:'+wP+'%;background:'+corFatStyle+'88;"></div></div>';
+    html += '<div class="op-comp-row" style="margin-top:6px"><span>✂️ Cortado</span><strong style="color:'+corCorteStyle+'">'+fmtInt(cortado)+'</strong></div>';
+    html += '<div class="op-comp-bar-wrap"><div class="op-comp-bar" style="width:'+wC+'%;background:'+corCorteStyle+'88;"></div></div>';
+    html += '<div class="op-comp-row" style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px;"><span>Saldo do mês <span style="color:var(--muted);font-size:.68rem">(corte x faturado)</span></span><strong style="color:'+corSaldoMes+'">'+(saldoMes>=0?'+':'')+fmtInt(saldoMes)+'</strong></div>';
+    html += '<div class="op-comp-row" style="margin-top:4px;"><span style="color:var(--muted);font-size:.72rem">Saldo acumulado</span><strong style="color:'+corSaldoAcum+';font-size:.85rem">'+(saldoAcumulado>=0?'+':'')+fmtInt(saldoAcumulado)+'</strong></div>';
+    html += '</div>';
+  });
+  document.getElementById('op-comp-blocks').innerHTML = '<div class="op-comp-grid">'+html+'</div>';
+}
+
+function mudarAba(tab){
+  var abas=['gerencial','grupo','referencias','operacional'];
+  document.querySelectorAll('.nt').forEach(function(t,i){t.classList.toggle('active',abas[i]===tab);});
+  document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active');});
+  document.getElementById('view-'+tab).classList.add('active');
+  if(tab==='grupo') renderGrupo();
+  if(tab==='referencias') renderReferencias();
+  if(tab==='operacional') renderOperacional();
+  if(tab==='comparativo') renderComparativoAba();
+}
+function mudarFiltro(f){
+  filtroAtual=f;
+  var mapa={acumulado:'f-acumulado',semana:'f-semana',mes:'f-mes',dia:'f-dia'};
+  Object.keys(mapa).forEach(function(k){document.getElementById(mapa[k]).classList.toggle('active',k===f);});
+  renderGerencial();
+}
+function mudarMes(m){
+  mesAtual=m;
+  [10,11,12,1,2,3].forEach(function(n){var el=document.getElementById('fm-'+n);if(el)el.classList.toggle('active',n===m);});
+  var nomes={10:'Mês 10 (Outubro)',11:'Mês 11 (Novembro)',12:'Mês 12 (Dezembro)',1:'Mês 01 (Janeiro)',2:'Mês 02 (Fevereiro)',3:'Mês 03 (Março)'};
+  var el=document.getElementById('titulo-mes');if(el)el.textContent='Peças por Mês - '+(nomes[m]||('Mês '+m));
+  var listaMes=buildLista(dMesDados[m]||[]);
+  var laAcum=buildLista(dAcum);
+  atualizarKPIs(dMesDados[m]||[],laAcum);
+  renderTabelaSimples('tbody-mes',listaMes);
+  // Gráfico peças por mês (todos os meses com dados na coleção)
+  var ctx=document.getElementById('c-mes').getContext('2d');
+  if(chartMes)chartMes.destroy();
+  var meses=[10,11,12,1,2,3];
+  var nomeMeses={10:'Outubro',11:'Novembro',12:'Dezembro',1:'Janeiro',2:'Fevereiro',3:'Março'};
+  var totais=meses.map(function(mn){
+    return (dMesDados[mn]||[]).reduce(function(s,r){return s+r.qtde;},0);
+  });
+  var cores=meses.map(function(mn){return mn===m?'#a9dcf5':'#a9dcf555';});
+  chartMes=new Chart(ctx,{type:'bar',data:{labels:meses.map(function(mn){return nomeMeses[mn]||('Mês '+mn);}),datasets:[{data:totais,backgroundColor:cores,borderRadius:6,borderWidth:0}]},options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return fmtInt(c.raw)+' peças';}}}},scales:{x:{ticks:{color:'#aaa',font:{size:11}},grid:{color:'#222'}},y:{ticks:{color:'#888',callback:function(v){return fmtInt(v);}},grid:{color:'#2e2e2e'}}}}});
+}
+function mudarSemana(s){
+  semanaAtual=s;
+  [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24].forEach(function(n){var el=document.getElementById('fs-'+n);if(el)el.classList.toggle('active',n===s);});
+  var el=document.getElementById('titulo-sem');if(el)el.textContent='Peças por Semana - Semana '+s;
+  var listaSem=buildLista(dSemDados[s]||[]);
+  var laAcum=buildLista(dAcum);
+  atualizarKPIs(dSemDados[s]||[],laAcum);
+  renderTabelaSimples('tbody-sem',listaSem);
+  // Gráfico evolução de peças por semana (sem 1 a 5)
+  var ctx=document.getElementById('c-sem').getContext('2d');
+  if(chartSem)chartSem.destroy();
+  var sems=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
+  var totaisSem=sems.map(function(n){
+    return (dSemDados[n]||[]).reduce(function(acc,r){return acc+r.qtde;},0);
+  });
+  var coresSem=sems.map(function(n){return n===s?'#a9dcf5':'#6090d055';});
+  chartSem=new Chart(ctx,{type:'bar',data:{labels:sems.map(function(n){return 'Sem '+n;}),datasets:[{data:totaisSem,backgroundColor:coresSem,borderRadius:6,borderWidth:0}]},options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return fmtInt(c.raw)+' peças';}}}},scales:{x:{ticks:{color:'#aaa',font:{size:11}},grid:{color:'#222'}},y:{ticks:{color:'#888',callback:function(v){return fmtInt(v);}},grid:{color:'#2e2e2e'}}}}});
+}
+
+// ============================================================
+// DADOS VENDAS (Inverno 2027 — venda 13/10/2026 a 26/03/2027)
+// ============================================================
+var VENDA_P1 = [
+  {cod:'06693',vlr:102662.88,qtde:702,pedidos:10,cliNov:0,cliCompra:4,ticket:146.24},
+  {cod:'00032',vlr:43888.5,qtde:325,pedidos:5,cliNov:0,cliCompra:2,ticket:135.04},
+  {cod:'07607',vlr:18095.7,qtde:133,pedidos:1,cliNov:0,cliCompra:1,ticket:136.06},
+  {cod:'00045',vlr:8697.6,qtde:64,pedidos:1,cliNov:0,cliCompra:1,ticket:135.9}
+];
+var VENDA_ACUM = [
+  {cod:'00032',vlr:166402.3,qtde:1187,pedidos:19,cliNov:1,cliCompra:10,ticket:140.19},
+  {cod:'06693',vlr:106445.365,qtde:719,pedidos:12,cliNov:0,cliCompra:4,ticket:148.05},
+  {cod:'00018',vlr:36152,qtde:280,pedidos:4,cliNov:0,cliCompra:2,ticket:129.11},
+  {cod:'07891',vlr:22954.8,qtde:152,pedidos:1,cliNov:1,cliCompra:1,ticket:151.02},
+  {cod:'08281',vlr:21980.5,qtde:155,pedidos:1,cliNov:1,cliCompra:1,ticket:141.81},
+  {cod:'07607',vlr:18095.7,qtde:133,pedidos:1,cliNov:0,cliCompra:1,ticket:136.06},
+  {cod:'00045',vlr:16908,qtde:120,pedidos:2,cliNov:0,cliCompra:2,ticket:140.9}
+];
+var VENDA_S2 = [
+  {cod:'00032',vlr:122513.8,qtde:862,pedidos:14,cliNov:1,cliCompra:8,ticket:142.13},
+  {cod:'00018',vlr:36152,qtde:280,pedidos:4,cliNov:0,cliCompra:2,ticket:129.11},
+  {cod:'07891',vlr:22954.8,qtde:152,pedidos:1,cliNov:1,cliCompra:1,ticket:151.02},
+  {cod:'08281',vlr:21980.5,qtde:155,pedidos:1,cliNov:1,cliCompra:1,ticket:141.81},
+  {cod:'00045',vlr:8210.4,qtde:56,pedidos:1,cliNov:0,cliCompra:1,ticket:146.61},
+  {cod:'06693',vlr:3782.485,qtde:17,pedidos:2,cliNov:0,cliCompra:2,ticket:222.5}
+];
+var VENDA_DIA = [];
+dDia=VENDA_DIA.slice();
+var dSemDados={1:VENDA_P1.slice(),2:VENDA_S2.slice(),3:[],4:[],5:[],6:[],7:[],8:[],9:[],10:[],11:[],12:[],13:[],14:[],15:[],16:[],17:[],18:[],19:[],20:[],21:[],22:[],23:[],24:[]};
+dMesDados={10:VENDA_ACUM.slice(),11:[],12:[],1:[],2:[],3:[]};
+dMes=dMesDados[mesAtual];
+dSem=dSemDados[semanaAtual];
+dAcum=VENDA_ACUM.slice();
+dHist=[];
+Object.keys(dSemDados).forEach(function(w){dSemDados[w].forEach(function(r){dHist.push({semana:parseInt(w),qtde:r.qtde});});});
+
+// ============================================================
+// INIT
+// ============================================================
+initPeriodo();
+initRefSelect();
+renderGerencial();
 renderGrupo();
+renderDatasAtualizacao();
+// ============================================================
+// COMPARATIVO INVERNO 2027 x INVERNO 2026 (total final da coleção anterior)
+// ============================================================
+// par = representante(s) do Inverno 2026 que correspondem ao rep atual; cli26/pc26/nov26 = totais finais Inverno 2026
+var COMP_INV26 = [{"cod": "07320", "par": "07320 - 46.090.173 Antonio Marcos Candido ", "cli26": 11, "pc26": 1259, "nov26": 3}, {"cod": "07520", "par": "07520 - Da Vitoria Representacoes Ltda", "cli26": 22, "pc26": 2188, "nov26": 11}, {"cod": "07332", "par": "07332 - Di-Piebren Ltda", "cli26": 21, "pc26": 2311, "nov26": 10}, {"cod": "00032", "par": "00032 - Emanuel Balzan Silveira", "cli26": 126, "pc26": 14425, "nov26": 19}, {"cod": "06008", "par": "06008 - G & G Representação. + 00049 - Nordeste Do Brasil Representacoes ", "cli26": 35, "pc26": 4166, "nov26": 3}, {"cod": "00035", "par": "00035 - Geovane Machado Sousa", "cli26": 22, "pc26": 2360, "nov26": 2}, {"cod": "07890", "par": "00038 - Jose Carlos Pereira De Oliveira Re", "cli26": 19, "pc26": 1881, "nov26": 1}, {"cod": "06672", "par": "06672 - Jose Danilo S Cruz", "cli26": 44, "pc26": 5556, "nov26": 7}, {"cod": "06693", "par": "06693 - Jose Pedro Giacomini Representacoe", "cli26": 43, "pc26": 4910, "nov26": 6}, {"cod": "00020", "par": "00020 - Laudemiro De Andrade Moura Junior", "cli26": 40, "pc26": 6145, "nov26": 3}, {"cod": "00040", "par": "00040 - Luiz V.Apolinario", "cli26": 14, "pc26": 1235, "nov26": 0}, {"cod": "00052", "par": "00052 - M. C. Ferreira Filho", "cli26": 42, "pc26": 5961, "nov26": 6}, {"cod": "00037", "par": "00037 - Marcio Luis Schons", "cli26": 63, "pc26": 9114, "nov26": 12}, {"cod": "07607", "par": "07607 - Multivisao Marketing, Gestao E Con", "cli26": 50, "pc26": 6675, "nov26": 35}, {"cod": "07608", "par": "07608 - R Perruti Representacoes Ltda", "cli26": 35, "pc26": 3757, "nov26": 12}, {"cod": "00018", "par": "00018 - Rafael Novak", "cli26": 57, "pc26": 7527, "nov26": 5}, {"cod": "00045", "par": "00045 - Svf Representacoes Ltda", "cli26": 81, "pc26": 10678, "nov26": 13}, {"cod": "07741", "par": "07741 - W De Pss Veiga Representacoes + 07633 - Dl Gestao De Moda Ltda", "cli26": 6, "pc26": 651, "nov26": 4}, {"cod": "07606", "par": "07606 - W J De Oliveira Representacoes", "cli26": 39, "pc26": 4654, "nov26": 25}, {"cod": "07889", "par": "06679 - Zorailson Moura Santos", "cli26": 17, "pc26": 2044, "nov26": 5}, {"cod": "07891", "par": "— sem histórico —", "cli26": 0, "pc26": 0, "nov26": 0}, {"cod": "08093", "par": "— sem histórico —", "cli26": 0, "pc26": 0, "nov26": 0}, {"cod": "08092", "par": "— sem histórico —", "cli26": 0, "pc26": 0, "nov26": 0}, {"cod": "08281", "par": "— sem histórico —", "cli26": 0, "pc26": 0, "nov26": 0}];
+// Inverno 2026 sem rep equivalente em 2027 (informativo)
+var COMP_INV26_SOBRA = [];
+
+function renderComparativoAba(){
+  var acumIdx={};
+  dAcum.forEach(function(r){acumIdx[r.cod]=r;});
+  var fmtI=function(n){return Math.round(n).toLocaleString('pt-BR');};
+  var fmtN=function(n){return n>0?'+'+fmtI(n):fmtI(n);};
+  var clrN=function(n){return n>0?'#3ecf72':n<0?'#e05c5c':'var(--muted)';};
+  var th='text-align:right;padding:8px 10px';
+  var h='<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:.82rem;">';
+  h+='<thead><tr style="background:var(--bg3);color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.5px;">';
+  h+='<th style="text-align:left;padding:8px 10px">Representante 2027</th>';
+  h+='<th style="text-align:left;padding:8px 10px;color:#888">Par Histórico Inverno 2026</th>';
+  h+='<th style="'+th+'">Cli 26</th><th style="'+th+'">Cli 27</th><th style="'+th+'" title="Clientes que já compraram em 2027 menos o total de 2026">Δ Cli</th>';
+  h+='<th style="'+th+';color:#6fae5a">🌱 Aberturas 27</th>';
+  h+='<th style="'+th+'">Peças 26 (final)</th><th style="'+th+'">Peças 27</th><th style="'+th+'">% do 26</th>';
+  h+='<th style="'+th+'" title="Clientes que faltam para igualar 2026 x ticket por cliente atual">Proj. Base</th><th style="'+th+'">Proj. Conserv. (80%)</th>';
+  h+='</tr></thead><tbody>';
+  var tC26=0,tC27=0,tP26=0,tP27=0,tAb=0,tPB=0,tPC=0;
+  COMP_INV26.forEach(function(r,i){
+    var info=REPS[r.cod]||{n:r.cod};
+    var a=acumIdx[r.cod]||{};
+    var cli27=a.cliCompra||0, pc27=a.qtde||0, ab=a.cliNov||0;
+    var semHist=r.cli26===0&&r.pc26===0;
+    var faltam=r.cli26-cli27;
+    var tk=cli27>0?pc27/cli27:0;
+    var projetavel=!semHist&&faltam>0&&cli27>0;
+    var pB=projetavel?Math.round(faltam*tk):0, pC=projetavel?Math.round(faltam*tk*0.8):0;
+    var pct=r.pc26>0?pc27/r.pc26*100:null;
+    var pctCor=pct===null?'var(--muted)':pct>=100?'#3ecf72':pct>=60?'var(--gold)':'#e05c5c';
+    tC26+=r.cli26;tC27+=cli27;tP26+=r.pc26;tP27+=pc27;tAb+=ab;tPB+=pB;tPC+=pC;
+    var bg=i%2===0?'var(--bg2)':'var(--bg3)';
+    h+='<tr style="background:'+bg+';border-bottom:1px solid var(--border)">';
+    h+='<td style="padding:7px 10px;font-weight:600">'+info.n+(semHist?'<span style="margin-left:6px;color:var(--gold);font-size:.62rem;font-weight:800">NOVO</span>':'')+'</td>';
+    h+='<td style="padding:7px 10px;color:var(--muted);font-size:.74rem">'+r.par+'</td>';
+    h+='<td style="text-align:right;padding:7px 10px">'+(semHist?'—':r.cli26)+'</td>';
+    h+='<td style="text-align:right;padding:7px 10px;font-weight:600">'+cli27+'</td>';
+    h+='<td style="text-align:right;padding:7px 10px;font-weight:700;color:'+(semHist?'var(--muted)':clrN(cli27-r.cli26))+'">'+(semHist?'—':fmtN(cli27-r.cli26))+'</td>';
+    h+='<td style="text-align:right;padding:7px 10px;font-weight:600;color:'+(ab>0?'#6fae5a':'var(--muted)')+'">'+(ab>0?'+'+ab:'—')+'</td>';
+    h+='<td style="text-align:right;padding:7px 10px">'+(semHist?'—':fmtI(r.pc26))+'</td>';
+    h+='<td style="text-align:right;padding:7px 10px;font-weight:600">'+fmtI(pc27)+'</td>';
+    h+='<td style="text-align:right;padding:7px 10px;font-weight:700;color:'+pctCor+'">'+(pct===null?'—':pct.toFixed(0)+'%')+'</td>';
+    h+='<td style="text-align:right;padding:7px 10px;color:#4a9fd4">'+(projetavel?'+'+fmtI(pB):'<span style="color:var(--muted);font-size:.72rem">'+(semHist?'sem histórico':cli27>0?'já superou':'—')+'</span>')+'</td>';
+    h+='<td style="text-align:right;padding:7px 10px;color:#7ab8d4">'+(projetavel?'+'+fmtI(pC):'—')+'</td>';
+    h+='</tr>';
+  });
+  COMP_INV26_SOBRA.forEach(function(r){
+    tC26+=r.cli26;tP26+=r.pc26;
+    h+='<tr style="background:var(--bg2);border-bottom:1px solid var(--border);opacity:.7"><td style="padding:7px 10px;font-style:italic">(sem rep. em 2027)</td><td style="padding:7px 10px;color:var(--muted);font-size:.74rem">'+r.par+'</td><td style="text-align:right;padding:7px 10px">'+r.cli26+'</td><td colspan="3"></td><td style="text-align:right;padding:7px 10px">'+fmtI(r.pc26)+'</td><td colspan="4"></td></tr>';
+  });
+  var pctT=tP26>0?tP27/tP26*100:null;
+  h+='<tr style="background:var(--bg3);font-weight:700;border-top:2px solid var(--border)">';
+  h+='<td style="padding:8px 10px" colspan="2">TOTAL</td><td style="'+th+'">'+tC26+'</td><td style="'+th+'">'+tC27+'</td>';
+  h+='<td style="'+th+';color:'+clrN(tC27-tC26)+'">'+fmtN(tC27-tC26)+'</td><td style="'+th+';color:#6fae5a">+'+tAb+'</td>';
+  h+='<td style="'+th+'">'+fmtI(tP26)+'</td><td style="'+th+'">'+fmtI(tP27)+'</td><td style="'+th+'">'+(pctT===null?'—':pctT.toFixed(0)+'%')+'</td>';
+  h+='<td style="'+th+';color:#4a9fd4">+'+fmtI(tPB)+'</td><td style="'+th+';color:#7ab8d4">+'+fmtI(tPC)+'</td></tr>';
+  h+='<tr><td colspan="11" style="padding:10px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border)">';
+  h+='💡 <b>% do 26</b> = peças já vendidas no Inverno 2027 sobre o <b>total final</b> do Inverno 2026. <b>Proj. Base</b> = clientes que faltam para igualar o Inverno 2026 × ticket (peças por cliente) atual do rep; <b>Conserv.</b> aplica fator de 80%. ';
+  h+='Giliarde soma G&amp;G + Nordeste do Brasil (Piauí) do Inverno 2026; Jau e Madson = José Carlos Pereira; Juscelino = Zorailson; Wemerson = W de PSS Veiga + DL Gestão de Moda.</td></tr>';
+  h+='</tbody></table></div>';
+  document.getElementById('comp-table').innerHTML=h;
+}
+
 </script>
+<!-- ===== COMPARATIVO ===== -->
+<div class="view" id="view-comparativo">
+  <div class="sec">Comparativo Inverno 2027 × Inverno 2026</div>
+  <p style="font-size:.78rem;color:var(--muted);margin-bottom:14px;">Compara o acumulado do Inverno 2027 (venda de 13/10/2026 a 26/03/2027) com o <b>total final</b> do Inverno 2026, por representante.</p>
+  <div id="comp-table"></div>
+</div>
+
 </body>
 </html>

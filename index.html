@@ -140,7 +140,7 @@ var REPS={
   '07741':{n:'WEMERSON',uf:'SE',r:'Sergipe/Alagoas',c:2500,reg:'Nordeste'},
   '07606':{n:'WELLS',uf:'ES',r:'Espirito Santo',c:5500,reg:'Sudeste'},
   '07889':{n:'JUSCELINO',uf:'BA',r:'Bahia',c:3000,reg:'Nordeste'},
-  '07891':{n:'ALLAN',uf:'PA',r:'Amazonas/Para/Goias/Tocantins',c:6500,reg:'Norte'},
+  '07891':{n:'ALLAN',uf:'PA',r:'Amapa/Para/Goias/Tocantins',c:6500,reg:'Norte'},
   '08093':{n:'PABLLO',uf:'SP',r:'Sao Paulo',c:2500,reg:'Sudeste'},
   '08092':{n:'VELOSO',uf:'MG',r:'Minas Gerais',c:2500,reg:'Sudeste'},
   '08281':{n:'HERMINIO',uf:'SP',r:'Sao Paulo',c:2500,reg:'Sudeste'},
@@ -152,17 +152,17 @@ var CORES=['#a9dcf5','#d3eefb','#a0a0b0','#8b7355','#3ecf72','#60c9e8','#e07060'
 // Atualize estes dois blocos a cada semana
 // ============================================================
 var dSem=[
-  {cod:'00032',vlr:122513.8,qtde:862,pedidos:14,cliNov:1,cliCompra:8,ticket:142.13},
-  {cod:'00018',vlr:36152,qtde:280,pedidos:4,cliNov:0,cliCompra:2,ticket:129.11},
+  {cod:'00032',vlr:192407.585,qtde:1383,pedidos:25,cliNov:2,cliCompra:11,ticket:139.12},
+  {cod:'00018',vlr:53497,qtde:400,pedidos:6,cliNov:0,cliCompra:3,ticket:133.74},
   {cod:'07891',vlr:22954.8,qtde:152,pedidos:1,cliNov:1,cliCompra:1,ticket:151.02},
   {cod:'08281',vlr:21980.5,qtde:155,pedidos:1,cliNov:1,cliCompra:1,ticket:141.81},
   {cod:'00045',vlr:8210.4,qtde:56,pedidos:1,cliNov:0,cliCompra:1,ticket:146.61},
   {cod:'06693',vlr:3782.485,qtde:17,pedidos:2,cliNov:0,cliCompra:2,ticket:222.5}
 ];
 var dAcum=[
-  {cod:'00032',vlr:166402.3,qtde:1187,pedidos:19,cliNov:1,cliCompra:10,ticket:140.19},
+  {cod:'00032',vlr:236296.085,qtde:1708,pedidos:30,cliNov:2,cliCompra:13,ticket:138.35},
   {cod:'06693',vlr:106445.365,qtde:719,pedidos:12,cliNov:0,cliCompra:4,ticket:148.05},
-  {cod:'00018',vlr:36152,qtde:280,pedidos:4,cliNov:0,cliCompra:2,ticket:129.11},
+  {cod:'00018',vlr:53497,qtde:400,pedidos:6,cliNov:0,cliCompra:3,ticket:133.74},
   {cod:'07891',vlr:22954.8,qtde:152,pedidos:1,cliNov:1,cliCompra:1,ticket:151.02},
   {cod:'08281',vlr:21980.5,qtde:155,pedidos:1,cliNov:1,cliCompra:1,ticket:141.81},
   {cod:'07607',vlr:18095.7,qtde:133,pedidos:1,cliNov:0,cliCompra:1,ticket:136.06},
@@ -228,7 +228,7 @@ function renderTop5(listaAcum){
 }
 
 // Ranking da atualização anterior para setas ▲▼
-var RANK_ANT_REP={'06693':1,'00032':2,'07607':3,'00045':4}; // ranking da atualização anterior (21/10)
+var RANK_ANT_REP={'06693':1,'00032':2,'08281':3,'00018':4,'07891':5,'07607':6,'00045':7}; // ranking da atualização anterior (23/10)
 
 var SUPER_COTA={}; // Inverno 2027: sem super cota
 function renderGrupo(){

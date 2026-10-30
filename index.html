@@ -152,21 +152,32 @@ var CORES=['#a9dcf5','#d3eefb','#a0a0b0','#8b7355','#3ecf72','#60c9e8','#e07060'
 // Atualize estes dois blocos a cada semana
 // ============================================================
 var dSem=[
-  {cod:'00032',vlr:192407.585,qtde:1383,pedidos:25,cliNov:2,cliCompra:11,ticket:139.12},
-  {cod:'00018',vlr:53497,qtde:400,pedidos:6,cliNov:0,cliCompra:3,ticket:133.74},
-  {cod:'07891',vlr:22954.8,qtde:152,pedidos:1,cliNov:1,cliCompra:1,ticket:151.02},
-  {cod:'08281',vlr:21980.5,qtde:155,pedidos:1,cliNov:1,cliCompra:1,ticket:141.81},
-  {cod:'00045',vlr:8210.4,qtde:56,pedidos:1,cliNov:0,cliCompra:1,ticket:146.61},
-  {cod:'06693',vlr:3782.485,qtde:17,pedidos:2,cliNov:0,cliCompra:2,ticket:222.5}
+  {cod:'07606',vlr:179169.9,qtde:1181,pedidos:17,cliNov:0,cliCompra:5,ticket:151.7103302},
+  {cod:'00032',vlr:85626.4,qtde:616,pedidos:11,cliNov:0,cliCompra:5,ticket:139.0038961},
+  {cod:'08281',vlr:81221.6,qtde:574,pedidos:9,cliNov:3,cliCompra:3,ticket:141.5010453},
+  {cod:'08092',vlr:74400.6,qtde:504,pedidos:3,cliNov:1,cliCompra:2,ticket:147.6202381},
+  {cod:'07520',vlr:51600.8,qtde:342,pedidos:6,cliNov:0,cliCompra:3,ticket:150.8795322},
+  {cod:'00037',vlr:33087,qtde:240,pedidos:2,cliNov:0,cliCompra:2,ticket:137.8625},
+  {cod:'00040',vlr:29239.8,qtde:192,pedidos:3,cliNov:0,cliCompra:1,ticket:152.290625},
+  {cod:'06693',vlr:18215.4,qtde:126,pedidos:2,cliNov:0,cliCompra:1,ticket:144.5666667},
+  {cod:'00018',vlr:6973.855,qtde:51,pedidos:1,cliNov:1,cliCompra:1,ticket:136.7422549},
+  {cod:'07607',vlr:5430.7,qtde:43,pedidos:1,cliNov:0,cliCompra:1,ticket:126.2953488},
+  {cod:'07608',vlr:4733.4,qtde:36,pedidos:1,cliNov:0,cliCompra:1,ticket:131.4833333}
 ];
 var dAcum=[
-  {cod:'00032',vlr:236296.085,qtde:1708,pedidos:30,cliNov:2,cliCompra:13,ticket:138.35},
-  {cod:'06693',vlr:106445.365,qtde:719,pedidos:12,cliNov:0,cliCompra:4,ticket:148.05},
-  {cod:'00018',vlr:53497,qtde:400,pedidos:6,cliNov:0,cliCompra:3,ticket:133.74},
-  {cod:'07891',vlr:22954.8,qtde:152,pedidos:1,cliNov:1,cliCompra:1,ticket:151.02},
-  {cod:'08281',vlr:21980.5,qtde:155,pedidos:1,cliNov:1,cliCompra:1,ticket:141.81},
-  {cod:'07607',vlr:18095.7,qtde:133,pedidos:1,cliNov:0,cliCompra:1,ticket:136.06},
-  {cod:'00045',vlr:16908,qtde:120,pedidos:2,cliNov:0,cliCompra:2,ticket:140.9}
+  {cod:'00032',vlr:321922.485,qtde:2324,pedidos:41,cliNov:2,cliCompra:18,ticket:138.5208627},
+  {cod:'07606',vlr:179169.9,qtde:1181,pedidos:17,cliNov:0,cliCompra:5,ticket:151.7103302},
+  {cod:'06693',vlr:124660.765,qtde:845,pedidos:14,cliNov:0,cliCompra:5,ticket:147.5275325},
+  {cod:'08281',vlr:103202.1,qtde:729,pedidos:10,cliNov:4,cliCompra:4,ticket:141.5666667},
+  {cod:'08092',vlr:74400.6,qtde:504,pedidos:3,cliNov:1,cliCompra:2,ticket:147.6202381},
+  {cod:'00018',vlr:60470.855,qtde:451,pedidos:7,cliNov:1,cliCompra:4,ticket:134.0817184},
+  {cod:'07520',vlr:51600.8,qtde:342,pedidos:6,cliNov:0,cliCompra:3,ticket:150.8795322},
+  {cod:'00037',vlr:33087,qtde:240,pedidos:2,cliNov:0,cliCompra:2,ticket:137.8625},
+  {cod:'00040',vlr:29239.8,qtde:192,pedidos:3,cliNov:0,cliCompra:1,ticket:152.290625},
+  {cod:'07607',vlr:23526.4,qtde:176,pedidos:2,cliNov:0,cliCompra:2,ticket:133.6727273},
+  {cod:'07891',vlr:22954.8,qtde:152,pedidos:1,cliNov:1,cliCompra:1,ticket:151.0184211},
+  {cod:'00045',vlr:16908,qtde:120,pedidos:2,cliNov:0,cliCompra:2,ticket:140.9},
+  {cod:'07608',vlr:4733.4,qtde:36,pedidos:1,cliNov:0,cliCompra:1,ticket:131.4833333}
 ];
 
 // ============================================================
@@ -228,11 +239,11 @@ function renderTop5(listaAcum){
 }
 
 // Ranking da atualização anterior para setas ▲▼
-var RANK_ANT_REP={'06693':1,'00032':2,'08281':3,'00018':4,'07891':5,'07607':6,'00045':7}; // ranking da atualização anterior (23/10)
+var RANK_ANT_REP={'06693':1,'00032':2,'08281':3,'00018':4,'07891':5,'07607':6,'00045':7}; // ranking da atualização anterior (divulgado, 26/10)
 
 var SUPER_COTA={}; // Inverno 2027: sem super cota
 function renderGrupo(){
-  var sn=2,sp='19/10 a 25/10',msg='A coleção Inverno 2027 está aberta! Cada visita, cada pedido conta. Vamos juntos para o melhor resultado!',falt=Math.max(0,24-sn);
+  var sn=3,sp='26/10 a 01/11',msg='A coleção Inverno 2027 está aberta! Cada visita, cada pedido conta. Vamos juntos para o melhor resultado!',falt=Math.max(0,24-sn);
   setText('g-semn',sn);setText('g-per',sp);setText('g-falt',falt);
   var listaAcum=buildLista(dAcum),listaSem=buildLista(dSem);
   var dest=calcDestaques(listaSem);
@@ -252,6 +263,8 @@ function renderGrupo(){
       if(diff>0) setaHtml='<span style="font-size:.6rem;color:#3ecf72;font-weight:700;margin-left:2px;vertical-align:middle">▲'+diff+'</span>';
       else if(diff<0) setaHtml='<span style="font-size:.6rem;color:#e05c5c;font-weight:700;margin-left:2px;vertical-align:middle">▼'+Math.abs(diff)+'</span>';
       else setaHtml='<span style="font-size:.6rem;color:#555;margin-left:2px;vertical-align:middle">—</span>';
+    } else if(r.ativo&&r.qtde>0){
+      setaHtml='<span title="Estreia no ranking" style="font-size:.45rem;color:#3ecf72;font-weight:700;margin-left:2px;vertical-align:middle;letter-spacing:.3px">NOVO</span>';
     } else if(r.ativo){
       setaHtml='';
     }

@@ -67,6 +67,15 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);f
 .btn:hover{opacity:.9;}
 @media(max-width:900px){.dest-grid{grid-template-columns:1fr;}.g-tops{grid-template-columns:1fr;}.g-footer{grid-template-columns:1fr;}.g-col-hdrs,.gi{grid-template-columns:36px 1fr 40px 76px 88px 70px;}}
 @media(max-width:600px){.wrap{padding:12px;}.g-col-hdrs,.gi{grid-template-columns:30px 1fr 36px 70px;}.g-col-hdrs span:nth-child(5),.g-col-hdrs span:nth-child(6),.gi .gtk,.gi .gop{display:none;}}
+.g-ref-card h4{font-size:.95rem;margin-bottom:8px;}
+.g-ref-row{display:flex;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid #1a1a1a;}
+.g-ref-row:last-child{border-bottom:none;}
+.g-ref-n{font-size:1rem;font-weight:800;color:var(--muted);min-width:24px;text-align:center;}
+.g-ref-row:nth-child(2) .g-ref-n{color:var(--gold);}
+.g-ref-nm{flex:1;font-size:1.3rem;font-weight:800;letter-spacing:.5px;}
+.g-ref-nm small{display:block;font-size:.88rem;color:var(--muted);font-weight:400;margin-top:1px;letter-spacing:0;}
+.g-ref-q{font-size:1.15rem;font-weight:800;color:var(--gold);white-space:nowrap;}
+.g-ref-q small{font-size:.7rem;color:var(--muted);font-weight:400;}
 </style>
 </head>
 <body>
@@ -106,7 +115,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--white);f
         <div class="g-top-card"><h4>🟠 Nordeste</h4><div id="top5-nordeste"></div></div>
         <div class="g-top-card"><h4>🔴 Norte</h4><div id="top5-norte"></div></div>
       </div>
-      <div class="g-footer">
+      <div class="dest-title" style="margin-top:22px">Mais vendidas da colecao</div><div class="g-tops" style="grid-template-columns:repeat(2,1fr);margin-top:0"><div class="g-top-card g-ref-card"><h4>&#128089; Top 10 Feminino</h4><div class="g-ref-row"><span class="g-ref-n">1</span><span class="g-ref-nm"><b>CF22211</b><small>Calça Wide Leg</small></span></div><div class="g-ref-row"><span class="g-ref-n">2</span><span class="g-ref-nm"><b>CF22210</b><small>Calça Wide Cropped</small></span></div><div class="g-ref-row"><span class="g-ref-n">3</span><span class="g-ref-nm"><b>CF22262</b><small>Calça Skinny</small></span></div><div class="g-ref-row"><span class="g-ref-n">4</span><span class="g-ref-nm"><b>CF22278</b><small>Calça Little Boot</small></span></div><div class="g-ref-row"><span class="g-ref-n">5</span><span class="g-ref-nm"><b>CF22322</b><small>Calça Wide Cropped</small></span></div><div class="g-ref-row"><span class="g-ref-n">6</span><span class="g-ref-nm"><b>CF22325</b><small>Calça Wide Cropped</small></span></div><div class="g-ref-row"><span class="g-ref-n">7</span><span class="g-ref-nm"><b>CF22261</b><small>Calça Skinny</small></span></div><div class="g-ref-row"><span class="g-ref-n">8</span><span class="g-ref-nm"><b>CF22264</b><small>Calça Mom</small></span></div><div class="g-ref-row"><span class="g-ref-n">9</span><span class="g-ref-nm"><b>CF22267</b><small>Calça Reta</small></span></div><div class="g-ref-row"><span class="g-ref-n">10</span><span class="g-ref-nm"><b>CF22306</b><small>Calça Mom</small></span></div></div><div class="g-top-card g-ref-card"><h4>&#128086; Top 10 Masculino</h4><div class="g-ref-row"><span class="g-ref-n">1</span><span class="g-ref-nm"><b>CM30961</b><small>Calça Skinny</small></span></div><div class="g-ref-row"><span class="g-ref-n">2</span><span class="g-ref-nm"><b>CM30966</b><small>Calça Slim</small></span></div><div class="g-ref-row"><span class="g-ref-n">3</span><span class="g-ref-nm"><b>CM31014</b><small>Calça Slim</small></span></div><div class="g-ref-row"><span class="g-ref-n">4</span><span class="g-ref-nm"><b>CM30968</b><small>Calça Slim</small></span></div><div class="g-ref-row"><span class="g-ref-n">5</span><span class="g-ref-nm"><b>CM30980</b><small>Calça Sport Fino Cropped</small></span></div><div class="g-ref-row"><span class="g-ref-n">6</span><span class="g-ref-nm"><b>CM30954</b><small>Calça Cigarrete</small></span></div><div class="g-ref-row"><span class="g-ref-n">7</span><span class="g-ref-nm"><b>B31009</b><small>Bermuda</small></span></div><div class="g-ref-row"><span class="g-ref-n">8</span><span class="g-ref-nm"><b>CM30962</b><small>Calça Skinny</small></span></div><div class="g-ref-row"><span class="g-ref-n">9</span><span class="g-ref-nm"><b>B31002</b><small>Bermuda</small></span></div><div class="g-ref-row"><span class="g-ref-n">10</span><span class="g-ref-nm"><b>CM30953</b><small>Calça Cigarrete</small></span></div></div></div><div class="g-footer">
         <div class="g-msg"><p id="g-msgt">--</p><small>RDG JEANS - INVERNO 2027</small></div>
         <div class="g-leg">Ativo | Aguardando inicio<br><span style="color:var(--gold);font-size:.65rem">* Destaque da semana</span></div>
       </div>
@@ -152,31 +161,35 @@ var CORES=['#a9dcf5','#d3eefb','#a0a0b0','#8b7355','#3ecf72','#60c9e8','#e07060'
 // Atualize estes dois blocos a cada semana
 // ============================================================
 var dSem=[
-  {cod:'07606',vlr:179169.9,qtde:1181,pedidos:17,cliNov:0,cliCompra:5,ticket:151.7103302},
-  {cod:'00032',vlr:85626.4,qtde:616,pedidos:11,cliNov:0,cliCompra:5,ticket:139.0038961},
+  {cod:'07606',vlr:279170.1,qtde:1879,pedidos:28,cliNov:1,cliCompra:9,ticket:148.5737626},
+  {cod:'00032',vlr:121862.6,qtde:864,pedidos:16,cliNov:0,cliCompra:7,ticket:141.0446759},
+  {cod:'07890',vlr:88820.6,qtde:634,pedidos:8,cliNov:0,cliCompra:4,ticket:140.0955836},
+  {cod:'07520',vlr:85155.7,qtde:593,pedidos:11,cliNov:1,cliCompra:5,ticket:143.6015177},
   {cod:'08281',vlr:81221.6,qtde:574,pedidos:9,cliNov:3,cliCompra:3,ticket:141.5010453},
+  {cod:'00037',vlr:74687.7,qtde:523,pedidos:5,cliNov:0,cliCompra:3,ticket:142.8063098},
   {cod:'08092',vlr:74400.6,qtde:504,pedidos:3,cliNov:1,cliCompra:2,ticket:147.6202381},
-  {cod:'07520',vlr:51600.8,qtde:342,pedidos:6,cliNov:0,cliCompra:3,ticket:150.8795322},
-  {cod:'00037',vlr:33087,qtde:240,pedidos:2,cliNov:0,cliCompra:2,ticket:137.8625},
   {cod:'00040',vlr:29239.8,qtde:192,pedidos:3,cliNov:0,cliCompra:1,ticket:152.290625},
+  {cod:'00018',vlr:23194.555,qtde:164,pedidos:4,cliNov:2,cliCompra:3,ticket:141.4302134},
+  {cod:'00045',vlr:18516.3,qtde:127,pedidos:3,cliNov:0,cliCompra:1,ticket:145.7976378},
   {cod:'06693',vlr:18215.4,qtde:126,pedidos:2,cliNov:0,cliCompra:1,ticket:144.5666667},
-  {cod:'00018',vlr:6973.855,qtde:51,pedidos:1,cliNov:1,cliCompra:1,ticket:136.7422549},
+  {cod:'07891',vlr:10744.3,qtde:87,pedidos:1,cliNov:1,cliCompra:1,ticket:123.4977011},
   {cod:'07607',vlr:5430.7,qtde:43,pedidos:1,cliNov:0,cliCompra:1,ticket:126.2953488},
   {cod:'07608',vlr:4733.4,qtde:36,pedidos:1,cliNov:0,cliCompra:1,ticket:131.4833333}
 ];
 var dAcum=[
-  {cod:'00032',vlr:321922.485,qtde:2324,pedidos:41,cliNov:2,cliCompra:18,ticket:138.5208627},
-  {cod:'07606',vlr:179169.9,qtde:1181,pedidos:17,cliNov:0,cliCompra:5,ticket:151.7103302},
+  {cod:'00032',vlr:399964.57,qtde:2888,pedidos:50,cliNov:2,cliCompra:22,ticket:138.4918871},
+  {cod:'07606',vlr:279170.1,qtde:1879,pedidos:28,cliNov:1,cliCompra:9,ticket:148.5737626},
   {cod:'06693',vlr:124660.765,qtde:845,pedidos:14,cliNov:0,cliCompra:5,ticket:147.5275325},
   {cod:'08281',vlr:103202.1,qtde:729,pedidos:10,cliNov:4,cliCompra:4,ticket:141.5666667},
+  {cod:'07890',vlr:88820.6,qtde:634,pedidos:8,cliNov:0,cliCompra:4,ticket:140.0955836},
+  {cod:'07520',vlr:85155.7,qtde:593,pedidos:11,cliNov:1,cliCompra:5,ticket:143.6015177},
+  {cod:'00018',vlr:76691.555,qtde:564,pedidos:10,cliNov:2,cliCompra:6,ticket:135.9779344},
+  {cod:'00037',vlr:74687.7,qtde:523,pedidos:5,cliNov:0,cliCompra:3,ticket:142.8063098},
   {cod:'08092',vlr:74400.6,qtde:504,pedidos:3,cliNov:1,cliCompra:2,ticket:147.6202381},
-  {cod:'00018',vlr:60470.855,qtde:451,pedidos:7,cliNov:1,cliCompra:4,ticket:134.0817184},
-  {cod:'07520',vlr:51600.8,qtde:342,pedidos:6,cliNov:0,cliCompra:3,ticket:150.8795322},
-  {cod:'00037',vlr:33087,qtde:240,pedidos:2,cliNov:0,cliCompra:2,ticket:137.8625},
+  {cod:'00045',vlr:35424.3,qtde:247,pedidos:5,cliNov:0,cliCompra:3,ticket:143.4182186},
+  {cod:'07891',vlr:33699.1,qtde:239,pedidos:2,cliNov:2,cliCompra:2,ticket:141.0004184},
   {cod:'00040',vlr:29239.8,qtde:192,pedidos:3,cliNov:0,cliCompra:1,ticket:152.290625},
   {cod:'07607',vlr:23526.4,qtde:176,pedidos:2,cliNov:0,cliCompra:2,ticket:133.6727273},
-  {cod:'07891',vlr:22954.8,qtde:152,pedidos:1,cliNov:1,cliCompra:1,ticket:151.0184211},
-  {cod:'00045',vlr:16908,qtde:120,pedidos:2,cliNov:0,cliCompra:2,ticket:140.9},
   {cod:'07608',vlr:4733.4,qtde:36,pedidos:1,cliNov:0,cliCompra:1,ticket:131.4833333}
 ];
 
@@ -239,7 +252,7 @@ function renderTop5(listaAcum){
 }
 
 // Ranking da atualização anterior para setas ▲▼
-var RANK_ANT_REP={'06693':1,'00032':2,'08281':3,'00018':4,'07891':5,'07607':6,'00045':7}; // ranking da atualização anterior (divulgado, 26/10)
+var RANK_ANT_REP={'08281':1,'07606':2,'08092':3,'00032':4,'06693':5,'07520':6,'00018':7,'00040':8,'00037':9,'07607':10,'07891':11,'00045':12,'07608':13}; // ranking da atualização anterior (divulgado, 30/10)
 
 var SUPER_COTA={}; // Inverno 2027: sem super cota
 function renderGrupo(){
